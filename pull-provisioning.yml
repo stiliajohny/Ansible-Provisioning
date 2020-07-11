@@ -1,5 +1,5 @@
 ---
-- hosts: pull-hosts
+- hosts: pull_hosts
   become: yes
   roles:
     - os_info
