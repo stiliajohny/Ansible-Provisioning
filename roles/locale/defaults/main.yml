@@ -1,0 +1,4 @@
+locale:
+  - locale: en_GB.UTF-8
+  - console_keymap: uk
+  - keymap: uk
