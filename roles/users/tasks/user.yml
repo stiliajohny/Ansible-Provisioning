@@ -4,19 +4,26 @@
     name: "{{ user.group }}"
     state: present
 
-- name: Create user {{ user.name }}
+- name: "Create user"
   user:
     name: '{{ user.name }}'
-    password: '{{ user.password }}'
+    #password: '{{ user.password }}'
     groups: "{{ user.group }}, wheel, log, network, floppy, scanner, power, rfkill, users, video, storage, optical, audio"
     uid: '{{ user.uid | default(omit) }}'
     shell: '{{ user.shell | default("/usr/bin/zsh") }}'
     state: present
   ignore_errors: True
 
-- name: Install sudo package
-  pacman: name=sudo state=present
-  ignore_errors: True
+- name: Run install tasks
+  include_tasks: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution_release | lower }}.yml"
+    - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
+    - "{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
+    - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
+    - "{{ ansible_distribution | lower }}.yml"
+    - "{{ ansible_os_family | lower }}.yml"
+
 
 - name: Copy sudo configuration
   copy: src=sudoers dest=/etc/sudoers mode=0440 validate='visudo -cf %s'
