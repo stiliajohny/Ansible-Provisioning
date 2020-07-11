@@ -1,0 +1,7 @@
+---
+- hosts: pull-hosts
+  become: yes
+  roles:
+    - os_info
+    - ansible_pull
+    - users

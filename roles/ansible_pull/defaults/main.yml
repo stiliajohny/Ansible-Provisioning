@@ -1,0 +1,6 @@
+cron_intervals: 2 # in minutes
+project_token:
+project_link: "github.com/stiliajohny/Provision-Archlabs.git"
+inventory: "pull-provisioning"
+playbook: "pull-provisioning.yml"
+logfile: "/var/log/ansible-pull-update.log"

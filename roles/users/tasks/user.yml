@@ -1,0 +1,30 @@
+---
+- name: Create user group
+  group:
+    name: "{{ user.group }}"
+    state: present
+
+- name: Create user {{ user.name }}
+  user:
+    name: '{{ user.name }}'
+    password: '{{ user.password }}'
+    groups: "{{ user.group }}, wheel, log, network, floppy, scanner, power, rfkill, users, video, storage, optical, audio"
+    uid: '{{ user.uid | default(omit) }}'
+    shell: '{{ user.shell | default("/usr/bin/zsh") }}'
+    state: present
+  ignore_errors: True
+
+- name: Install sudo package
+  pacman: name=sudo state=present
+  ignore_errors: True
+
+- name: Copy sudo configuration
+  copy: src=sudoers dest=/etc/sudoers mode=0440 validate='visudo -cf %s'
+  ignore_errors: True
+
+- name: Create a sudoers file for the ansible
+  lineinfile:
+    path: /etc/sudoers.d/11-install-aur_builder
+    line: 'ansible ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    create: yes
+    validate: 'visudo -cf %s'

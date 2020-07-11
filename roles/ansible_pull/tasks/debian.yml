@@ -1,0 +1,29 @@
+---
+- name: Ensure software-properties-common is instaled
+  apt:
+    name: "software-properties-common"
+    state: latest
+
+- name: Install ansible ppa
+  shell: "apt-add-repository --yes --update ppa:ansible/ansible"
+  become: true
+  become_user: root
+
+- name: Install ansible
+  apt:
+    name: ansible
+    state: present
+  become: true
+  become_user: root
+
+- name: "Cronjob Entry"
+  cron:
+    name: "Asible-Pull"
+    minute: "*/{{ cron_intervals }}"
+    hour: "*"
+    day: "*"
+    month: "*"
+    weekday: "*"
+    job: "ansible-pull -sleep 120 -U https://{{ project_token.test }}:x-oauth-basic@{{ project_link }} -i {{ inventory }} {{ playbook }} 2>&1 | sudo tee -a {{ logfile }}"
+    user: root
+    cron_file: ansible_pull # creates a file under /etc/cron.d
