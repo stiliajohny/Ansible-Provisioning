@@ -1,6 +1,6 @@
 cron_intervals: 2 # in minutes
 project_token:
 project_link: "github.com/stiliajohny/Ansible-Provisioning.git"
-inventory: "pull-provisioning"
+inventory: "pull-provisioning-execution"
 playbook: "pull-provisioning-execution.yml"
 logfile: "/var/log/ansible-pull-update.log"
