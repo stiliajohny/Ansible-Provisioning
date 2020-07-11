@@ -5,3 +5,5 @@
     - os_info
     - ansible_pull
     - users
+    - locale
+    - time
