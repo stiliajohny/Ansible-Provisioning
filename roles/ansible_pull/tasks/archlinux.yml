@@ -18,6 +18,14 @@
   become: true
   become_user: root
 
+
+- name: Install logrotate
+  pacman:
+    name: logrotate
+    state: present
+  become: true
+  become_user: root
+
 - name: Install cronie
   pacman:
     name: cronie
