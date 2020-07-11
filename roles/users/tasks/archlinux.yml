@@ -1,0 +1,6 @@
+---
+- name: Install sudo package
+  pacman:
+    name: sudo
+    state: present
+  ignore_errors: True
