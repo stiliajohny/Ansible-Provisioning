@@ -24,7 +24,6 @@
     - "{{ ansible_distribution | lower }}.yml"
     - "{{ ansible_os_family | lower }}.yml"
 
-
 - name: Copy sudo configuration
   copy: src=sudoers dest=/etc/sudoers mode=0440 validate='visudo -cf %s'
   ignore_errors: True
