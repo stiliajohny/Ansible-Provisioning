@@ -9,3 +9,43 @@
     - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
     - "{{ ansible_distribution | lower }}.yml"
     - "{{ ansible_os_family | lower }}.yml"
+
+
+
+- debug:
+    msg:
+      - "Public Repo Ansible Pull"
+      - "ansible-pull --sleep 15 -U https://{{ project_link }} -i {{ inventory }} {{ playbook }} --limit 127.0.0.1  2>&1 | sudo tee -a {{ logfile }} 2>&1 | sudo tee -a {{ logfile }}"
+  when: project_token == None
+
+- debug:
+    msg:
+      - "Private Repo Ansible Pull"
+      - "ansible-pull --sleep 15 -U https://{{ project_token }}:x-oauth-basic@{{ project_link }} -i {{ inventory }} {{ playbook }} --limit 127.0.0.1  2>&1 | sudo tee -a {{ logfile }}"
+  when: project_token != None
+
+- name: "Cronjob Entry from Public Repo"
+  cron:
+    name: "Ansible-Pull from Public Repo"
+    minute: "*/{{ cron_intervals }}"
+    hour: "*"
+    day: "*"
+    month: "*"
+    weekday: "*"
+    job: "ansible-pull --sleep 15 -U https://{{ project_link }} -i {{ inventory }} {{ playbook }} --limit 127.0.0.1  2>&1 | sudo tee -a {{ logfile }}"
+    user: root
+    cron_file: ansible_pull # creates a file under /etc/cron.d
+  when: project_token == None
+
+- name: "Cronjob Entry from Private Repo"
+  cron:
+    name: "Ansible-Pull from Private Repo"
+    minute: "*/{{ cron_intervals }}"
+    hour: "*"
+    day: "*"
+    month: "*"
+    weekday: "*"
+    job: "ansible-pull --sleep 15 -U https://{{ project_token }}:x-oauth-basic@{{ project_link }} -i {{ inventory }} {{ playbook }} --limit 127.0.0.1 2>&1 | sudo tee -a {{ logfile }}"
+    user: root
+    cron_file: ansible_pull # creates a file under /etc/cron.d
+  when: project_token != None
