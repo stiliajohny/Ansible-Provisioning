@@ -1,0 +1,520 @@
+telegram:
+  token: ''
+  chatID: 
+
+user:
+    name: jstilia
+    fullname: John Stilia
+    uid: 1001
+    group: jstilia
+    shell: /usr/bin/zsh
+    email: stilia.johny@gmail.com
+    ssh_key_bits: 2048
+    ssh_key_type: rsa
+
+dotfiles:
+    url: git@gitlab.johnstilia.co.uk:jstilia/dotfiles.git
+    destination: .cfg
+
+
+home_skel:
+    - Desktop
+    - Documents
+    - Documents/GitHub
+    - Downloads
+    - Music
+    - Pictures
+    - Videos
+
+
+timezone: Europe/London
+locale: en_GB.UTF-8
+keymap: uk
+hostname: -archlabs
+
+xorg:
+  XkbLayout: gb
+
+yay:
+  repo: https://aur.archlinux.org/yay.git
+
+
+core_utils:
+  - imagemagick
+  - arch-wiki-docs
+  - arch-wiki-lite
+  - base-devel
+  - base-devel
+  - bash
+  - bash-completion
+  - bat
+  - bc
+  - bind-tools
+  - terminator
+  - binutils
+  - colordiff
+  - coreutils
+  - cpulimit
+  - ctags
+  - dateutils
+  - dmidecode
+  - exa
+  - fwupd
+  - fzf
+  - git
+  - jq
+  - less
+  - libffi
+  - linux-api-headers
+  - linux-firmware
+  - linux-hardened
+  - linux-hardened-headers
+  - linux-headers
+  - linux-lts
+  - linux-zen
+  - linux-zen-headers
+  - make
+  - man-db
+  - man-pages
+  - minicom
+  - mlocate
+  - moreutils
+  - pacman-contrib
+  - parallel
+  - pbzip2
+  - pkgfile
+  - pv
+  - pwgen
+  - python-keyring
+  - python-pynvim
+  - python-secretstorage
+  - ranger
+  - rsync
+  - ruby
+  - screen
+  - sshpass
+  - sudo
+  - termdown
+  - the_silver_searcher
+  - tig
+  - tmux
+  - tmuxp
+  - ttf-dejavu
+  - ttf-hack
+  - vifm
+  - vim
+  - zsh
+
+core_debugutils:
+    - strace
+    - lsof
+    - htop
+    - glances
+    - sysstat
+    - ncdu
+    - hyperfine
+
+core_netutils:
+    - net-tools
+    - curl
+    - wget
+    - surfraw
+    - w3m
+    - nmap
+    - gnu-netcat
+    - whois
+    - mtr
+    - sslscan
+    - httpie
+    - prettyping
+    - tcpdump
+    - nethogs
+    - newsboat
+    - sshpass
+    - dnsutils
+
+core_goodies:
+    - neofetch
+    - fortune-mod
+    - cowsay
+
+core_aur:
+    - byobu
+    - diff-so-fancy
+
+gui_core:
+    - xorg-server
+    - xorg-xinit
+    - xorg-xmodmap
+    - xorg-xev
+    - xorg-xrandr
+    - xcape
+    - xorg-xprop
+
+gui_video_drivers:
+    - xf86-video-vesa
+
+gui_ui:
+    - vicious
+    - rxvt-unicode
+    - rxvt-unicode-terminfo
+    - i3-gaps
+    - i3status
+    - lightdm
+    - lightdm-gtk-greeter
+
+gui_utility:
+    - volumeicon
+    - qt5ct
+    - lxappearance
+    - xfce4-power-manager
+    - xfce4-screenshooter
+    - redshift
+    - arandr
+    - unclutter
+    - xautolock
+    - gnome-keyring
+    - seahorse
+    - feh
+    - numlockx
+    - autorandr
+
+gui_themes:
+    - elementary-icon-theme
+    - gnome-themes-extra
+
+gui_aur:
+    - urxvt-resize-font-git
+    - ttf-nerd-fonts-hack-complete-git
+    - rofi-greenclip
+
+base_fonts:
+    - adobe-source-code-pro-fonts
+    - cantarell-fonts
+    - gsfonts
+    - noto-fonts
+    - terminus-font
+    - tex-gyre-fonts
+    - ttf-caladea
+    - ttf-carlito
+    - ttf-dejavu
+    - ttf-droid
+    - ttf-fira-mono
+    - ttf-ibm-plex
+    - ttf-inconsolata
+    - ttf-liberation
+    - ttf-opensans
+    - ttf-ubuntu-font-family
+
+aur_fonts:
+    - ttf-cooper-hewitt
+    - ttf-courier-prime
+    - ttf-heuristica
+    - ttf-merriweather
+    - ttf-merriweather-sans
+    - ttf-oswald
+    - ttf-quintessential
+    - ttf-signika
+    - otf-symbola
+
+
+nettools:
+    - openvpn
+    - mtr
+    - net-tools
+    - bind-tools
+    - whois
+    - netcat
+    - lftp
+    - nmap
+    - tcpdump
+    - sshuttle
+    - socat
+    - bmon
+    - wireguard-tools
+    - wireguard-dkms
+
+tools:
+    - file-roller
+    - zathura
+    - zathura-pdf-mupdf
+    - lxtask
+    - vim-spell-it
+    - python-neovim
+    - gitg
+    - leafpad
+
+tools_aur:
+
+    - toilet
+    - toilet-fonts
+    - yamllint
+    - quiterss
+    - arduino-cli
+
+ops_cli:
+  - ansible
+  - ansible-lint
+  - wireshark-cli
+
+ops_aur:
+  - puppet-lint
+  - prettier
+
+ops_gui:
+  - wireshark-qt
+
+dev:
+  python:
+    - subversion
+    - ipython3
+    - ipython2
+    - ipython
+    - python-pip
+    - python2-pip
+    - python3-pip
+    - python3-virtualenv
+    - python2-virtualenv
+    - python-virtualenv
+    - python-virtualenvwrapper
+    - pelican
+    - flake8
+
+blackarch:
+    url: https://blackarch.org/strap.sh
+    destination: /tmp/blackarch.sh
+    package_manager: blackman
+    packages:
+      - blackarch
+      - blackarch-webapp
+      - blackarch-fuzzer
+      - blackarch-scanner
+      - blackarch-proxy
+      - blackarch-windows
+      - blackarch-dos
+      - blackarch-disassembler
+      - blackarch-cracker
+      - blackarch-voip
+      - blackarch-recon
+      - blackarch-spoof
+      - blackarch-forensic
+      - blackarch-crypto
+      - blackarch-backdoor
+      - blackarch-binary
+      - blackarch-networking
+      - blackarch-misc
+      - blackarch-exploitation
+      - blackarch-defensive
+      - blackarch-wireless
+      - blackarch-automation
+      - blackarch-packer
+      - blackarch-mobile
+      - blackarch-malware
+      - blackarch-reversing
+      - blackarch-sniffer
+      - blackarch-code-audit
+      - blackarch-social
+      - blackarch-honeypot
+      - blackarch-hardware
+      - blackarch-fingerprint
+      - blackarch-debugger
+      - blackarch-firmware
+      - blackarch-config
+      - blackarch-bluetooth
+      - blackarch-database
+      - blackarch-cryptography
+      - blackarch-scan
+      - blackarch-automobile
+      - blackarch-decompiler
+      - blackarch-nfc
+      - blackarch-tunnel
+      - blackarch-drone
+      - blackarch-radio
+      - blackarch-unpacker
+      - blackarch-keylogger
+      - blackarch-stego
+      - blackarch-anti-forensic
+      - blackarch-ids
+      - blackarch-spoff
+      - blackarch-gpu
+
+comm:
+    - weechat
+    - pidgin
+    - purple-skypeweb
+    - telegram-desktop-bin
+    - discord
+    - slack
+    - teams
+
+browsers:
+    - firefox
+
+virt_cli:
+  - docker
+
+virt_gui:
+  - virtualbox
+  - vagrant
+  - virt-manager
+
+pacman:
+  repos:
+    # For brother-hll2340dw printer drivers
+    - multilib
+
+git_repos:
+    - git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
+    - git@github.com:stiliajohny/Bind-DNS-DockerCompose.git
+    - git@github.com:stiliajohny/Mac-Geo-StreetView.git
+    - git@github.com:stiliajohny/Mac-Geo-StreetView.git
+    - git@github.com:stiliajohny/Probe-Hunter.git
+    - git@github.com:stiliajohny/ansible-provisioning.git
+    - git@github.com:stiliajohny/cherrywasp.git
+    - git@github.com:stiliajohny/directed-probe-matching.git
+    - git@github.com:stiliajohny/exportProbe.git
+    - git@github.com:stiliajohny/hakase-labs.git
+    - git@github.com:stiliajohny/heyyou.git
+    - git@github.com:stiliajohny/linger.git
+    - git@github.com:stiliajohny/make-a-pipeline.git
+    - git@github.com:stiliajohny/mydotfiles.git
+    - git@github.com:stiliajohny/oraj.git
+    - git@github.com:stiliajohny/probe-requests-sniffer-for-unix.git
+    - git@github.com:stiliajohny/probeSniffer.git
+    - git@github.com:stiliajohny/probemon-geolocation.git
+    - git@github.com:stiliajohny/provisioning-scripts.git
+    - git@github.com:stiliajohny/sniff-802.11-probes.git
+    - git@github.com:stiliajohny/wakeup-scripts.git
+    - git@github.com:stiliajohny/wifi-probe-request-devices-counter.git
+    - git@github.com:stiliajohny/wifitracker.git
+    - git@github.com:stiliajohny/willy-board.git
+    - git@gitlab.com:realmain/rEFInd-sunset.git
+    - git@gitlab.com:stilia.johny/call-my-mac.git
+    - git@gitlab.johnstilia.co.uk:docker-compose-apps/jenkins.git
+    - git@gitlab.johnstilia.co.uk:jstilia/bbc-good-food-recipe-scraper.git
+    - git@gitlab.johnstilia.co.uk:jstilia/dotfiles.git
+    - git@gitlab.johnstilia.co.uk:jstilia/k8s-vbox.git
+    - git@gitlab.johnstilia.co.uk:jstilia/ldap-user-creator.git
+    - git@gitlab.johnstilia.co.uk:jstilia/provision-archlabs.git
+    - git@gitlab.johnstilia.co.uk:jstilia/whatsapp_troller.git
+    - https://aur.archlinux.org/package-query.git
+    - https://aur.archlinux.org/yaourt.git
+    - https://bitbucket.org/exxsyseng/k8s_centos/src/master/vagrant-provisioning/
+    - https://git.kernel.org/pub/scm/linux/kernel/git/iwlwifi/backport-iwlwifi.git
+    - https://github.com/AnubisZ9/python-projects.git
+    - https://github.com/BlueArduino20/Email_spoofer.git
+    - https://github.com/D3VL/L3MON.git
+    - https://github.com/EvanPurkhiser/rEFInd-minimal.git
+    - https://github.com/ExtremeHacking/INFINITY-HACKS.git
+    - https://github.com/Hack-with-Github/Awesome-Hacking.git
+    - https://github.com/Hacker0x01/hacker101.git
+    - https://github.com/Kaligule/dunst-config.git
+    - https://github.com/Kharacternyk/pacwall.git
+    - https://github.com/LarsMichelsen/sd-autocopy.git
+    - https://github.com/Lindstream/dm-refind-theme.git
+    - https://github.com/MikeSourceCode/grafana.git
+    - https://github.com/OCSInventory-NG/OCSInventory-Docker-Stack.git
+    - https://github.com/OpenCTI-Platform/docker.git
+    - https://github.com/Perdu/panoptiphone.git
+    - https://github.com/Perdu/wombat.git
+    - https://github.com/Screetsec/TheFatRat.git
+    - https://github.com/SkyLined/LocalNetworkScanner.git
+    - https://github.com/SolidHal/spotify-ripper.git
+    - https://github.com/We5ter/Scanners-Box.git
+    - https://github.com/aanarchyy/bully
+    - https://github.com/adi1090x/polybar-themes.git
+    - https://github.com/amix/vimrc.git
+    - https://github.com/andersfischernielsen/rEFInd-minimal-black.git
+    - https://github.com/ansible/awx.git
+    - https://github.com/aristocratos/bashtop.git
+    - https://github.com/bcremer/docker-telegraf-influx-grafana-stack.git
+    - https://github.com/beamzer/pastebin-monitor-and-alert.git
+    - https://github.com/binhex/moviegrabber.git
+    - https://github.com/brannondorsey/sniff-probes.git
+    - https://github.com/brannondorsey/wifi-cracking.git
+    - https://github.com/cachethq/Docker.git
+    - https://github.com/camptocamp/terraboard.git
+    - https://github.com/carpedm20/awesome-hacking.git
+    - https://github.com/czerasz/docker-haproxy-domain-redirect.git
+    - https://github.com/davatorium/rofi-themes.git
+    - https://github.com/deviantony/docker-elk.git
+    - https://github.com/dheishman/refind-dreary.git
+    - https://github.com/erickertz/zabbix-docker.git
+    - https://github.com/erikdubois/Aureola
+    - https://github.com/ernesen/infra-ansible.git
+    - https://github.com/espressif/ESP8266_AT.git
+    - https://github.com/espressif/esptool.git
+    - https://github.com/evertramos/docker-wordpress-letsencrypt.git
+    - https://github.com/fabio-miranda/csv-to-influxdb.git
+    - https://github.com/fboender/multi-git-status.git
+    - https://github.com/feffi/ansible-arch-yay.git
+    - https://github.com/frozenjava/EvilPortalNano.git
+    - https://github.com/ganochenkodg/vagrant-microk8s.git
+    - https://github.com/geerlingguy/awx-container.git
+    - https://github.com/gunzy83/ansible-roles-archlinux.git
+    - https://github.com/guyz/pyesp8266.git
+    - https://github.com/hak5darren/USB-Rubber-Ducky.git
+    - https://github.com/incama/Zabbix-Trigger-Web.git
+    - https://github.com/infosecn1nja/Red-Teaming-Toolkit.git
+    - https://github.com/interlegis/docker-powerdns.git
+    - https://github.com/jbarcia/ducky.git
+    - https://github.com/jmcvaughn/ansible-arch.git
+    - https://github.com/joeltennant/Jekyll-and-Docker-Compose.git
+    - https://github.com/justinang1/probemon-lite
+    - https://github.com/kakakakakku/docker-haproxy-nginx.git
+    - https://github.com/kbeflo/evilportal-templates.git
+    - https://github.com/kbeflo/evilportals.git
+    - https://github.com/lgaggini/ansible-arch
+    - https://github.com/linuxserver/Heimdall.git
+    - https://github.com/ma1co/Sony-PMCA-RE.git
+    - https://github.com/mandatoryprogrammer/sonar.js.git
+    - https://github.com/mattmakai/slack-starterbot.git
+    - https://github.com/mbadolato/iTerm2-Color-Schemes.git
+    - https://github.com/metachar/Hatch.git
+    - https://github.com/metalx1000/Maps-and-Locations.git
+    - https://github.com/mikewilks/simple-pastebin-monitor.git
+    - https://github.com/ndlrx/hakase-labs.git
+    - https://github.com/ngoduykhanh/PowerDNS-Admin.git
+    - https://github.com/nicolargo/docker-influxdb-grafana.git
+    - https://github.com/nicomazz/i3-polybar-config.git
+    - https://github.com/nikharris0/probemon
+    - https://github.com/nsgodshall/Hatch.git
+    - https://github.com/pavanjadhaw/betterlockscreen
+    - https://github.com/philer/polycore.git
+    - https://github.com/pigmonkey/spark.git
+    - https://github.com/poole/hyde.git
+    - https://github.com/pop-os/system76-oled.git
+    - https://github.com/portainer/portainer-compose.git
+    - https://github.com/python-telegram-bot/python-telegram-bot.git
+    - https://github.com/qqshow/dendroid
+    - https://github.com/runningnak3d/pb_vu-meter.git
+    - https://github.com/ryanoasis/nerd-fonts.git
+    - https://github.com/sameersbn/docker-gitlab.git
+    - https://github.com/samyk/samytools.git
+    - https://github.com/scottg88/gophish-compose.git
+    - https://github.com/sdnewhop/grinder.git
+    - https://github.com/seebi/zshrc.git
+    - https://github.com/sherlock-project/sherlock.git
+    - https://github.com/shlinkio/shlink.git
+    - https://github.com/shosca/lightdm-webkit-archlinux-theme.git
+    - https://github.com/sophron/wifiphisher.git
+    - https://github.com/stark/siji.git
+    - https://github.com/stiliajohny/Bebop-Camera-Settings.git
+    - https://github.com/stiliajohny/Bebop-On-Off-Button.git
+    - https://github.com/stiliajohny/Cloned_Captive_portals.git
+    - https://github.com/stiliajohny/Maps-and-Locations.git
+    - https://github.com/stiliajohny/Wifi_Captive_Portal.git
+    - https://github.com/stiliajohny/evilportal-templates.git
+    - https://github.com/stiliajohny/polybar-scripts
+    - https://github.com/sullo/nikto.git
+    - https://github.com/systematicat/hack-captive-portals.git
+    - https://github.com/tiredofit/docker-openldap.git
+    - https://github.com/tomvanveen/proxmark3.git
+    - https://github.com/trimstray/the-book-of-secret-knowledge.git
+    - https://github.com/vegasbrianc/prometheus.git
+    - https://github.com/vitalysim/Awesome-Hacking-Resources.git
+    - https://github.com/xdever/silent-xps.git
+    - https://github.com/xme/hoover.git
+    - https://github.com/xme/pastemon.git
+    - https://github.com/yaronn/blessed-contrib.git
+    - https://www.kismetwireless.net/git/kismet.git
