@@ -26,7 +26,7 @@
   become: true
   become_user: root
 
-- nasdde: install logrotate file
+- name: install logrotate file
   copy:
     src: ansible-pull-logrotate
     dest: /etc/logrotate.d/ansible-pull
