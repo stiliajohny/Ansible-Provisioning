@@ -2,7 +2,7 @@
 - name: Ensure software-properties-common is instaled
   apt:
     name: "software-properties-common"
-    state: latest
+    state: present
 
 - name: Install ansible ppa
   shell: "apt-add-repository --yes --update ppa:ansible/ansible"

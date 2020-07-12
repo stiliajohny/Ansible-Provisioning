@@ -1,0 +1,3 @@
+reflector_service_path: "/etc/systemd/system/"
+reflector_service_name: "reflector.service"
+reflector_timer_name: "reflector.timer"
