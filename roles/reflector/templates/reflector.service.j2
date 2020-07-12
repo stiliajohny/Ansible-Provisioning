@@ -1,0 +1,15 @@
+[Unit]
+Description=Pacman mirrorlist update
+{% if reflector_on_boot %}
+Requires=network-online.target
+After=network-online.target
+{% endif %}
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/reflector --connection-timeout {{ reflector_connection_timeout }} -p {{ reflector_protocol }} -l {{ reflector_latest }} -n {{ reflector_number }} {% if reflector_countries and (reflector_countries is defined) %}{% for country in reflector_countries %}-c "{{ country }}" {% endfor %}{% endif %}--sort {{ reflector_sort }} --save {{ reflector_file_output }}
+
+{% if reflector_on_boot %}
+[Install]
+RequiredBy=multi-user.target
+{% endif %}
