@@ -1,6 +1,6 @@
 ---
- name: Install sudo package
- apt:
-  name: sudo
-  state: present
- ignore_errors: True
+- name: Install sudo package
+  apt:
+    name: sudo
+    state: present
+  ignore_errors: True

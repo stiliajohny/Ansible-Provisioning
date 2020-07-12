@@ -1,0 +1,7 @@
+---
+- name: Install OpenSSH and sshfs
+  yum:
+    name:
+      - openssh
+      - sshfs
+    state: present
