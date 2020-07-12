@@ -5,4 +5,3 @@
       - openssh
       - sshfs
     state: present
-s
