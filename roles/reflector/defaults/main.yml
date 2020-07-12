@@ -1,0 +1,12 @@
+reflector_protocol: http
+reflector_connection_timeout: 5
+reflector_latest: 30
+reflector_number: 20
+reflector_sort: rate
+reflector_countries:
+  - "United Kingdom"
+reflector_file_output: "/etc/pacman.d/mirrorlist"
+reflector_on_boot: True
+reflector_timer: True
+reflector_timer_value: weekly
+reflector_timer_accuracy: 12h

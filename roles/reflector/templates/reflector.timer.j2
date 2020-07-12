@@ -1,0 +1,10 @@
+[Unit]
+Description=Run reflector on a timer
+
+[Timer]
+OnCalendar={{ reflector_timer_value }}
+AccuracySec={{ reflector_timer_accuracy }}
+Persistent=true
+
+[Install]
+WantedBy=timers.target
