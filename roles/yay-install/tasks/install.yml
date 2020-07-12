@@ -1,0 +1,44 @@
+---
+- name: Install YAY deendencies
+  pacman:
+    name:
+      - git
+      - make
+      - base-devel
+      - go
+    state: present
+  become: true
+
+- name: Clone yay repo
+  git:
+    repo: "{{ yay.repo }}"
+    dest: "/tmp/yay/"
+    accept_hostkey: yes
+    update: yes
+    clone: yes
+  become: true
+  become_user: ansible
+
+- name: Compile yay package
+  shell:
+    chdir: /tmp/yay/
+    cmd: makepkg -f --noconfirm
+    creates: /usr/bin/yay
+  become: true
+  become_user: ansible
+
+- name: Install yay package
+  shell:
+    cmd: sudo pacman -U $(readlink -e /tmp/yay/yay*x86*.xz) --noconfirm
+    creates: /usr/bin/yay
+    warn: no
+  become: true
+  become_user: root
+
+- name: YAY stats
+  shell:
+    cmd: yay -Ps
+    warn: no
+  register: result
+  become: true
+  become_user: ansible

@@ -1,0 +1,12 @@
+---
+ansible_arch_yay: {
+  # The yay git source repository
+  git: "https://aur.archlinux.org/yay.git",
+  # The owner of the repository
+  owner: {
+    name: "{{ user.name }}",
+    group: "{{ user.group }}"
+  },
+  # Destination to clone yay to
+  dest: "/home/{{ user.name }}/yay"
+}
