@@ -1,8 +1,8 @@
 ---
 - name: Update the system {{ ansible_distribution | lower }}
   pacman:
-    update_cache: yes
-    upgrade: yes
+    update_cache: true
+    upgrade: true
 
 - name: Install python-pip
   pacman:
@@ -25,6 +25,13 @@
     state: present
   become: true
   become_user: root
+
+- nasdde: install logrotate file
+  copy:
+    src: ansible-pull-logrotate
+    dest: /etc/logrotate.d/ansible-pull
+  become: true
+
 
 - name: Install cronie
   pacman:
