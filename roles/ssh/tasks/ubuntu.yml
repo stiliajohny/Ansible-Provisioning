@@ -1,0 +1,8 @@
+---
+- name: Install OpenSSH and sshfs
+  apt:
+    name:
+      - openssh
+      - sshfs
+    state: present
+s

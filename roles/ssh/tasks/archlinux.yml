@@ -1,0 +1,7 @@
+---
+- name: Install OpenSSH and sshfs
+  pacman:
+    name:
+      - openssh
+      - sshfs
+    state: present
