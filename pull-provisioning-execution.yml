@@ -8,3 +8,5 @@
     - locale
     - time
     - ssh
+    - aur_dir
+    - yay_install
