@@ -17,7 +17,7 @@
     update: yes
     clone: yes
   become: true
-  become_user: ansible
+  become_user: root
 
 - name: Compile yay package
   shell:
@@ -41,4 +41,4 @@
     warn: no
   register: result
   become: true
-  become_user: ansible
+  become_user: root
