@@ -2,4 +2,4 @@
 - name: Update the system {{ ansible_distribution | lower }}
   yum:
     name: "*"
-    state: latest
+    state: present
