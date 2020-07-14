@@ -1,0 +1,4 @@
+# ---
+# - name: Update package cache
+#   pacman:
+#     update_cache: yes
