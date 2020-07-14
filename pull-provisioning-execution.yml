@@ -2,13 +2,14 @@
 - hosts: pull_hosts
   become: yes
   roles:
-    - os_info
-    - ansible_pull
-    - aur_dir
-    - users
-    - locale
-    - time
-    - ssh
-    - yay_install
-    - reflector
-    - pacman
+    - { role: os_info, tags: [''] }
+    - { role: ansible_pull, tags: [''] }
+    - { role: aur_dir, tags: [''] }
+    - { role: users, tags: [''] }
+    - { role: locale, tags: [''] }
+    - { role: time, tags: [''] }
+    - { role: ssh, tags: [''] }
+    - { role: yay_install, tags: [''] }
+    - { role: reflector, tags: [''] }
+    - { role: pacman, tags: [''] }
+    - { role: pacman-repo, tags: [pacman-repo] }

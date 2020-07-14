@@ -1,0 +1,20 @@
+---
+- name: Ensure pacman is set up to use pacserve
+  include_role:
+    name: pacman
+  vars:
+    pacman_add_repos:
+      - "{{ pacman_repo_name }}"
+
+- name: Ensure repo configuration file exists
+  template:
+    src: repo.conf.j2
+    dest: /etc/pacman.d/{{pacman_repo_name}}.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - "Update pacman cache"
+
+- name: Force refresh pacman cache if required
+  meta: flush_handlers

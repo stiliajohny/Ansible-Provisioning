@@ -1,0 +1,5 @@
+---
+# default repo configuration
+pacman_repo_name: archzfs
+pacman_repo_server: http://archzfs.com/$repo/x86_64
+pacman_repo_sig_level: "Required"
