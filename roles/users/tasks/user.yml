@@ -1,4 +1,24 @@
 ---
+
+- name: Create aur_builder Group
+  group:
+    name: aur_builder
+    state: present
+
+- name: Create aur_builder User
+  user:
+    name: aur_builder
+    group: aur_builder
+
+- name: Create user aurman
+  user:
+    name: aurman
+    comment: "AUR manager"
+    shell: /bin/nologin
+    home: /var/lib/aurman
+    system: yes
+
+
 - name: Create user group
   group:
     name: "{{ user.group }}"
@@ -28,9 +48,17 @@
   copy: src=sudoers dest=/etc/sudoers mode=0440 validate='visudo -cf %s'
   ignore_errors: True
 
+- name: Create a sudoers file for the aur_builder
+  lineinfile:
+    path: /etc/sudoers.d/11-install-aur_builder
+    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    create: yes
+    validate: 'visudo -cf %s'
+
 - name: Create a sudoers file for the ansible
   lineinfile:
     path: /etc/sudoers.d/11-install-aur_builder
     line: 'ansible ALL=(ALL) NOPASSWD: /usr/bin/pacman'
     create: yes
     validate: 'visudo -cf %s'
+
