@@ -9,7 +9,7 @@
 - name: Ensure repo configuration file exists
   template:
     src: repo.conf.j2
-    dest: /etc/pacman.d/{{pacman_repo_name}}.conf
+    dest: /etc/pacman.d/{{ pacman_repo_name }}.conf
     owner: root
     group: root
     mode: 0644
