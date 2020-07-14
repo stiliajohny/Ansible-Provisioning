@@ -1,44 +1,27 @@
 ---
-- name: Install YAY deendencies
-  pacman:
-    name:
-      - git
-      - make
-      - base-devel
-      - go
-    state: present
-  become: true
-
-- name: Clone yay repo
+- name: "Clone yay AUR helper source git repository to {{ ansible_arch_yay.dest }}"
   git:
-    repo: "{{ yay.repo }}"
-    dest: "/tmp/yay/"
-    accept_hostkey: yes
-    update: yes
-    clone: yes
-  become: true
-  become_user: ansible
+    repo: "{{ ansible_arch_yay.git }}"
+    dest: "{{ ansible_arch_yay.dest }}"
+    force: true
 
-- name: Compile yay package
-  shell:
-    chdir: /tmp/yay/
-    cmd: makepkg -f --noconfirm
-    creates: /usr/bin/yay
-  become: true
-  become_user: ansible
+- name: "Set access rights to {{ ansible_arch_yay.owner.name }}:{{ ansible_arch_yay.owner.group }}"
+  file:
+    path: "{{ ansible_arch_yay.dest }}"
+    state: directory
+    mode: 0700
+    owner: "{{ ansible_arch_yay.owner.name }}"
+    group: "{{ ansible_arch_yay.owner.group }}"
+    recurse: true
 
-- name: Install yay package
-  shell:
-    cmd: sudo pacman -U $(readlink -e /tmp/yay/yay*x86*.xz) --noconfirm
-    creates: /usr/bin/yay
-    warn: no
-  become: true
-  become_user: ansible
+- name: Install required dependecies
+  pacman:
+    name: "binutils go base-devel"
+    state: present
 
-- name: YAY stats
-  shell:
-    cmd: yay -Ps
-    warn: no
-  register: result
-  become: true
-  become_user: ansible
+- name: "MAKEPKG yay AUR helper as {{ ansible_arch_yay.owner }}"
+  shell: "makepkg -si --noconfirm > ./makepkg-yay.log"
+  become: yes
+  become_user: "{{ ansible_arch_yay.owner.name }}"
+  args:
+    chdir: "{{ ansible_arch_yay.dest }}"

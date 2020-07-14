@@ -4,9 +4,9 @@ ansible_arch_yay: {
   git: "https://aur.archlinux.org/yay.git",
   # The owner of the repository
   owner: {
-    name: "{{ user.name }}",
-    group: "{{ user.group }}"
+    name: "jstilia",
+    group: "jstilia"
   },
   # Destination to clone yay to
-  dest: "/home/{{ user.name }}/yay"
+  dest: "/home/jstilia/yay"
 }
