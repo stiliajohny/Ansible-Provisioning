@@ -1,14 +1,10 @@
-- name: Set environment variables for AUR user
-  become: True
-  setup:
-    filter: ansible_env
+- name: Run install tasks
+  include_tasks: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution_release | lower }}.yml"
+    - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
+    - "{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
+    - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
+    - "{{ ansible_distribution | lower }}.yml"
+    - "{{ ansible_os_family | lower }}.yml"
 
-- name: Create AUR directory
-  become: True
-  file:
-    path: '{{ ansible_env.HOME }}/aur'
-    state: directory
-
-- name: Reset environment variables
-  setup:
-    filter: ansible_env
