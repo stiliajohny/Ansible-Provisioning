@@ -1,0 +1,66 @@
+#
+# /etc/pacman.conf
+#
+
+[options]
+HoldPkg     = pacman glibc
+Architecture = armv6h
+{% if (pacman_ignore_pkg is defined) and pacman_ignore_pkg %}IgnorePkg   = {% for pkg in pacman_ignore_pkg %}{{ pkg }} {% endfor %}
+{% endif %}
+{% if (pacman_ignore_group is defined) and pacman_ignore_group %}IgnorePkg   = {% for group in pacman_ignore_group %}{{ group }} {% endfor %}
+{% endif %}
+
+# Misc options
+{% if not pacman_use_syslog %}#{% endif %}UseSyslog
+{% if not pacman_color %}#{% endif %}Color
+{% if not pacman_total_download %}#{% endif %}TotalDownload
+{% if not pacman_check_space %}#{% endif %}CheckSpace
+{% if not pacman_verbose_package_lists %}#{% endif %}VerbosePkgLists
+
+# By default, pacman accepts packages signed by keys that its local keyring
+# trusts (see pacman-key and its man page), as well as unsigned packages.
+SigLevel    = Required DatabaseOptional
+LocalFileSigLevel = Optional
+
+# Configured Repositories
+{% if pacman_testing %}[testing]
+{% if pacman_extra_includes is defined %}{% for include in pacman_extra_includes %}Include = {{ include }}
+{% endfor %}{% endif %}
+Include = {{ pacman_include }}
+
+{% endif %}
+[core]
+{% if pacman_extra_includes is defined %}{% for include in pacman_extra_includes %}Include = {{ include }}
+{% endfor %}{% endif %}
+Include = {{ pacman_include }}
+
+[extra]
+{% if pacman_extra_includes is defined %}{% for include in pacman_extra_includes %}Include = {{ include }}
+{% endfor %}{% endif %}
+Include = {{ pacman_include }}
+
+{% if pacman_community_testing %}[community-testing]
+{% if pacman_extra_includes is defined %}{% for include in pacman_extra_includes %}Include = {{ include }}
+{% endfor %}{% endif %}
+Include = {{ pacman_include }}
+
+{% endif %}
+[community]
+{% if pacman_extra_includes is defined %}{% for include in pacman_extra_includes %}Include = {{ include }}
+{% endfor %}{% endif %}
+Include = {{ pacman_include }}
+
+[alarm]
+{% if pacman_extra_includes is defined %}{% for include in pacman_extra_includes %}Include = {{ include }}
+{% endfor %}{% endif %}
+Include = {{ pacman_include }}
+
+[aur]
+{% if pacman_extra_includes is defined %}{% for include in pacman_extra_includes %}Include = {{ include }}
+{% endfor %}{% endif %}
+Include = {{ pacman_include }}
+
+# Include any additional custom repositories
+{% if pacman_repos %}
+Include = /etc/pacman.d/*.conf
+{% endif %}
