@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Upgrade
+Operation = Install
+Operation = Remove
+Type = Package
+Target = *
+[Action]
+Description = Export packages to a file ...
+When = PostTransaction
+Exec = /bin/sh -c '/usr/bin/pacman -Qqe > /tmp/pkglist.txt'

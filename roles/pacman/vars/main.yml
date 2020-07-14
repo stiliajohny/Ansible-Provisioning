@@ -1,0 +1,2 @@
+---
+pacman_include: "/etc/pacman.d/mirrorlist"
