@@ -1,0 +1,14 @@
+---
+# This is a temp task until the pacman module is updated to support groups
+- name: Ensure base-devel is installed
+  pacman:
+    name: "{{ makepkg_base_devel }}"
+    state: present
+
+- name: Install modified makepkg.conf file
+  template:
+    src: "{{ ansible_machine }}.makepkg.conf.j2"
+    dest: "{{ makepkg_conf }}"
+    owner: root
+    group: root
+    mode: 0644
