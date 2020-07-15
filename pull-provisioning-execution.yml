@@ -13,3 +13,4 @@
     - {role: reflector, tags: ['reflector']}
     - {role: pacman, tags: ['pacman']}
     - {role: pacman-repo, tags: [pacman-repo]}
+    - {role: makepkg, tags: [makepkg]}
