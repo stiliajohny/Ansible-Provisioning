@@ -17,3 +17,4 @@
     - {role: archcore, tags: [archcore]}
     - {role: build_packages, tags: [build_packages]}
     - {role: shell_utils, tags: [shell_utils]}
+    - {role: base_utils, tags: [base_utils]}

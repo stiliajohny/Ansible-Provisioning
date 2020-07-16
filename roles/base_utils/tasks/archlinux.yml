@@ -1,0 +1,14 @@
+- name: Install base utilites from Arch repositories
+  pacman:
+    name:
+      - archiso
+      - efibootmgr
+      - htop
+      - bashtop
+      - lm_sensors
+      - rsync
+      # Network diagnostic tools
+      - bind-tools
+      - mtr
+    state: present
+  become: true
