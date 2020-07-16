@@ -15,3 +15,4 @@
     - {role: pacman-repo, tags: [pacman-repo]}
     - {role: makepkg, tags: [makepkg]}
     - {role: archcore, tags: [archcore]}
+    - {role: build_packages, tags: [build_packages]}
