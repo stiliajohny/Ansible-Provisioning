@@ -1,0 +1,9 @@
+- name: Install build packages
+  pacman:
+    name:
+      - base-devel
+      - git
+      - linux-headers
+      - asp
+    state: present
+  become: true
