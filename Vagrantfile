@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
       y.customize ["modifyvm", :id, "--cpus", 3]
       y.customize ["modifyvm", :id, "--name", "ubuntu"]
       y.customize ["modifyvm", :id, "--hwvirtex", "off"]
-      y.name = 'Ubuntu-bionic64'
+      y.name = 'Ubuntu-bionic64-Vagrant'
       y.gui = false
     end
   end
@@ -24,7 +24,7 @@ Vagrant.configure("2") do |config|
       x.customize ["modifyvm", :id, "--cpus", 3]
       x.customize ["modifyvm", :id, "--name", "Centos-7"]
       x.customize ["modifyvm", :id, "--hwvirtex", "off"]
-      x.name = 'Centos-7'
+      x.name = 'Centos-7-Vagrant'
       x.gui = false
     end
   end
@@ -38,7 +38,7 @@ Vagrant.configure("2") do |config|
       z.customize ["modifyvm", :id, "--cpus", 3]
       z.customize ["modifyvm", :id, "--name", "Kali"]
       z.customize ["modifyvm", :id, "--hwvirtex", "off"]
-      z.name = 'Kali'
+      z.name = 'Kali-Vagrant'
       z.gui = false
     end
   end
@@ -52,7 +52,7 @@ Vagrant.configure("2") do |config|
       q.customize ["modifyvm", :id, "--cpus", 3]
       q.customize ["modifyvm", :id, "--name", "Windows"]
       q.customize ["modifyvm", :id, "--hwvirtex", "off"]
-      q.name = 'Windows'
+      q.name = 'Windows-Vagrant'
       q.gui = false
     end
   end
