@@ -1,0 +1,6 @@
+---
+- hosts: vagrant
+  become: true
+  roles:
+    - os_info
+      #    - ansible_pull
