@@ -28,7 +28,7 @@
 
 - name: Install gui aur packages
   shell: yay --noconfirm -S {{ item }}
-  with_items: "{{ gui_aur}}"
+  with_items: "{{ gui_aur }}"
   become: yes
   become_user: jstilia
   when: gui_aur is defined
