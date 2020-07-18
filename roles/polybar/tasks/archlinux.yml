@@ -1,0 +1,36 @@
+---
+
+- name: Define if polybar is installed
+  stat: path=/usr/local/bin/polybar
+  register: polybar_state
+
+- name: "Clone polybar AUR helper source git repository to {{ ansible_arch_polybar.dest }}"
+  git:
+    repo: "{{ ansible_arch_polybar.git }}"
+    dest: "{{ ansible_arch_polybar.dest }}"
+    force: true
+  when: not polybar_state.stat.exists
+
+- name: "Set access rights to {{ ansible_arch_polybar.owner.name }}:{{ ansible_arch_polybar.owner.group }}"
+  file:
+    path: "{{ ansible_arch_polybar.dest }}"
+    state: directory
+    mode: 0700
+    owner: "{{ ansible_arch_polybar.owner.name }}"
+    group: "{{ ansible_arch_polybar.owner.group }}"
+    recurse: true
+  when: not polybar_state.stat.exists
+
+- name: Install required dependecies
+  pacman:
+    name: "binutils go base-devel"
+    state: present
+  when: not polybar_state.stat.exists
+
+- name: "  AUR helper as {{ ansible_arch_polybar.owner }}"
+  shell: "./build.sh -A --all-features > ./makepkg-polybar.log"
+  become: yes
+  become_user: "{{ ansible_arch_polybar.owner.name }}"
+  when: not polybar_state.stat.exists
+  args:
+    chdir: "{{ ansible_arch_polybar.dest }}"
