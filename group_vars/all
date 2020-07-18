@@ -1,6 +1,6 @@
 telegram:
   token: ''
-  chatID: 
+  chatID:
 
 user:
     name: jstilia
@@ -217,7 +217,6 @@ aur_fonts:
     - ttf-signika
     - otf-symbola
 
-
 nettools:
     - openvpn
     - mtr
@@ -364,157 +363,82 @@ pacman:
     - multilib
 
 git_repos:
-    - git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
-    - git@github.com:stiliajohny/Bind-DNS-DockerCompose.git
-    - git@github.com:stiliajohny/Mac-Geo-StreetView.git
-    - git@github.com:stiliajohny/Mac-Geo-StreetView.git
-    - git@github.com:stiliajohny/Probe-Hunter.git
+    - git@github.com:mermaidjs/mermaid-live-editor.git
     - git@github.com:stiliajohny/ansible-provisioning.git
+    - git@github.com:stiliajohny/Ansible-Provisioning.git
+    - git@github.com:stiliajohny/BBC-Good-Food-Recipe-Scraper.git
+    - git@github.com:stiliajohny/Bind-DNS-DockerCompose.git
     - git@github.com:stiliajohny/cherrywasp.git
-    - git@github.com:stiliajohny/directed-probe-matching.git
-    - git@github.com:stiliajohny/exportProbe.git
-    - git@github.com:stiliajohny/hakase-labs.git
+    - git@github.com:stiliajohny/esp-temperature-humidity-in-grafana-.git
     - git@github.com:stiliajohny/heyyou.git
+    - git@github.com:stiliajohny/-k8s-vbox.git
+    - git@github.com:stiliajohny/LDAP-User-Creator.git
     - git@github.com:stiliajohny/linger.git
+    - git@github.com:stiliajohny/Mac-Geo-StreetView.git
+    - git@github.com:stiliajohny/Make-a-GitlabPipeline.git
     - git@github.com:stiliajohny/make-a-pipeline.git
-    - git@github.com:stiliajohny/mydotfiles.git
     - git@github.com:stiliajohny/oraj.git
-    - git@github.com:stiliajohny/probe-requests-sniffer-for-unix.git
-    - git@github.com:stiliajohny/probeSniffer.git
+    - git@github.com:stiliajohny/Probe-Hunter.git
     - git@github.com:stiliajohny/probemon-geolocation.git
-    - git@github.com:stiliajohny/provisioning-scripts.git
-    - git@github.com:stiliajohny/sniff-802.11-probes.git
-    - git@github.com:stiliajohny/wakeup-scripts.git
+    - git@github.com:stiliajohny/SlackBot.git
+    - git@github.com:stiliajohny/WhatsApp_troller.git
     - git@github.com:stiliajohny/wifi-probe-request-devices-counter.git
+    - git@github.com:stiliajohny/Wifi-Probe-Requests-Geolocation.git
     - git@github.com:stiliajohny/wifitracker.git
     - git@github.com:stiliajohny/willy-board.git
-    - git@gitlab.com:realmain/rEFInd-sunset.git
-    - git@gitlab.com:stilia.johny/call-my-mac.git
     - git@gitlab.johnstilia.co.uk:docker-compose-apps/jenkins.git
     - git@gitlab.johnstilia.co.uk:jstilia/bbc-good-food-recipe-scraper.git
-    - git@gitlab.johnstilia.co.uk:jstilia/dotfiles.git
+    - git@gitlab.johnstilia.co.uk:jstilia/esp-temperature-humidity-in-grafana.git
     - git@gitlab.johnstilia.co.uk:jstilia/k8s-vbox.git
     - git@gitlab.johnstilia.co.uk:jstilia/ldap-user-creator.git
-    - git@gitlab.johnstilia.co.uk:jstilia/provision-archlabs.git
+    - git@gitlab.johnstilia.co.uk:jstilia/slackbot.git
     - git@gitlab.johnstilia.co.uk:jstilia/whatsapp_troller.git
-    - https://aur.archlinux.org/package-query.git
-    - https://aur.archlinux.org/yaourt.git
+    - git@gitlab.johnstilia.co.uk:old-code/elastic_log_templates.git
     - https://bitbucket.org/exxsyseng/k8s_centos/src/master/vagrant-provisioning/
-    - https://git.kernel.org/pub/scm/linux/kernel/git/iwlwifi/backport-iwlwifi.git
-    - https://github.com/AnubisZ9/python-projects.git
     - https://github.com/BlueArduino20/Email_spoofer.git
-    - https://github.com/D3VL/L3MON.git
-    - https://github.com/EvanPurkhiser/rEFInd-minimal.git
-    - https://github.com/ExtremeHacking/INFINITY-HACKS.git
-    - https://github.com/Hack-with-Github/Awesome-Hacking.git
-    - https://github.com/Hacker0x01/hacker101.git
-    - https://github.com/Kaligule/dunst-config.git
-    - https://github.com/Kharacternyk/pacwall.git
-    - https://github.com/LarsMichelsen/sd-autocopy.git
-    - https://github.com/Lindstream/dm-refind-theme.git
-    - https://github.com/MikeSourceCode/grafana.git
-    - https://github.com/OCSInventory-NG/OCSInventory-Docker-Stack.git
-    - https://github.com/OpenCTI-Platform/docker.git
-    - https://github.com/Perdu/panoptiphone.git
-    - https://github.com/Perdu/wombat.git
-    - https://github.com/Screetsec/TheFatRat.git
-    - https://github.com/SkyLined/LocalNetworkScanner.git
-    - https://github.com/SolidHal/spotify-ripper.git
-    - https://github.com/We5ter/Scanners-Box.git
-    - https://github.com/aanarchyy/bully
-    - https://github.com/adi1090x/polybar-themes.git
-    - https://github.com/amix/vimrc.git
-    - https://github.com/andersfischernielsen/rEFInd-minimal-black.git
-    - https://github.com/ansible/awx.git
-    - https://github.com/aristocratos/bashtop.git
-    - https://github.com/bcremer/docker-telegraf-influx-grafana-stack.git
-    - https://github.com/beamzer/pastebin-monitor-and-alert.git
-    - https://github.com/binhex/moviegrabber.git
-    - https://github.com/brannondorsey/sniff-probes.git
     - https://github.com/brannondorsey/wifi-cracking.git
-    - https://github.com/cachethq/Docker.git
     - https://github.com/camptocamp/terraboard.git
-    - https://github.com/carpedm20/awesome-hacking.git
-    - https://github.com/czerasz/docker-haproxy-domain-redirect.git
-    - https://github.com/davatorium/rofi-themes.git
+    - https://github.com/coderjojo/coderjojo.git
+    - https://github.com/Cur50r/sherlock.git
+    - https://github.com/D3VL/L3MON.git
     - https://github.com/deviantony/docker-elk.git
-    - https://github.com/dheishman/refind-dreary.git
-    - https://github.com/erickertz/zabbix-docker.git
-    - https://github.com/erikdubois/Aureola
     - https://github.com/ernesen/infra-ansible.git
-    - https://github.com/espressif/ESP8266_AT.git
-    - https://github.com/espressif/esptool.git
-    - https://github.com/evertramos/docker-wordpress-letsencrypt.git
-    - https://github.com/fabio-miranda/csv-to-influxdb.git
     - https://github.com/fboender/multi-git-status.git
     - https://github.com/feffi/ansible-arch-yay.git
-    - https://github.com/frozenjava/EvilPortalNano.git
     - https://github.com/ganochenkodg/vagrant-microk8s.git
-    - https://github.com/geerlingguy/awx-container.git
     - https://github.com/gunzy83/ansible-roles-archlinux.git
-    - https://github.com/guyz/pyesp8266.git
     - https://github.com/hak5darren/USB-Rubber-Ducky.git
-    - https://github.com/incama/Zabbix-Trigger-Web.git
-    - https://github.com/infosecn1nja/Red-Teaming-Toolkit.git
-    - https://github.com/interlegis/docker-powerdns.git
-    - https://github.com/jbarcia/ducky.git
+    - https://github.com/jbreed/nessus
     - https://github.com/jmcvaughn/ansible-arch.git
-    - https://github.com/joeltennant/Jekyll-and-Docker-Compose.git
-    - https://github.com/justinang1/probemon-lite
-    - https://github.com/kakakakakku/docker-haproxy-nginx.git
-    - https://github.com/kbeflo/evilportal-templates.git
     - https://github.com/kbeflo/evilportals.git
+    - https://github.com/kbeflo/evilportal-templates.git
+    - https://github.com/kholia/OSX-KVM.git
     - https://github.com/lgaggini/ansible-arch
-    - https://github.com/linuxserver/Heimdall.git
+    - https://github.com/LucaBongiorni/evilportal-templates.git
     - https://github.com/ma1co/Sony-PMCA-RE.git
-    - https://github.com/mandatoryprogrammer/sonar.js.git
-    - https://github.com/mattmakai/slack-starterbot.git
-    - https://github.com/mbadolato/iTerm2-Color-Schemes.git
-    - https://github.com/metachar/Hatch.git
+    - https://github.com/maxandersen/internet-monitoring
     - https://github.com/metalx1000/Maps-and-Locations.git
-    - https://github.com/mikewilks/simple-pastebin-monitor.git
-    - https://github.com/ndlrx/hakase-labs.git
-    - https://github.com/ngoduykhanh/PowerDNS-Admin.git
-    - https://github.com/nicolargo/docker-influxdb-grafana.git
+    - https://github.com/MikeSourceCode/grafana.git
     - https://github.com/nicomazz/i3-polybar-config.git
-    - https://github.com/nikharris0/probemon
-    - https://github.com/nsgodshall/Hatch.git
-    - https://github.com/pavanjadhaw/betterlockscreen
-    - https://github.com/philer/polycore.git
+    - https://github.com/Perdu/panoptiphone.git
+    - https://github.com/Perdu/wombat.git
     - https://github.com/pigmonkey/spark.git
-    - https://github.com/poole/hyde.git
-    - https://github.com/pop-os/system76-oled.git
     - https://github.com/portainer/portainer-compose.git
-    - https://github.com/python-telegram-bot/python-telegram-bot.git
     - https://github.com/qqshow/dendroid
-    - https://github.com/runningnak3d/pb_vu-meter.git
-    - https://github.com/ryanoasis/nerd-fonts.git
-    - https://github.com/sameersbn/docker-gitlab.git
     - https://github.com/samyk/samytools.git
     - https://github.com/scottg88/gophish-compose.git
-    - https://github.com/sdnewhop/grinder.git
-    - https://github.com/seebi/zshrc.git
-    - https://github.com/sherlock-project/sherlock.git
+    - https://github.com/Screetsec/TheFatRat.git
     - https://github.com/shlinkio/shlink.git
-    - https://github.com/shosca/lightdm-webkit-archlinux-theme.git
+    - https://github.com/skickar/DeauthDetector.git
     - https://github.com/sophron/wifiphisher.git
     - https://github.com/stark/siji.git
-    - https://github.com/stiliajohny/Bebop-Camera-Settings.git
-    - https://github.com/stiliajohny/Bebop-On-Off-Button.git
-    - https://github.com/stiliajohny/Cloned_Captive_portals.git
-    - https://github.com/stiliajohny/Maps-and-Locations.git
-    - https://github.com/stiliajohny/Wifi_Captive_Portal.git
     - https://github.com/stiliajohny/evilportal-templates.git
+    - https://github.com/stiliajohny/Maps-and-Locations.git
     - https://github.com/stiliajohny/polybar-scripts
+    - https://github.com/stiliajohny/stiliajohny.git
     - https://github.com/sullo/nikto.git
     - https://github.com/systematicat/hack-captive-portals.git
-    - https://github.com/tiredofit/docker-openldap.git
     - https://github.com/tomvanveen/proxmark3.git
-    - https://github.com/trimstray/the-book-of-secret-knowledge.git
-    - https://github.com/vegasbrianc/prometheus.git
-    - https://github.com/vitalysim/Awesome-Hacking-Resources.git
-    - https://github.com/xdever/silent-xps.git
-    - https://github.com/xme/hoover.git
-    - https://github.com/xme/pastemon.git
-    - https://github.com/yaronn/blessed-contrib.git
+    - https://github.com/vim/vim.git
+    - https://github.com/Xinyuan-LilyGO/TTGO_TWatch_Library.git
     - https://www.kismetwireless.net/git/kismet.git
