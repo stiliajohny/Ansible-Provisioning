@@ -22,3 +22,5 @@
     - {role: filesystem_part_utils, tags: [filesystem_part_utils]}
     - {role: xorg, tags: [xorg]}
     - {role: x, tags: [x]}
+    - {role: polybar, tags: [polybar]}
+    - {role: i3, tags: [i3]}
