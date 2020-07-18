@@ -1,0 +1,35 @@
+---
+- name: Install gui core packages
+  pacman: name={{ gui_core }} state=present
+  become: true
+
+- name: Install xorg keyboard settings
+  copy: src=10-keyboard.conf dest=/etc/X11/xorg.conf.d/10-keyboard.conf owner=root group=root mode=0644
+  become: true
+
+- name: Install gui video drivers
+  pacman: name={{ gui_video_drivers }} state=present
+  become: true
+
+- name: Install gui de/wm packages
+  pacman: name={{ gui_ui }} state=present
+  become: true
+
+#- name: Install naughty send script for notification
+#  copy: src=naughty-send.sh dest=/home/{{ user.name }}/bin/naughty-send.sh
+
+- name: Install gui utility packages
+  pacman: name={{ gui_utility }} state=present
+  become: true
+
+- name: Install gui themes packages
+  pacman: name={{ gui_themes }} state=present
+  become: true
+
+- name: Install gui aur packages
+  shell: yay --noconfirm -S {{ item }}
+  with_items: "{{ gui_aur}}"
+  become: yes
+  become_user: jstilia
+  when: gui_aur is defined
+  ignore_errors: true
