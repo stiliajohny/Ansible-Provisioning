@@ -1,6 +1,5 @@
 Vagrant.configure("2") do |config|
 
-
   config.vm.define "ubuntu-bionic64-Vagrant" do |ubuntu|
     ubuntu.vm.box = "ubuntu/bionic64"
     ubuntu.vm.network :private_network, ip: "192.168.56.111"
@@ -54,6 +53,20 @@ Vagrant.configure("2") do |config|
       q.customize ["modifyvm", :id, "--hwvirtex", "off"]
       q.name = 'Windows-Vagrant'
       q.gui = false
+    end
+  end
+
+  config.vm.define "ArchLinux-Vagrant" do |archlinux|
+    archlinux.vm.box = "archlinux/archlinux"
+    archlinux.vm.network :private_network, ip: "192.168.56.151"
+    archlinux.vm.provider :virtualbox do |j|
+      j.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      j.customize ["modifyvm", :id, "--memory", 1500]
+      j.customize ["modifyvm", :id, "--cpus", 3]
+      j.customize ["modifyvm", :id, "--name", "ArchLinux-Vagrant"]
+      j.customize ["modifyvm", :id, "--hwvirtex", "off"]
+      j.name = 'ArchLinu-Vagrant'
+      j.gui = false
     end
   end
 
