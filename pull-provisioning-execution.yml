@@ -20,3 +20,4 @@
     - {role: base_utils, tags: [base_utils]}
     - {role: file_utils, tags: [file_utils]}
     - {role: filesystem_part_utils, tags: [filesystem_part_utils]}
+    - {role: xorg, tags: [xorg]}
