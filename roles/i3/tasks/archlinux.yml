@@ -1,0 +1,36 @@
+- name: Install i3 components from Arch repositories
+  pacman:
+    name:
+      # - i3lock
+      #- compton
+      # polybar
+      - jsoncpp
+      - wireless_tools
+  become: true
+
+- name: Install i3-gaps and such from AUR
+  aur-adv:
+    name: "{{ item }}"
+    use: makepkg
+  become: yes
+  become_user: ansible
+  with_items:
+    - i3-gaps
+    # - polybar-git
+    # Single colour backgrounds
+    - picom
+    - feh
+    - jsoncpp
+    - wireless_tools
+
+- name: Install screenshot utilities
+  pacman:
+    name:
+      # slop provides selection to maim
+      - maim
+      - slop
+    state: present
+  become: true
+
+- name: Configure i3lock on suspend service
+  import_tasks: i3lock_suspend.yml
