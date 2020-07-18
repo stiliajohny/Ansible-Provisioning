@@ -18,4 +18,5 @@
     - {role: build_packages, tags: [build_packages]}
     - {role: shell_utils, tags: [shell_utils]}
     - {role: base_utils, tags: [base_utils]}
-    - { role: file_utils, tags: [file_utils] }
+    - {role: file_utils, tags: [file_utils]}
+    - {role: filesystem_part_utils, tags: [filesystem_part_utils]}
