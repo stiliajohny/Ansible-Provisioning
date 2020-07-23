@@ -12,9 +12,9 @@
     use: yay
   ignore_errors: True
 
-- name: Install Windows fonts
-  import_tasks: windows_fonts.yml
-  when: fonts.windows is sameas True
+#- name: Install Windows fonts
+#  import_tasks: windows_fonts.yml
+#  when: fonts.windows is same asTrue
 
 - name: Install base_fonts package list
   aur-adv:
@@ -23,7 +23,7 @@
   with_items: "{{ base_fonts }}"
   when: base_fonts is defined
   become: yes
-  become_user: root
+  become_user: "{{ user.name }}"
   ignore_errors: True
 
 - name: Install aur_fonts package list
@@ -32,5 +32,5 @@
   with_items: "{{ aur_fonts }}"
   when: aur_fonts is defined
   become: yes
-  become_user: root
+  become_user: "{{ user.name }}"
   ignore_errors: True

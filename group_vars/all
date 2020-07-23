@@ -209,7 +209,6 @@ base_fonts:
 aur_fonts:
     - ttf-cooper-hewitt
     - ttf-courier-prime
-    - ttf-heuristica
     - ttf-merriweather
     - ttf-merriweather-sans
     - ttf-oswald
