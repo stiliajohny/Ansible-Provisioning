@@ -24,3 +24,10 @@
     - {role: x, tags: [x]}
     - {role: polybar, tags: [polybar]}
     - {role: i3, tags: [i3]}
+    #- {role: dotfiles, tags: [dotfiles]}
+    - {role: fonts, tags: [fonts]}
+    - {role: dictionaries, tags: [dictionaries]}
+    - {role: tools, tags: [tools]}
+    - {role: ops, tags: [ops]}
+    - {role: virt, tags: [virt]}
+    - {role: docker, tags: [docker]}

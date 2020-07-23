@@ -3,82 +3,81 @@
 - hosts: all
   become: yes
   roles:
-    - { role: user_accounts, tags: ['user_accounts'] }
-    - { role: locale, tags: [locale] }
-    - { role: time, tags: [time] }
+    - {role: user_accounts, tags: ['user_accounts']}
+    - {role: locale, tags: [locale]}
+    - {role: time, tags: [time]}
 
 
 - hosts:
   become: yes
   roles:
-    - { role: aur_dir, tags: [aur_dir] }
-    - { role: users, tags: ['users'] }
-    ##- { role: autologin, tags: [] }
-    - { role: locale, tags: [locale] }
-    - { role: time, tags: [time] }
-    - { role: dotfiles, tags: [dotfiles] }
-    - { role: ssh, tags: [ssh] }
-    - { role: sudo, tags: [sudo] }
-    - { role: yay-install, tags: [yay-install] }
+    - {role: aur_dir, tags: [aur_dir]}
+    - {role: users, tags: ['users']}
+    ##- {role: autologin, tags: []}
+    - {role: locale, tags: [locale]}
+    - {role: time, tags: [time]}
+    - {role: dotfiles, tags: [dotfiles]}
+    - {role: ssh, tags: [ssh]}
+    - {role: sudo, tags: [sudo]}
+    - {role: yay-install, tags: [yay-install]}
+    - {role: reflector, tags: [reflector]}
+    - {role: pacman, tags: [pacman]}
+    ##- {role: pacserve, tags: [pacserve]}
+    - {role: pacman-repo, tags: [pacman-repo]}
+    - {role: makepkg, tags: [makepkg]}
 
-    - { role: reflector, tags: [reflector] }
-    - { role: pacman, tags: [pacman] }
-    ##- { role: pacserve, tags: [pacserve] }
-    - { role: pacman-repo, tags: [pacman-repo] }
-    - { role: makepkg, tags: [makepkg] }
+    #- {role: hostname, tags: []}
+    - {role: archcore, tags: [archcore]}
+    - {role: build_packages, tags: [build_packages]}
+    - {role: shell_utils, tags: [shell_utils]}
+    - {role: base_utils, tags: [base_utils]}
+    - {role: file_utils, tags: [file_utils]}
+    - {role: filesystem_part_utils, tags: [filesystem_part_utils]}
+    #- {role: packages, tags: [packages]}
+    #- {role: boot, tags: []}
+    - {role: xorg, tags: [xorg]}
+    - {role: x, tags: [x]}
+    - {role: i3, tags: [i3]}
+    #- {role: systemd-resolved, tags: [systemd-resolved]}
 
-    #- { role: hostname, tags: [] }
-    - { role: archcore, tags: [archcore] }
-    - { role: build_packages, tags: [build_packages] }
-    - { role: shell_utils, tags: [shell_utils] }
-    - { role: base_utils, tags: [base_utils] }
-    - { role: file_utils, tags: [file_utils] }
-    - { role: filesystem_part_utils, tags: [filesystem_part_utils] }
-    #- { role: packages, tags: [packages] }
-    #- { role: boot, tags: [] }
-    - { role: xorg, tags: [xorg] }
-    - { role: x, tags: [x] }
-    - { role: i3, tags: [i3] }
-    #- { role: systemd-resolved, tags: [systemd-resolved] }
+    #- {role: security, tags: ['security']}
 
-    #- { role: security, tags: ['security'] }
+ 
+    - {role: fonts, tags: [fonts]}
+    - {role: dictionaries, tags: [dictionaries]}
+    - {role: tools, tags: [tools]}
+    - {role: ops, tags: [ops]}
+    - {role: android_tools, tags: [android_tools]}
+    ##- {role: virtualization, tags: [virtualization]}
+    - {role: virt, tags: [virt]}
+    - {role: docker, tags: [docker]}
+    #- {role: audio, tags: []}
+    #- {role: backup, tags: []}
+    - {role: qutebrowser, tags: [qutebrowser]}
+    - {role: firefox, tags: [firefox]}
+    - {role: chromium, tags: [chromium]}
+    - {role: comm, tags: [comm]}
+    #- {role: libreoffice, tags: []}
+    #- {role: neovim, tags: []}
+    #- {role: media, tags: []}
+    - {role: dev, tags: [dev]}
 
+    #- {role: tlp, tags: []}
+    ##- {role: wifi, tags: []}
+    #- {role: i18n, tags: []}
+    #- {role: bluetooth, tags: []}
+    #- {role: pulseaudio, tags: []}
+    #- {role: cups, tags: []}
 
-    - { role: fonts, tags: [fonts] }
-    - { role: dictionaries, tags: [dictionaries] }
-    - { role: tools, tags: [tools] }
-    - { role: ops, tags: [ops] }
-    - { role: android_tools, tags: [android_tools] }
-    ##- { role: virtualization, tags: [virtualization] }
-    - { role: virt, tags: [virt] }
-    - { role: docker, tags: [docker] }
-    #- { role: audio, tags: [] }
-    #- { role: backup, tags: [] }
-    - { role: qutebrowser, tags: [qutebrowser] }
-    - { role: firefox, tags: [firefox] }
-    - { role: chromium, tags: [chromium] }
-    - { role: comm, tags: [comm] }
-    #- { role: libreoffice, tags: [] }
-    #- { role: neovim, tags: [] }
-    #- { role: media, tags: [] }
-    - { role: dev, tags: [dev] }
-
-    #- { role: tlp, tags: [] }
-    ##- { role: wifi, tags: [] }
-    #- { role: i18n, tags: [] }
-    #- { role: bluetooth, tags: [] }
-    #- { role: pulseaudio, tags: [] }
-    #- { role: cups, tags: [] }
-
-    #- { role: facts-dump, tags: ['facts'] }
-    #- { role: kitty, tags: [] }
-    #- { role: macbook, tags: [] }
-    #- { role: mail, tags: [] }
-    #- { role: nfs-server, tags: [] }
-    #- { role: nvidia, tags: [] }
-    #- { role: openvswitch, tags: [] }
-    #- { role: pim, tags: [] }
-    #- { role: postfix, tags: [] }
-    #- { role: smartd, tags: [] }
-    #- { role: texlive, tags: [] }
-    #- { role: zfs, tags: [] }
+    #- {role: facts-dump, tags: ['facts']}
+    #- {role: kitty, tags: []}
+    #- {role: macbook, tags: []}
+    #- {role: mail, tags: []}
+    #- {role: nfs-server, tags: []}
+    #- {role: nvidia, tags: []}
+    #- {role: openvswitch, tags: []}
+    #- {role: pim, tags: []}
+    #- {role: postfix, tags: []}
+    #- {role: smartd, tags: []}
+    #- {role: texlive, tags: []}
+    #- {role: zfs, tags: []}

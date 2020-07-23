@@ -1,0 +1,18 @@
+- name: Create local fonts directory
+  file:
+    path: /usr/local/share/fonts/
+    state: directory
+
+- name: Symlink local fonts
+  file:
+    src: /usr/local/share/fonts/
+    dest: /usr/share/fonts/local
+    state: link
+
+- name: Copy Windows fonts
+  unarchive:
+    src: WindowsFonts.tar.gz
+    dest: /usr/local/share/fonts/
+    mode: 0755
+  notify: Refresh fontconfig cache
+

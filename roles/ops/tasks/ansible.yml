@@ -1,0 +1,3 @@
+---
+- name: Install custom Ansible configuration
+  copy: "src=ansible.cfg dest=/etc/ansible/ansible.cfg owner=root group=root mode=0644"

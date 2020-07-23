@@ -1,0 +1,8 @@
+---
+- name: Install virt cli packages
+  pacman: name={{ virt_cli }} state=present
+  become: true
+
+- name: Install virt gui packages
+  pacman: name={{ virt_gui }} state=present
+  become: true

@@ -1,0 +1,15 @@
+---
+- name: Install ops packages
+  pacman: name={{ ops_cli }} state=present
+
+- name: Install ops packages
+  pacman: name={{ ops_gui }} state=present
+
+- name: Install ops aur packages
+  shell: yay --noconfirm -S {{ item }}
+  with_items: "{{ ops_aur }}"
+  when: ops_aur is defined
+  environment:
+    PATH: "/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+  become: yes
+  become_user: ansible

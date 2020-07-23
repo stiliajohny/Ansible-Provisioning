@@ -1,0 +1,7 @@
+fonts:
+  # To import Windows fonts:
+  # - Set fonts.windows to True
+  # - Follow the instructions provided on ArchWiki, setting
+  #   ANSIBLE-ARCH_DIR/roles/files/WindowsFonts/ as the destination:
+  #   (https://wiki.archlinux.org/index.php/Microsoft_fonts#Using_fonts_from_a_Windows_partition)
+  windows: False

@@ -1,0 +1,17 @@
+---
+#- name: Remove vim to install gvim
+#  pacman: name=vim state=absent
+#
+#- name: Remove vim to install gvim
+#  pacman: name=gvim state=present
+
+- name: Install tools packages
+  pacman: name={{ tools }} state=present
+
+- name: Install tools_aur packages
+  shell: yay --noconfirm -S {{ item }}
+  with_items: "{{ tools_aur }}"
+  when: tools_aur is defined
+  become: yes
+  become_user: "{{ user.name }}"
+  tags: core_aur

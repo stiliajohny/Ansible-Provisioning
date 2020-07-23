@@ -1,0 +1,32 @@
+---
+- name: Ignore .cfg folder
+  shell: "echo '.cfg' >> /home/{{ user.name }}/.gitignore"
+  become: yes
+  become_user: "{{ user.name }}"
+
+- name: Clone user dotfiles ( BIG REPO )
+  git:
+    repo: "{{ dotfiles.url }}"
+    dest: "/home/{{ user.name }}/{{ dotfiles.destination }}"
+    accept_hostkey: yes
+    update: yes
+    bare: yes
+    version: origin/master
+    force: yes
+  when: dotfiles is defined
+  become: yes
+  become_user: "{{ user.name }}"
+
+- name: Stash current files
+  shell:
+    cmd: "/usr/bin/git --git-dir=/home/jstilia/.cfg/ --work-tree=/home/jstilia stash "
+    chdir: /home/jstilia
+  become: yes
+  become_user: "{{ user.name }}"
+
+- name: Re-checkout after cleanup
+  shell:
+    cmd: "/usr/bin/git --git-dir=/home/jstilia/.cfg/ --work-tree=/home/jstilia checkout "
+    chdir: /home/jstilia
+  become: yes
+  become_user: "{{ user.name }}"

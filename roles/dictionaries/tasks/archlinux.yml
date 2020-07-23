@@ -1,0 +1,6 @@
+- name: Install dictionaries
+  pacman:
+    name:
+      - hunspell
+    state: present
+  become: true

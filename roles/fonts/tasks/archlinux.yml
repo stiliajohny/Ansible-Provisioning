@@ -1,0 +1,36 @@
+- name: Install fonts from Arch repositories (Source Code Pro and Noto)
+  pacman:
+    name:
+      - adobe-source-code-pro-fonts
+      - noto-fonts
+    state: present
+  become: yes
+
+- name: Install fonts from AUR (ttf-font-awesome)
+  aur-adv:
+    name: ttf-font-awesome
+    use: yay
+  ignore_errors: True
+
+- name: Install Windows fonts
+  import_tasks: windows_fonts.yml
+  when: fonts.windows is sameas True
+
+- name: Install base_fonts package list
+  aur-adv:
+    name: "{{ item }}"
+    use: yay
+  with_items: "{{ base_fonts }}"
+  when: base_fonts is defined
+  become: yes
+  become_user: root
+  ignore_errors: True
+
+- name: Install aur_fonts package list
+  yay:
+    name: "{{ item }}"
+  with_items: "{{ aur_fonts }}"
+  when: aur_fonts is defined
+  become: yes
+  become_user: root
+  ignore_errors: True
