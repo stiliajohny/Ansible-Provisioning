@@ -243,10 +243,8 @@ tools:
     - leafpad
 
 tools_aur:
-
     - toilet
     - toilet-fonts
-    - yamllint
     - quiterss
     - arduino-cli
 

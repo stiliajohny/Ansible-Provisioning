@@ -1,6 +1,6 @@
 ---
-- name: Install ops packages
-  pacman: name={{ ops_cli }} state=present
+#- name: Install ops packages
+#  pacman: name={{ ops_cli }} state=present
 
 - name: Install ops packages
   pacman: name={{ ops_gui }} state=present
@@ -12,4 +12,4 @@
   environment:
     PATH: "/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
   become: yes
-  become_user: ansible
+  become_user: "{{  user.name }}"
