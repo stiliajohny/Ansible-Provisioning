@@ -1,6 +1,7 @@
-#!/usr/bin/env bash
+cripts/run-tests.bash
+/usr/bin/env bash
 
-# if any command inside script returns error, exit and return that error 
+# if any command inside script returns error, exit and return that error
 set -e
 
 # magic line to ensure that we're always inside the root of our application,
@@ -8,7 +9,7 @@ set -e
 # thanks to it we can just enter `./scripts/run-tests.bash`
 cd "${0%/*}/.."
 
-echo "Running tests"
-echo "............................" 
+echo "Running ansible lint on *.yml on git root"
+echo "............................"
 ansible-lint *.yml --force-color -p -x 204,701,301,305,401,303
 
