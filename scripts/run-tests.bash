@@ -1,5 +1,4 @@
-cripts/run-tests.bash
-/usr/bin/env bash
+#!/usr/bin/env bash
 
 # if any command inside script returns error, exit and return that error
 set -e
