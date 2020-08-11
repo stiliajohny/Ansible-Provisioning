@@ -13,7 +13,7 @@ user:
     ssh_key_type: rsa
 
 dotfiles:
-    url: git@gitlab.johnstilia.co.uk:jstilia/dotfiles.git
+    url: https://github.com/stiliajohny/dotfiles.git
     destination: .cfg
 
 
@@ -55,7 +55,6 @@ core_utils:
   - colordiff
   - coreutils
   - cpulimit
-  - ctags
   - dateutils
   - dmidecode
   - exa
@@ -67,12 +66,7 @@ core_utils:
   - libffi
   - linux-api-headers
   - linux-firmware
-  - linux-hardened
-  - linux-hardened-headers
   - linux-headers
-  - linux-lts
-  - linux-zen
-  - linux-zen-headers
   - make
   - man-db
   - man-pages
@@ -85,9 +79,6 @@ core_utils:
   - pkgfile
   - pv
   - pwgen
-  - python-keyring
-  - python-pynvim
-  - python-secretstorage
   - ranger
   - rsync
   - ruby
@@ -98,9 +89,6 @@ core_utils:
   - the_silver_searcher
   - tig
   - tmux
-  - tmuxp
-  - ttf-dejavu
-  - ttf-hack
   - vifm
   - vim
   - zsh
@@ -190,6 +178,7 @@ gui_aur:
 
 base_fonts:
     - adobe-source-code-pro-fonts
+    - ttf-nerd-fonts-symbols
     - cantarell-fonts
     - gsfonts
     - noto-fonts
@@ -256,6 +245,7 @@ ops_cli:
 ops_aur:
   - puppet-lint
   - prettier
+  - ctags
 
 ops_gui:
   - wireshark-qt
@@ -360,82 +350,143 @@ pacman:
     - multilib
 
 git_repos:
-    - git@github.com:mermaidjs/mermaid-live-editor.git
-    - git@github.com:stiliajohny/ansible-provisioning.git
-    - git@github.com:stiliajohny/Ansible-Provisioning.git
-    - git@github.com:stiliajohny/BBC-Good-Food-Recipe-Scraper.git
-    - git@github.com:stiliajohny/Bind-DNS-DockerCompose.git
-    - git@github.com:stiliajohny/cherrywasp.git
-    - git@github.com:stiliajohny/esp-temperature-humidity-in-grafana-.git
-    - git@github.com:stiliajohny/heyyou.git
-    - git@github.com:stiliajohny/-k8s-vbox.git
-    - git@github.com:stiliajohny/LDAP-User-Creator.git
-    - git@github.com:stiliajohny/linger.git
-    - git@github.com:stiliajohny/Mac-Geo-StreetView.git
-    - git@github.com:stiliajohny/Make-a-GitlabPipeline.git
-    - git@github.com:stiliajohny/make-a-pipeline.git
-    - git@github.com:stiliajohny/oraj.git
-    - git@github.com:stiliajohny/Probe-Hunter.git
-    - git@github.com:stiliajohny/probemon-geolocation.git
-    - git@github.com:stiliajohny/SlackBot.git
-    - git@github.com:stiliajohny/WhatsApp_troller.git
-    - git@github.com:stiliajohny/wifi-probe-request-devices-counter.git
-    - git@github.com:stiliajohny/Wifi-Probe-Requests-Geolocation.git
-    - git@github.com:stiliajohny/wifitracker.git
-    - git@github.com:stiliajohny/willy-board.git
-    - git@gitlab.johnstilia.co.uk:docker-compose-apps/jenkins.git
-    - git@gitlab.johnstilia.co.uk:jstilia/bbc-good-food-recipe-scraper.git
-    - git@gitlab.johnstilia.co.uk:jstilia/esp-temperature-humidity-in-grafana.git
-    - git@gitlab.johnstilia.co.uk:jstilia/k8s-vbox.git
-    - git@gitlab.johnstilia.co.uk:jstilia/ldap-user-creator.git
-    - git@gitlab.johnstilia.co.uk:jstilia/slackbot.git
-    - git@gitlab.johnstilia.co.uk:jstilia/whatsapp_troller.git
-    - git@gitlab.johnstilia.co.uk:old-code/elastic_log_templates.git
-    - https://bitbucket.org/exxsyseng/k8s_centos/src/master/vagrant-provisioning/
-    - https://github.com/BlueArduino20/Email_spoofer.git
-    - https://github.com/brannondorsey/wifi-cracking.git
-    - https://github.com/camptocamp/terraboard.git
-    - https://github.com/coderjojo/coderjojo.git
-    - https://github.com/Cur50r/sherlock.git
-    - https://github.com/D3VL/L3MON.git
-    - https://github.com/deviantony/docker-elk.git
-    - https://github.com/ernesen/infra-ansible.git
-    - https://github.com/fboender/multi-git-status.git
-    - https://github.com/feffi/ansible-arch-yay.git
-    - https://github.com/ganochenkodg/vagrant-microk8s.git
-    - https://github.com/gunzy83/ansible-roles-archlinux.git
-    - https://github.com/hak5darren/USB-Rubber-Ducky.git
-    - https://github.com/jbreed/nessus
-    - https://github.com/jmcvaughn/ansible-arch.git
-    - https://github.com/kbeflo/evilportals.git
-    - https://github.com/kbeflo/evilportal-templates.git
-    - https://github.com/kholia/OSX-KVM.git
-    - https://github.com/lgaggini/ansible-arch
-    - https://github.com/LucaBongiorni/evilportal-templates.git
-    - https://github.com/ma1co/Sony-PMCA-RE.git
-    - https://github.com/maxandersen/internet-monitoring
-    - https://github.com/metalx1000/Maps-and-Locations.git
-    - https://github.com/MikeSourceCode/grafana.git
-    - https://github.com/nicomazz/i3-polybar-config.git
-    - https://github.com/Perdu/panoptiphone.git
-    - https://github.com/Perdu/wombat.git
-    - https://github.com/pigmonkey/spark.git
-    - https://github.com/portainer/portainer-compose.git
-    - https://github.com/qqshow/dendroid
-    - https://github.com/samyk/samytools.git
-    - https://github.com/scottg88/gophish-compose.git
-    - https://github.com/Screetsec/TheFatRat.git
-    - https://github.com/shlinkio/shlink.git
-    - https://github.com/skickar/DeauthDetector.git
-    - https://github.com/sophron/wifiphisher.git
-    - https://github.com/stark/siji.git
-    - https://github.com/stiliajohny/evilportal-templates.git
-    - https://github.com/stiliajohny/Maps-and-Locations.git
-    - https://github.com/stiliajohny/polybar-scripts
-    - https://github.com/stiliajohny/stiliajohny.git
-    - https://github.com/sullo/nikto.git
-    - https://github.com/systematicat/hack-captive-portals.git
-    - https://github.com/tomvanveen/proxmark3.git
-    - https://github.com/vim/vim.git
-    - https://github.com/Xinyuan-LilyGO/TTGO_TWatch_Library.git
-    - https://www.kismetwireless.net/git/kismet.git
+    repo_owner:
+      - mermaidjs
+      - stiliajohny
+      - stiliajohny
+      - stiliajohny
+      - stiliajohny
+      - stiliajohny
+      - stiliajohny
+      - stiliajohny
+      - stiliajohny
+      - stiliajohny
+      - stiliajohny
+      - stiliajohny
+      - stiliajohny
+      - stiliajohny
+      - stiliajohny
+      - stiliajohny
+      - stiliajohny
+      - stiliajohny
+      - stiliajohny
+      - stiliajohny
+      - stiliajohny
+      - stiliajohny
+      - stiliajohny
+      - exxsyseng
+      - BlueArduino20
+      - brannondorsey
+      - camptocamp
+      - coderjojo
+      - Cur50r
+      - D3VL
+      - deviantony
+      - ernesen
+      - fboender
+      - feffi
+      - ganochenkodg
+      - gunzy83
+      - hak5darren
+      - jbreed
+      - jmcvaughn
+      - kbeflo
+      - kbeflo
+      - kholia
+      - lgaggini
+      - LucaBongiorni
+      - ma1co
+      - maxandersen
+      - metalx1000
+      - MikeSourceCod
+      - nicomazz
+      - Perdu
+      - Perdu
+      - pigmonkey
+      - portainer
+      - qqshow
+      - samyk
+      - scottg88
+      - Screetsec
+      - shlinkio
+      - skickar
+      - sophron
+      - stark
+      - stiliajohny
+      - stiliajohny
+      - stiliajohny
+      - stiliajohny
+      - sullo
+      - systematicat
+      - tomvanveen
+      - vim
+      - Xinyuan-LilyGO
+    repo_name:
+      - mermaid-live-editor
+      - ansible-provisioning
+      - Ansible-Provisioning
+      - BBC-Good-Food-Recipe-Scraper
+      - Bind-DNS-DockerCompose
+      - cherrywasp
+      - esp-temperature-humidity-in-grafana-
+      - heyyou
+      - LDAP-User-Creator
+      - linger
+      - Mac-Geo-StreetView
+      - Make-alabPipeline
+      - make-a-pipeline
+      - oraj
+      - Probe-Hunter
+      - probemon-geolocation
+      - SlackBot
+      - WhatsApp_troller
+      - wifi-probe-request-devices-counter
+      - Wifi-Probe-Requests-Geolocation
+      - wifitracker
+      - willy-board
+      - Email_spoofer
+      - wifi-cracking
+      - terraboard
+      - coderjojo
+      - sherlock
+      - L3MON
+      - docker-elk
+      - infra-ansible
+      - multi-status
+      - ansible-arch-yay
+      - vagrant-microk8s
+      - ansible-roles-archlinux
+      - USB-Rubber-Ducky
+      - nessus
+      - ansible-arch
+      - evilportals
+      - evilportal-templates
+      - OSX-KVM
+      - ansible-arch
+      - evilportal-templates
+      - Sony-PMCA-RE
+      - internet-monitoring
+      - Maps-and-Locations
+      - grafana
+      - i3-polybar-config
+      - panoptiphone
+      - wombat
+      - spark
+      - portainer-compose
+      - dendroid
+      - samytools
+      - gophish-compose
+      - TheFatRat
+      - shlink
+      - DeauthDetector
+      - wifiphisher
+      - siji
+      - evilportal-templates
+      - Maps-and-Locations
+      - polybar-scripts
+      - stiliajohny
+      - nikto
+      - hack-captive-portals
+      - proxmark3
+      - vim
+      - TTGO_TWatch_Library
