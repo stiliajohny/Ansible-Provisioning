@@ -1,4 +1,14 @@
 ---
+- name: Install zsh and zsh-completions
+  pacman:
+    name: zsh-completions zsh
+  become: true
+
+- name: Install yarn for Vim Plug
+  pacman:
+    name: yarn
+  become: true
+
 - name: Ignore .cfg folder
   shell: "echo '.cfg' >> /home/{{ user.name }}/.gitignore"
   become: yes
@@ -30,3 +40,42 @@
     chdir: /home/jstilia
   become: yes
   become_user: "{{ user.name }}"
+
+- name: Install TMP for TMUX
+  git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: ~/.tmux/plugins/tpm
+    force: yes
+    version: origin/master
+  when: dotfiles is defined
+  become: yes
+  become_user: "{{ user.name }}"
+
+- name: Install virtualenvwrapper for zsh plugin
+  pip:
+    name: virtualenvwrapper
+    state: present
+
+- name: Install thefuck for zsh plugin
+  pip:
+    name: thefuck
+    state: present
+
+- name: Install zsh-auto-suggestion
+  git:
+    repo: 'https://github.com/zsh-users/zsh-autosuggestions'
+    dest: /home/{{ user.name }}/.config/oh-my-zsh/custom/plugins/zsh-autosuggestions
+    version: origin/master
+
+- name: Vim plugins installation
+  shell: vim -E -s -u /home/{{ user.name }}/.config/vim/vimrc +PlugInstall +qall
+  args:
+    chdir: /home/{{ user.name }}
+  register: vim_plug_output
+  ignore_errors: True
+
+- name: Vim Plug output
+  debug:
+    msg: "{{ vim_plug_output.stdout.split('\n') }}"
+  ignore_errors: True
+

@@ -1,0 +1,10 @@
+---
+- name: Clone git projects
+  git:
+    repo: "git@github.com:{{ git_repos.item.repo_owner }}/{{ git_repos.item.repo_name }}.git"
+    dest: "/home/{{ user.name }}/Documents/Github/{ git_repos.item.repo_name }}"
+    accept_hostkey: yes
+    update: yes
+    bare: yes
+    version: origin/master
+    force: yes

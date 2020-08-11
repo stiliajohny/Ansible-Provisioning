@@ -9,3 +9,4 @@
     enabled: True
     state: started
     daemon_reload: true
+  ignore_errors: yes

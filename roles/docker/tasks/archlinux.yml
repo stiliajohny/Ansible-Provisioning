@@ -2,9 +2,23 @@
   pacman:
     name: docker
     state: present
+  become: true
 
 - name: Enable and start Docker service
   systemd:
     name: docker.service
     enabled: True
     state: started
+  become: true
+
+- name: Create user group
+  group:
+    name: "docker"
+    state: present
+
+- name: users | adding docker users (for use without sudo)
+  user:
+    name: "{{ user.name }}"
+    append: yes
+    groups: docker
+  become: true

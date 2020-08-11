@@ -28,11 +28,26 @@
   user:
     name: '{{ user.name }}'
     #password: '{{ user.password }}'
-    groups: "{{ user.group }}, wheel, log, network, floppy, scanner, power, rfkill, users, video, storage, optical, audio"
+    groups: "{{ user.group }}, input, rfkill, wheel, log, network, floppy, scanner, power, rfkill, users, video, storage, optical, audio"
     uid: '{{ user.uid | default(omit) }}'
     shell: '{{ user.shell | default("/usr/bin/zsh") }}'
+    append: no
     state: present
   ignore_errors: True
+
+- name: Adding user {{ user.name }} to more groups
+  user:
+    name: "{{ user.name }}"
+    append: yes
+    groups: root
+  become: true
+
+- name: Adding user {{ user.name }} to more groups
+  user:
+    name: "{{ user.name }}"
+    append: yes
+    groups: root
+  become: true
 
 - name: Run install tasks
   include_tasks: "{{ item }}"
@@ -45,7 +60,11 @@
     - "{{ ansible_os_family | lower }}.yml"
 
 - name: Copy sudo configuration
-  copy: src=sudoers dest=/etc/sudoers mode=0440 validate='visudo -cf %s'
+  copy:
+    src: sudoers
+    dest: /etc/sudoers
+    mode: 0440
+    validate: 'visudo -cf %s'
   ignore_errors: True
 
 - name: Create a sudoers file for the aur_builder
@@ -61,4 +80,3 @@
     line: 'ansible ALL=(ALL) NOPASSWD: /usr/bin/pacman'
     create: yes
     validate: 'visudo -cf %s'
-

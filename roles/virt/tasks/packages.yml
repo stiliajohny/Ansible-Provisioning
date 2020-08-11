@@ -6,3 +6,17 @@
 - name: Install virt gui packages
   pacman: name={{ virt_gui }} state=present
   become: true
+
+- name: Create user group vboxusers, libvirt
+  group:
+    name: "vboxusers, libvirt"
+    state: present
+  become: true
+
+
+- name: Adding user to groups vboxusers, libvirt
+  user:
+    name: "{{ user.name }}"
+    append: no
+    groups: vboxusers, libvirt
+  become: true

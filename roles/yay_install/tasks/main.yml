@@ -3,7 +3,7 @@
     msg: "{{ vars[(role_path | basename).split('.')[-1].replace('-','_')] }}"
   when: DEBUG | d() | bool
 
-- name: Run install tasks for ssh and sshfs
+- name: Run install tasks for yay
   include_tasks: "{{ item }}"
   with_first_found:
     - "{{ ansible_distribution_release | lower }}.yml"
