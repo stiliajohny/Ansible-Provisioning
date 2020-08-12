@@ -1,0 +1,7 @@
+---
+- name: Install Trivy
+  shell: yay --noconfirm -S trivy-bin
+  environment:
+    PATH: "/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+  become: yes
+  become_user: "{{  user.name }}"

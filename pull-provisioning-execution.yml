@@ -35,4 +35,6 @@
     - {role: vscode, tags: [vscode]}
     - {role: firefox, tags: [firefox]}
     - {role: terminator, tags: [terminator]}
+    - {role: terminator, tags: [terminator]}
+    - {role: trivy, tags: [trivy]}
 
