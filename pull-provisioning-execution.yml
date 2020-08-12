@@ -38,4 +38,5 @@
     - {role: terminator, tags: [terminator]}
     - {role: trivy, tags: [trivy]}
     - {role: aws, tags: [aws]}
+    - {role: hashicorp, tags: [hashicorp]}
 

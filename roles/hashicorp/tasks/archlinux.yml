@@ -1,0 +1,36 @@
+---
+- name: Install vagrant
+  pacman:
+    name: vagrant
+    state: present
+
+- name: Install consul
+  pacman:
+    name: consul
+    state: present
+
+#- name: Install terraform
+#  pacman:
+#    name: terraform
+#    state: present
+
+- name: Install vault
+  pacman:
+    name: vault
+    state: present
+
+- name: Install nomad
+  aur:
+    name:
+      - nomad
+    user: "{{ user.name }}"
+  tags:
+    - aur
+
+- name: Install tfenv
+  aur:
+    name:
+      - tfenv
+    user: "{{ user.name }}"
+  tags:
+    - aur
