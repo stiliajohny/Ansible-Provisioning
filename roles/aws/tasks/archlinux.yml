@@ -8,10 +8,3 @@
 #  pacman:
 #    name: aws-cli
 #    state: present
-
-- name: Install i3-gaps and such from AUR
-  aur-adv:
-    name: aws-cli
-    use: yay
-  become: yes
-  become_user: ansible
