@@ -9,20 +9,27 @@
 
 - name: Create user group vboxusers, libvirt
   group:
-    name: "{{ items }}"
+    name: vboxusers
     state: present
-    with_items:
-      - vboxusers
-      - libvirt
+  become: true
+
+- name: Create user group vboxusers, libvirt
+  group:
+    name: libvirt
+    state: present
   become: true
 
 
-- name: Adding user to groups vboxusers, libvirt
+- name: Adding user to group vboxusers
   user:
     name: "{{ user.name }}"
     append: no
-    groups: "{{ items }}"
-    with_items:
-      - vboxusers
-      - libvirt
+    groups: vboxusers
+  become: true
+
+- name: Adding user to group libvirt
+  user:
+    name: "{{ user.name }}"
+    append: no
+    groups: libvirt
   become: true
