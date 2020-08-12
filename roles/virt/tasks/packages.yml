@@ -7,18 +7,17 @@
   pacman: name={{ virt_gui }} state=present
   become: true
 
-- name: Create user group vboxusers, libvirt
+- name: Create user group vboxusers
   group:
     name: vboxusers
     state: present
   become: true
 
-- name: Create user group vboxusers, libvirt
+- name: Create user group libvirt
   group:
     name: libvirt
     state: present
   become: true
-
 
 - name: Adding user to group vboxusers
   user:
