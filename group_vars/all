@@ -95,6 +95,8 @@ core_utils:
 
 core_debugutils:
     - strace
+    - cmake
+    - make
     - lsof
     - htop
     - glances
