@@ -23,7 +23,7 @@
 
 - name: Install required dependecies
   pacman:
-    name: "binutils go base-devel"
+    name: "binutils go base-devel pkg-config cairo libxcb python3 xcb-proto xcb-util-image xcb-util-wm python-sphinx  gcc clang cmake libmpdclient "
     state: present
   when: not polybar_state.stat.exists
 
