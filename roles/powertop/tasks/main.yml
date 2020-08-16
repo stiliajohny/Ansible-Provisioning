@@ -1,0 +1,14 @@
+---
+- debug:
+    msg: "{{ vars[(role_path | basename).split('.')[-1].replace('-','_')] }}"
+  when: DEBUG | d() | bool
+
+- name: Run install tasks for polybar
+  include_tasks: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution_release | lower }}.yml"
+    - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
+    - "{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
+    - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
+    - "{{ ansible_distribution | lower }}.yml"
+    - "{{ ansible_os_family | lower }}.yml"

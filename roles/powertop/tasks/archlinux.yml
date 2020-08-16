@@ -1,0 +1,24 @@
+---
+
+- name: Install powertop
+  pacman:
+    name: powertop
+    state: present
+  become: true
+
+- name: Copy powertop service
+  copy:
+    src: powertop.service
+    dest: /etc/systemd/system/powertop.service
+  become: true
+
+- name: reload Systemd Daemon
+  systemd:
+    daemon_reload: yes
+  become: true
+
+- name: Enable Powertop
+  systemd:
+    name: powertop.service
+    state: started
+    enabled: yes

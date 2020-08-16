@@ -39,4 +39,4 @@
     - {role: trivy, tags: [trivy]}
     - {role: aws, tags: [aws]}
     - {role: hashicorp, tags: [hashicorp]}
-
+    - {role: powertop, tags: [powertop]}
