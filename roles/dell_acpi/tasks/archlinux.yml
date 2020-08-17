@@ -1,0 +1,6 @@
+---
+- name: Instal ACPI and libsmbios
+  pacman:
+    name: libsmbios acpi
+    state: present
+  become: true
