@@ -1,0 +1,13 @@
+---
+- name: Install ansi2html
+  aur:
+    name: ansi2html
+    user: "{{ user.name }}"
+
+
+- name: Install lynis
+  aur:
+    name: lynis-git
+    user: "{{ user.name }}"
+
+
