@@ -1,0 +1,12 @@
+- name: Notify Slack of Playbook Failure
+  slack:
+    username: 'Ansible'
+    color: danger
+    token: "{{ slack.token }}"
+    channel: "#ansible"
+    msg: "Ansible failed on *{{ ansible_hostname }} ({{ inventory_hostname }})* \n
+    *Task*: {{ ansible_failed_task.name }} \n
+    *Action*: {{ ansible_failed_task.action }} \n
+    *Error Message*: \n ```{{ ansible_failed_result | to_nice_json }}``` "
+
+
