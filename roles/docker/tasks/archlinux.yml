@@ -1,6 +1,6 @@
 - name: Install Docker
   pacman:
-    name: docker
+    name: docker docker-compose
     state: present
   become: true
 
