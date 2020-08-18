@@ -1,3 +1,4 @@
+---
 - name: Notify Slack of Playbook Failure
   slack:
     username: 'Ansible'
