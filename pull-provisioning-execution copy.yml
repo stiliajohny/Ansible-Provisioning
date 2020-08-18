@@ -1,0 +1,41 @@
+---
+- hosts: pull_hosts
+  become: true
+  roles:
+    - {role: os_info, tags: ['os_info']}
+    - {role: ansible_pull, tags: ['ansible_pull']}
+    - {role: aur_dir, tags: ['aur_dir']}
+    - {role: users, tags: ['users']}
+    - {role: locale, tags: ['locale']}
+    - {role: time, tags: ['time']}
+    - {role: ssh, tags: ['ssh']}
+    - {role: yay_install, tags: ['yay_install']}
+    - {role: reflector, tags: ['reflector']}
+    - {role: pacman, tags: ['pacman']}
+    - {role: pacman-repo, tags: [pacman-repo]}
+    - {role: makepkg, tags: [makepkg]}
+    - {role: archcore, tags: [archcore]}
+    - {role: build_packages, tags: [build_packages]}
+    - {role: shell_utils, tags: [shell_utils]}
+    - {role: base_utils, tags: [base_utils]}
+    - {role: file_utils, tags: [file_utils]}
+    - {role: filesystem_part_utils, tags: [filesystem_part_utils]}
+    - {role: xorg, tags: [xorg]}
+    - {role: x, tags: [x]}
+    - {role: polybar, tags: [polybar]}
+    - {role: i3, tags: [i3]}
+    - {role: dotfiles, tags: [dotfiles]}
+    - {role: fonts, tags: [fonts]}
+    - {role: dictionaries, tags: [dictionaries]}
+    - {role: tools, tags: [tools]}
+    - {role: ops, tags: [ops]}
+    - {role: virt, tags: [virt]}
+    - {role: docker, tags: [docker]}
+    #- {role: git, tags: [git]}
+    - {role: vscode, tags: [vscode]}
+    - {role: firefox, tags: [firefox]}
+    - {role: terminator, tags: [terminator]}
+    - {role: trivy, tags: [trivy]}
+    - {role: aws, tags: [aws]}
+    - {role: hashicorp, tags: [hashicorp]}
+    - {role: powertop, tags: [powertop]}
