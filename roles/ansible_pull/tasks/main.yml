@@ -32,7 +32,7 @@
     day: "*"
     month: "*"
     weekday: "*"
-    job: "ANSIBLE_NOCOWS=1 ansible-pull --sleep 15 -U https://{{ project_link }} -i {{ inventory }} {{ playbook }} --limit 127.0.0.1  2>&1 | sudo tee -a {{ logfile }}"
+    job: "ANSIBLE_NOCOWS=1 ansible-pull --sleep 15 --only-if-changed --accept-host-key -U https://{{ project_link }} -i {{ inventory }} {{ playbook }} --limit 127.0.0.1  /home/{{ user.name }}/.random 2>&1 | sudo tee -a {{ logfile }}"
     user: root
     cron_file: ansible_pull # creates a file under /etc/cron.d
   when: project_token == None
@@ -45,7 +45,7 @@
     day: "*"
     month: "*"
     weekday: "*"
-    job: "ANSIBLE_NOCOWS=1 ansible-pull --sleep 15 -U https://{{ project_token }}:x-oauth-basic@{{ project_link }} -i {{ inventory }} {{ playbook }} --limit 127.0.0.1 2>&1 | sudo tee -a {{ logfile }}"
+    job: "ANSIBLE_NOCOWS=1 ansible-pull --sleep 15 --only-if-changed --accept-host-key -U https://{{ project_token }}:x-oauth-basic@{{ project_link }} -i {{ inventory }} {{ playbook }} --limit 127.0.0.1 --vault-password-file /home/{{ user.name }}/.random 2>&1 | sudo tee -a {{ logfile }}"
     user: root
     cron_file: ansible_pull # creates a file under /etc/cron.d
   when: project_token != None
