@@ -1,0 +1,357 @@
+---
+- hosts: "{{ pull_hosts | default('127.0.0.1') }}"
+  become: true
+  gather_facts: true
+  tasks:
+  - block:
+    - name: OS_Info role
+      include_role:
+        name: os_info
+      tags:
+        - os_info
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - os_info
+  - block:
+    - name: ansible_pull
+      import_role:
+        name: ansible_pull
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - ansible_pull
+  - block:
+    - name: aur_dir
+      import_role:
+        name: aur_dir
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - aur_dir
+  - block:
+    - name: users
+      import_role:
+        name: users
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - users
+  - block:
+    - name: locale
+      import_role:
+        name: locale
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - locale
+  - block:
+    - name: time
+      import_role:
+        name: time
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - time
+  - block:
+    - name: ssh
+      import_role:
+        name: ssh
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - ssh
+  - block:
+    - name: yay_install
+      import_role:
+        name: yay_install
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - yay_install
+  - block:
+    - name: reflector
+      import_role:
+        name: reflector
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - reflector
+  - block:
+    - name: pacman
+      import_role:
+        name: pacman
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - pacman
+  - block:
+    - name: makepkg
+      import_role:
+        name: makepkg
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - makepkg
+  - block:
+    - name: archcore
+      import_role:
+        name: archcore
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - archcore
+  - block:
+    - name: build_packages
+      import_role:
+        name: build_packages
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - build_packages
+  - block:
+    - name: shell_utils
+      import_role:
+        name: shell_utils
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - shell_utils
+  - block:
+    - name: base_utils
+      import_role:
+        name: base_utils
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - base_utils
+  - block:
+    - name: file_utils
+      import_role:
+        name: file_utils
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - file_utils
+  - block:
+    - name: filesystem_part_utils
+      import_role:
+        name: filesystem_part_utils
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - filesystem_part_utils
+  - block:
+    - name: xorg
+      import_role:
+        name: xorg
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - xorg
+  - block:
+    - name: x
+      import_role:
+        name: x
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - x
+  - block:
+    - name: polybar
+      import_role:
+        name: polybar
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - polybar
+  - block:
+    - name: i3
+      import_role:
+        name: i3
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - i3
+  - block:
+    - name: dotfiles
+      import_role:
+        name: dotfiles
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - dotfiles
+  - block:
+    - name: fonts
+      import_role:
+        name: fonts
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - fonts
+  - block:
+    - name: dictionaries
+      import_role:
+        name: dictionaries
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - dictionaries
+  - block:
+    - name: tools
+      import_role:
+        name: tools
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - tools
+  - block:
+    - name: ops
+      import_role:
+        name: ops
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - ops
+  - block:
+    - name: virt
+      import_role:
+        name: virt
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - virt
+  - block:
+    - name: docker
+      import_role:
+        name: docker
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - docker
+  - block:
+    - name: vscode
+      import_role:
+        name: vscode
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - vscode
+  - block:
+    - name: firefox
+      import_role:
+        name: firefox
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - firefox
+  - block:
+    - name: terminator
+      import_role:
+        name: terminator
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - terminator
+  - block:
+    - name: trivy
+      import_role:
+        name: trivy
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - trivy
+  - block:
+    - name: aws
+      import_role:
+        name: aws
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - aws
+  - block:
+    - name: hashicorp
+      import_role:
+        name: hashicorp
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - hashicorp
+  - block:
+    - name: powertop
+      import_role:
+        name: powertop
+    rescue:
+      - include_role:
+          name: slack_handler
+          tasks_from: failure
+    tags:
+      - powertop
