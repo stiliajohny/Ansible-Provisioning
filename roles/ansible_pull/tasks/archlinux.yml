@@ -49,5 +49,10 @@
 
 - name: Install ansible with pip
   pip:
-    name: ansible
+    name: ansible prettytable
+  become: true
+
+- name: Install prettytable with pip
+  pip:
+    name: prettytable
   become: true
