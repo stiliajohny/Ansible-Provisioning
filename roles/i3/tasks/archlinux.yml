@@ -32,5 +32,5 @@
     state: present
   become: true
 
-- name: Configure i3lock on suspend service
-  import_tasks: i3lock_suspend.yml
+#- name: Configure i3lock on suspend service
+#  import_tasks: i3lock_suspend.yml
