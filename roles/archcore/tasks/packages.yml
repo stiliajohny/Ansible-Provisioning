@@ -8,29 +8,36 @@
   become: true
 
 - name: Install tmux splitted pages script
-  copy: src=tmux_splitted_pager.sh dest=/home/{{ user.name }}/.local/bin/tmux_splitted_pager
+  copy:
+    src: "tmux_splitted_pager.sh"
+    dest: "/home/{{ user.name }}/.local/bin/tmux_splitted_pager"
   become: true
   become_user: "{{ user.name }}"
 
 - name: Install core debug utils packages
-  pacman: name={{ core_debugutils }} state=present
+  pacman:
+    name: "{{ core_debugutils }}"
+    state: present
   when: core_debugutils is defined
   become: true
 
 - name: Install core net utils packages
-  pacman: name={{ core_netutils }} state=present
+  pacman:
+    name: "{{ core_netutils }}"
+    state: present
   when: core_netutils is defined
   become: true
 
 - name: Install core goodies packages
-  pacman: name={{ core_goodies }} state=present
+  pacman:
+    name: "{{ core_goodies }}"
+    state: present
   when: core_goodies is defined
   become: true
 
-- name: Install core aur packages
-  shell: yay --noconfirm -S {{ item }}
+- name: Install {{ item }}
+  aur:
+    name: "{{ item }}"
+    user: "{{ user.name }}"
   with_items: "{{ core_aur }}"
   when: core_aur is defined
-  become: yes
-  become_user: "{{ user.name }}"
-  tags: core_aur
