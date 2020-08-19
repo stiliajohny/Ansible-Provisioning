@@ -23,7 +23,7 @@
     ##- {role: reflector, tags: [reflector]}
     ##- {role: pacman, tags: [pacman]}
     ###- {role: pacserve, tags: [pacserve]}
-    ##- {role: pacman-repo, tags: [pacman-repo]}
+    ##- {role: pacman_repo, tags: [pacman_repo]}
     ##- {role: makepkg, tags: [makepkg]}
 
     - {role: hostname, tags: []}
