@@ -8,10 +8,9 @@
 - name: Install tools packages
   pacman: name={{ tools }} state=present
 
-- name: Install tools_aur packages
-  shell: yay --noconfirm -S {{ item }}
+- name: Install tfenv
+  aur:
+    name: "{{ item }}"
+    user: "{{ user.name }}"
   with_items: "{{ tools_aur }}"
   when: tools_aur is defined
-  become: yes
-  become_user: "{{ user.name }}"
-  tags: core_aur
