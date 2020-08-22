@@ -188,6 +188,7 @@ gui_aur:
     - urxvt-resize-font-git
     - ttf-nerd-fonts-hack-complete-git
     - rofi-greenclip
+    - i3exit
 
 base_fonts:
     - adobe-source-code-pro-fonts
