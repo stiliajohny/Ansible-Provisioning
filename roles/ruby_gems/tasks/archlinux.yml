@@ -4,7 +4,8 @@
     name: ruby
     user: "{{ user.name }}"
 
-- gem:
+- name: Install Ruby Gems
+  gem:
     name: jekyll
-    version: 4.1
+    version: "4.1"
     state: present
