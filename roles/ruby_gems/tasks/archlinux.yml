@@ -1,0 +1,10 @@
+---
+- name: Install ansi2html
+  aur:
+    name: ruby
+    user: "{{ user.name }}"
+
+- gem:
+    name: jekyll
+    version: 4.1
+    state: present

@@ -14,8 +14,3 @@
     user: "{{ user.name }}"
   with_items: "{{ tools_aur }}"
   when: tools_aur is defined
-
-- name: Install jekyyl
-  aur:
-    name: "jekyll"
-    user: "{{ user.name }}"

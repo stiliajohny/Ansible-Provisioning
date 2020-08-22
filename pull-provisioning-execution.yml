@@ -39,3 +39,4 @@
     - {role: aws, tags: [aws]}
     - {role: hashicorp, tags: [hashicorp]}
     - {role: powertop, tags: [powertop]}
+    - {role: ruby_gems, tags: [ruby_gems]}
