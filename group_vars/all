@@ -279,6 +279,7 @@ dev:
     - python-virtualenvwrapper
     - pelican
     - flake8
+    - jekyll
 
 blackarch:
     url: https://blackarch.org/strap.sh
