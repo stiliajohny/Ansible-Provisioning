@@ -10,6 +10,14 @@
     - "{{ ansible_distribution | lower }}.yml"
     - "{{ ansible_os_family | lower }}.yml"
 
+- name: Create a directory if it does not exist
+  file:
+    path: /etc/ansible
+    state: directory
+    group: root
+    owner: root
+    mode: 0644
+  become: true
 
 - name: Copy Ansible config
   template:
