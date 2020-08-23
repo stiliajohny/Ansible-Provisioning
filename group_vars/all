@@ -61,6 +61,7 @@ core_utils:
   - bc
   - bind-tools
   - terminator
+  - alacritty
   - nautilus
   - binutils
   - colordiff
