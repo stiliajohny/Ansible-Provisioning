@@ -1,7 +1,4 @@
 ---
-- name: Define if dotfiles are installed
-  stat: path=/home/{{ user.name }}/.cfg
-  register: dotfiles_state
 
 - name: Run install tasks
   include_tasks: "{{ item }}"

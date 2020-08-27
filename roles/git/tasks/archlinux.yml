@@ -1,10 +1,25 @@
 ---
-- name: Clone git projects
+#- name: Repo User
+#  debug:
+#    msg: '{{ item.split("/")[0] | lower }}'
+#  with_items: "{{ repo }}"
+#
+#- name: Repo Name
+#  debug:
+#    msg: '{{ item.split("/")[1] | lower }}'
+#  with_items: "{{ repo }}"
+
+- name: Include vars of repos
+  include_vars:
+    file: main.yml
+
+- name: Clone
   git:
-    repo: "git@github.com:{{ git_repos.item.repo_owner }}/{{ git_repos.item.repo_name }}.git"
-    dest: "/home/{{ user.name }}/Documents/Github/{ git_repos.item.repo_name }}"
-    accept_hostkey: yes
+    repo: 'https://github.com/{{ item.split("/")[0] | lower }}/{{ item.split("/")[1] | lower }}.git'
+    dest: '/home/jstilia/Documents/GitHub/{{ item.split("/")[1] | lower }}'
+    clone: yes
     update: yes
-    bare: yes
-    version: origin/master
-    force: yes
+    depth: 1
+  with_items: "{{ repo_name }}"
+  ignore_errors: true
+  become: false
