@@ -1,71 +1,57 @@
-repo_name:
+github_repo_name:
   - aquasecurity/trivy
-  - BlueArduino20/Email_spoofer
+  - bluearduino20/email_spoofer
   - brannondorsey/wifi-cracking
   - camptocamp/terraboard
   - coderjojo/coderjojo
-  - Cur50r/sherlock
+  - cur50r/sherlock
+  - d3vl/l3mon
   - davatorium/rofi-themes
   - deviantony/docker-elk
   - ernesen/infra-ansible
   - fboender/multi-git-status
+  - feffi/ansible-arch-yay
   - greymd/tmux-xpanes
+  - gunzy83/ansible-roles-archlinux
   - haikarainen/light
-  - hak5/sharkjack-payloads
-  - hak5darren/USB-Rubber-Ducky
+  - hak5darren/usb-rubber-ducky
   - jbreed/nessus
+  - jmcvaughn/ansible-arch
   - kbeflo/evilportals
-  - lgaggini/ansible-arch
-  - ma1co/Sony-PMCA-RE
+  - kholia/osx-kvm
+  - ma1co/sony-pmca-re
   - maxandersen/internet-monitoring
   - mermaidjs/mermaid-live-editor
-  - metalx1000/Maps-and-Locations
-  - MikeSourceCode/grafana
+  - metalx1000/maps-and-locations
+  - mikesourcecode/grafana
   - nezhar/wordpress-docker-compose
   - nicomazz/i3-polybar-config
-  - Perdu/panoptiphone
-  - Perdu/wombat
+  - perdu/panoptiphone
+  - perdu/wombat
   - pigmonkey/spark
   - portainer/portainer-compose
   - qqshow/dendroid
   - samyk/samytools
   - scottg88/gophish-compose
-  - Screetsec/TheFatRat
-  - shlinkio/shlink
-  - skickar/DeauthDetector
+  - screetsec/thefatrat
+  - skickar/deauthdetector
   - sophron/wifiphisher
   - stark/siji
-  - stiliajohny/-k8s-vbox
   - stiliajohny/ansible-provisioning
-  - stiliajohny/Ansible-Provisioning
-  - stiliajohny/BBC-Good-Food-Recipe-Scraper
-  - stiliajohny/Bind-DNS-DockerCompose
-  - stiliajohny/cherrywasp
+  - stiliajohny/bbc-good-food-recipe-scraper
   - stiliajohny/dotfiles
   - stiliajohny/esp-temperature-humidity-in-grafana-
-  - stiliajohny/evilportal-templates
-  - stiliajohny/heyyou
-  - stiliajohny/jekyll-site
-  - stiliajohny/LDAP-User-Creator
-  - stiliajohny/linger
-  - stiliajohny/Mac-Geo-StreetView
-  - stiliajohny/Make-a-GitlabPipeline
-  - stiliajohny/make-a-pipeline
-  - stiliajohny/Maps-and-Locations
-  - stiliajohny/oraj
-  - stiliajohny/polybar-scripts
-  - stiliajohny/Probe-Hunter
-  - stiliajohny/probemon-geolocation
-  - stiliajohny/SlackBot
+  - stiliajohny/ldap-user-creator
+  - stiliajohny/mac-geo-streetview
   - stiliajohny/stiliajohny
-  - stiliajohny/stiliajohny.github.io
-  - stiliajohny/WhatsApp_troller
-  - stiliajohny/wifi-probe-request-devices-counter
-  - stiliajohny/Wifi-Probe-Requests-Geolocation
-  - stiliajohny/wifitracker
-  - stiliajohny/willy-board
+  - stiliajohny/whatsapp_troller
+  - stiliajohny/wifi-probe-requests-geolocation
   - sullo/nikto
   - systematicat/hack-captive-portals
   - tomvanveen/proxmark3
+  - vikwin/pcapfex
   - vim/vim
-  - Xinyuan-LilyGO/TTGO_TWatch_Library
+  - xinyuan-lilygo/ttgo_twatch_library
+
+gitlab_repo_name:
+  - faithfulst3ward/cloudc2docker

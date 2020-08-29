@@ -13,13 +13,32 @@
   include_vars:
     file: main.yml
 
-- name: Clone
+#- name: Clone the Github repos - Number {{ github_repo_name|length }}
+#  git:
+#    repo: 'git@github.com:{{ github_repo_item.split("/")[0] | lower }}/{{ github_repo_item.split("/")[1] | lower }}.git'
+#    dest: '/home/jstilia/Documents/GitHub/{{ github_repo_item.split("/")[1] | lower }}'
+#    clone: yes
+#    update: yes
+#    version: master
+#    accept_hostkey: true
+#    remote: origin
+#  with_items: "{{ github_repo_name }}"
+#  loop_control:
+#    loop_var: github_repo_item
+#  ignore_errors: true
+#  become: false
+
+- name: Clone the Gitlab repos - Number {{ gitlab_repo_name|length }}
   git:
-    repo: 'https://github.com/{{ item.split("/")[0] | lower }}/{{ item.split("/")[1] | lower }}.git'
-    dest: '/home/jstilia/Documents/GitHub/{{ item.split("/")[1] | lower }}'
+    repo: 'https://gitlab.com/{{ gitlab_repo_item.split("/")[0] | lower }}/{{ gitlab_repo_item.split("/")[1] | lower }}.git'
+    dest: '/home/jstilia/Documents/GitHub/{{ gitlab_repo_item.split("/")[1] | lower }}'
     clone: yes
     update: yes
-    depth: 1
-  with_items: "{{ repo_name }}"
+    version: master
+    accept_hostkey: true
+    remote: origin
+  with_items: "{{ gitlab_repo_name }}"
+  loop_control:
+    loop_var: gitlab_repo_item
   ignore_errors: true
   become: false
