@@ -13,20 +13,20 @@
   include_vars:
     file: main.yml
 
-#- name: Clone the Github repos - Number {{ github_repo_name|length }}
-#  git:
-#    repo: 'git@github.com:{{ github_repo_item.split("/")[0] | lower }}/{{ github_repo_item.split("/")[1] | lower }}.git'
-#    dest: '/home/jstilia/Documents/GitHub/{{ github_repo_item.split("/")[1] | lower }}'
-#    clone: yes
-#    update: yes
-#    version: master
-#    accept_hostkey: true
-#    remote: origin
-#  with_items: "{{ github_repo_name }}"
-#  loop_control:
-#    loop_var: github_repo_item
-#  ignore_errors: true
-#  become: false
+- name: Clone the Github repos - Number {{ github_repo_name|length }}
+  git:
+    repo: 'git@github.com:{{ github_repo_item.split("/")[0] | lower }}/{{ github_repo_item.split("/")[1] | lower }}.git'
+    dest: '/home/jstilia/Documents/GitHub/{{ github_repo_item.split("/")[1] | lower }}'
+    clone: yes
+    update: yes
+    version: master
+    accept_hostkey: true
+    remote: origin
+  with_items: "{{ github_repo_name }}"
+  loop_control:
+    loop_var: github_repo_item
+  ignore_errors: true
+  become: false
 
 - name: Clone the Gitlab repos - Number {{ gitlab_repo_name|length }}
   git:
