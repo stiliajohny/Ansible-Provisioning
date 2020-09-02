@@ -1,0 +1,16 @@
+### {{ ansible_managed }}
+
+
+[Unit]
+Description=User suspend actions
+#Before=sleep.target
+#Before=suspend.target
+
+[Service]
+User=%I
+Type=forking
+Environment=DISPLAY=:0
+ExecStart= /usr/bin/i3lock -n --inactivity-timeout=15 -l  --color=000000 --ringcolor=ff0000ff
+
+[Install]
+WantedBy=sleep.target

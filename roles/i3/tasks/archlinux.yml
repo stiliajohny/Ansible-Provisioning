@@ -32,3 +32,15 @@
     state: present
   become: true
 
+- name: Copy Service
+  copy:
+    src: suspend@.service
+    dest: /etc/systemd/system/suspend@{{ user.name }}.service
+  become: true
+
+- name: Reload Systemd daemon and enable suspend@{{ user.name }}.service
+  systemd:
+    state: started
+    daemon_reload: yes
+    enabled: yes
+    name: suspend@{{ user.name }}.service
