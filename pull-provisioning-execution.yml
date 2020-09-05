@@ -41,3 +41,5 @@
     - {role: powertop, tags: [powertop]}
     - {role: ruby_gems, tags: [ruby_gems]}
     - {role: android, tags: [android]}
+    - {role: prometheus, tags: [prometheus]}
+

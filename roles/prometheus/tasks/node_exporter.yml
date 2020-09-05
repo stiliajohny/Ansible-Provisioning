@@ -1,0 +1,65 @@
+---
+- name: Create tmp for Prometheus and Node exporter Instalation
+  file:
+    path: /tmp/ansible-prometheus_nodeexporter-instalation/
+    state: directory
+    mode: '0755'
+
+- name: Download Node Exporter {{ NODE_RELEASE }}
+  get_url:
+    url: https://github.com/prometheus/node_exporter/releases/download/v{{ NODE_RELEASE }}/node_exporter-{{ NODE_RELEASE }}.linux-amd64.tar.gz
+    dest: /tmp/ansible-prometheus_nodeexporter-instalation/
+    mode: '6550'
+
+- name: Create export directory node_exporter-{{ NODE_RELEASE }}.linux-amd64
+  file:
+    path: /tmp/ansible-prometheus_nodeexporter-instalation/node_exporter-{{ NODE_RELEASE }}.linux-amd64
+    state: directory
+    mode: '0755'
+
+- name: Extract prometheus-{{ NODE_RELEASE }}.linux-amd64.tar.gz
+  unarchive:
+    src: /tmp/ansible-prometheus_nodeexporter-instalation/node_exporter-{{ NODE_RELEASE }}.linux-amd64.tar.gz
+    dest: /tmp/ansible-prometheus_nodeexporter-instalation/node_exporter-{{ NODE_RELEASE }}.linux-amd64
+    remote_src: yes
+
+- name: Copy Binaries
+  copy:
+    src: /tmp/ansible-prometheus_nodeexporter-instalation/node_exporter-{{ NODE_RELEASE }}.linux-amd64/node_exporter-{{ NODE_RELEASE }}.linux-amd64/{{ node_bin }}
+    dest: /usr/local/bin/{{ node_bin }}
+    mode: '0755'
+    remote_src: yes
+  with_items:
+    - node_exporter
+  loop_control:
+    loop_var: node_bin
+  become: true
+
+- name: Ensure group "node_exporter" exists
+  group:
+    name: node_exporter
+    state: present
+    system: yes
+
+- name: Add the user node_exporter
+  user:
+    name: node_exporter
+    comment: node_exporter
+    system: yes
+    group: node_exporter
+    shell: /bin/false
+
+- name: Copy the node_exporter
+  template:
+    src: node_exporter.service.j2
+    dest: /etc/systemd/system/node_exporter.service
+    group: root
+    owner: root
+    mode: "0644"
+  become: true
+
+- name: Systemd Reload
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: node_exporter
