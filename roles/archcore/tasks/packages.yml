@@ -37,7 +37,9 @@
 
 - name: Install {{ item }}
   aur:
-    name: "{{ item }}"
+    name: "{{ core_aur_loop }}"
     user: "{{ user.name }}"
   with_items: "{{ core_aur }}"
+  loop_control:
+    loop_var: core_aur_loop
   when: core_aur is defined

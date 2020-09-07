@@ -10,8 +10,10 @@
 
 - name: Install tfenv
   aur:
-    name: "{{ item }}"
+    name: "{{ tools_aur_loop }}"
     user: "{{ user.name }}"
   with_items: "{{ tools_aur }}"
+  loop_control:
+    loop_var: tools_aur_loop
   when: tools_aur is defined
 

@@ -34,3 +34,10 @@
   when: not polybar_state.stat.exists
   args:
     chdir: "{{ ansible_arch_polybar.dest }}"
+
+
+- name: Recursively remove {{ ansible_arch_polybar.dest }}
+  file:
+    path: "{{ ansible_arch_polybar.dest }}"
+    state: absent
+

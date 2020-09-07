@@ -18,9 +18,11 @@
 
 - name: Install base_fonts package list
   aur-adv:
-    name: "{{ item }}"
+    name: "{{ base_fonts_loop }}"
     use: yay
   with_items: "{{ base_fonts }}"
+  loop_control:
+    loop_var: base_fonts_loop
   when: base_fonts is defined
   become: yes
   become_user: "{{ user.name }}"
@@ -28,8 +30,10 @@
 
 - name: Install aur_fonts package list
   yay:
-    name: "{{ item }}"
+    name: "{{ aur_fonts_loop }}"
   with_items: "{{ aur_fonts }}"
+  loop_control:
+    loop_var: aur_fonts_loop
   when: aur_fonts is defined
   become: yes
   become_user: "{{ user.name }}"

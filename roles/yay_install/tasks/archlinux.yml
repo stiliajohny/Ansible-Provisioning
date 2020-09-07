@@ -34,3 +34,10 @@
   when: not yay_state.stat.exists
   args:
     chdir: "{{ ansible_arch_yay.dest }}"
+
+
+- name: Recursively remove {{ ansible_arch_yay.dest }}
+  file:
+    path: "{{ ansible_arch_yay.dest }}"
+    state: absent
+

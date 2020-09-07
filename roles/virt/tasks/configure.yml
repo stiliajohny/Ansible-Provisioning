@@ -1,6 +1,8 @@
 - name: Add user to libvirt group
   user:
     name: '{{ user.name }}'
+    comment: libvirt_user
+    shell: /bin/nologin
     groups: libvirt
     append: True
 

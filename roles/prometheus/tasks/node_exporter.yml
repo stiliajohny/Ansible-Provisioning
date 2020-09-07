@@ -47,7 +47,7 @@
     comment: node_exporter
     system: yes
     group: node_exporter
-    shell: /bin/false
+    shell: /bin/nologin
 
 - name: Copy the node_exporter
   template:

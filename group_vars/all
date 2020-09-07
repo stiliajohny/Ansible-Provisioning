@@ -186,7 +186,6 @@ gui_themes:
     - gnome-themes-extra
 
 gui_aur:
-    - urxvt-resize-font-git
     - ttf-nerd-fonts-hack-complete-git
     - rofi-greenclip
     - i3exit

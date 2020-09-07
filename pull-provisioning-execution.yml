@@ -42,4 +42,5 @@
     - {role: ruby_gems, tags: [ruby_gems]}
     - {role: android, tags: [android]}
     - {role: prometheus, tags: [prometheus]}
+    - {role: gimp, tags: [gimp]}
 

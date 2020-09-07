@@ -26,10 +26,14 @@
   pacman: name={{ gui_themes }} state=present
   become: true
 
+
 - name: Install gui aur packages
-  shell: yay --noconfirm -S {{ item }}
+  yay:
+    name: "{{ item }}"
   with_items: "{{ gui_aur }}"
-  become: yes
-  become_user: jstilia
+  loop_control:
+    loop_var: gui_aur_loop
   when: gui_aur is defined
-  ignore_errors: true
+  become: yes
+  become_user: "{{ user.name }}"
+  ignore_errors: True

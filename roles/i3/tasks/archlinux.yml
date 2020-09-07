@@ -10,7 +10,7 @@
 
 - name: Install i3-gaps and such from AUR
   aur-adv:
-    name: "{{ item }}"
+    name: "{{ i3_loop }}"
     use: makepkg
   become: yes
   become_user: ansible
@@ -22,6 +22,8 @@
     - feh
     - jsoncpp
     - wireless_tools
+  loop_control:
+    loop_var: i3_loop
 
 - name: Install screenshot utilities
   pacman:

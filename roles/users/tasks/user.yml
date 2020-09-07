@@ -9,6 +9,10 @@
   user:
     name: aur_builder
     group: aur_builder
+    comment: "AUR Builder"
+    shell: /bin/nologin
+    home: /var/lib/aurbuilder
+    system: yes
 
 - name: Create user aurman
   user:
