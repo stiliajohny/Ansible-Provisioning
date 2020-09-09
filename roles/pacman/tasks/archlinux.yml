@@ -1,18 +1,22 @@
 - name: Enable pacman colourised output and verbose package lists
   replace:
     path: /etc/pacman.conf
-    regexp: '{{ item.regexp }}'
-    replace: '{{ item.replace }}'
+    regexp: '{{ loop_pacman_config.regexp }}'
+    replace: '{{ iloop_pacman_config.replace }}'
   with_items:
     - { regexp: '^#Color$', replace: 'Color' }
     - { regexp: '^#VerbosePkgLists$', replace: 'VerbosePkgLists' }
+  loop_control:
+    loop_var: loop_pacman_config
 
 - name: Enable repositories
   replace:
     path: /etc/pacman.conf
-    regexp: '^#\[{{ item }}\]$\n^#Include\s+=\s+/etc/pacman.d/mirrorlist$'
-    replace: '[{{ item }}]\nInclude = /etc/pacman.d/mirrorlist'
+    regexp: '^#\[{{ loop_pacman_repos }}\]$\n^#Include\s+=\s+/etc/pacman.d/mirrorlist$'
+    replace: '[{{ loop_pacman_repos }}]\nInclude = /etc/pacman.d/mirrorlist'
   with_items: '{{ pacman.repos }}'
+  loop_control:
+    loop_var: loop_pacman_repos
   notify: Update pacman cache
   when: pacman.repos is defined
 
@@ -35,11 +39,13 @@
 
 - name: Add paccache hooks
   copy:
-    src: '{{ item }}'
+    src: '{{ loop_pachcache_hooks }}'
     dest: /etc/pacman.d/hooks/
   with_items:
     - 99-paccache_remove.hook
     - 99-paccache_upgrade.hook
+  loop_control:
+    loop_var: loop_pachcache_hooks
 
 - name: Add mirrorupgrade hook
   copy:

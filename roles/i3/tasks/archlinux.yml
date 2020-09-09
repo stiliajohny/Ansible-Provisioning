@@ -42,7 +42,6 @@
 
 - name: Reload Systemd daemon and enable suspend@{{ user.name }}.service
   systemd:
-    state: started
     daemon_reload: yes
     enabled: yes
     name: suspend@{{ user.name }}.service

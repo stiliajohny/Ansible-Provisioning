@@ -29,7 +29,7 @@
 
 - name: Install gui aur packages
   yay:
-    name: "{{ item }}"
+    name: "{{ gui_aur_loop }}"
   with_items: "{{ gui_aur }}"
   loop_control:
     loop_var: gui_aur_loop

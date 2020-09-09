@@ -63,7 +63,7 @@
 
 - name: Copy Binaries
   copy:
-    src: /tmp/ansible-prometheus_nodeexporter-instalatio n/prometheus-{{ PROM_RELEASE }}.linux-amd64/prometheus-{{ PROM_RELEASE }}.linux-amd64/{{ prom_bin }}
+    src: /tmp/ansible-prometheus_nodeexporter-instalation/prometheus-{{ PROM_RELEASE }}.linux-amd64/prometheus-{{ PROM_RELEASE }}.linux-amd64/{{ prom_bin }}
     dest: /usr/local/bin/{{ prom_bin }}
     mode: '0755'
     remote_src: yes

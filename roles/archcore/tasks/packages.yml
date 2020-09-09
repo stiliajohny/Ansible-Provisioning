@@ -35,7 +35,7 @@
   when: core_goodies is defined
   become: true
 
-- name: Install {{ item }}
+- name: Install {{ core_aur_loop }}
   aur:
     name: "{{ core_aur_loop }}"
     user: "{{ user.name }}"

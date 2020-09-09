@@ -1,5 +1,5 @@
 - name: Run install tasks for ssh and sshfs
-  include_tasks: "{{ item }}"
+  include_tasks: "{{ loop_main_ssh }}"
   with_first_found:
     - "{{ ansible_distribution_release | lower }}.yml"
     - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
@@ -7,6 +7,8 @@
     - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
     - "{{ ansible_distribution | lower }}.yml"
     - "{{ ansible_os_family | lower }}.yml"
+  loop_control:
+    loop_var: loop_main_ssh
 
 - name: Copy ssh banner banner
   copy:
@@ -16,12 +18,14 @@
 - name: Disable DNS check
   replace:
     path: /etc/ssh/sshd_config
-    regexp: '{{ item.regexp }}'
-    replace: '{{ item.replace }}'
+    regexp: '{{ loop_dns_disable.regexp }}'
+    replace: '{{ loop_dns_disable.replace }}'
   with_items:
     - {regexp: '^#UseDNS no$', replace: 'UseDNS no'}
     - {regexp: '^#PrintLastLog yes$', replace: 'PrintLastLog yes'}
     - {regexp: '^#Banner none$', replace: 'Banner /etc/ssh_banner'}
+  loop_control:
+    loop_var: loop_dns_disable
 
 - name: Enable and start SSH service
   systemd:
