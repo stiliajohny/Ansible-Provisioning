@@ -1,4 +1,10 @@
-- name: Install Firefox
+---
+- name: Install terminator
   pacman:
     name: terminator
+    state: present
+
+- name: Install alacritty
+  pacman:
+    name: alacritty
     state: present

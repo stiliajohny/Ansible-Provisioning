@@ -60,8 +60,6 @@ core_utils:
   - bat
   - bc
   - bind-tools
-  - terminator
-  - alacritty
   - nautilus
   - binutils
   - colordiff
