@@ -6,3 +6,5 @@
   with_items: "{{ docker_images }}"
   loop_control:
     loop_var: loop_docker_image_pull
+  ignore_errors: true
+

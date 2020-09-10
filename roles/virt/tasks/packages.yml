@@ -38,6 +38,12 @@
     name: kubectl
     state: present
 
+- name: Install helm
+  pacman:
+    name: helm
+    state: present
+
+
 - name: Install minikube
   pacman:
     name: minikube
