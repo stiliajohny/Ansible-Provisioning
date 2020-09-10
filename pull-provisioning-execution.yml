@@ -34,7 +34,7 @@
     - {role: git, tags: [git]}
     - {role: vscode, tags: [vscode]}
     - {role: firefox, tags: [firefox]}
-    - {role: terminator, tags: [terminator]}
+    - {role: tty_emulators, tags: [tty_emulators]}
     - {role: trivy, tags: [trivy]}
     - {role: aws, tags: [aws]}
     - {role: hashicorp, tags: [hashicorp]}

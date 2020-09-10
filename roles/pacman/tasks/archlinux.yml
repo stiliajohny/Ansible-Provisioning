@@ -2,7 +2,7 @@
   replace:
     path: /etc/pacman.conf
     regexp: '{{ loop_pacman_config.regexp }}'
-    replace: '{{ iloop_pacman_config.replace }}'
+    replace: '{{ loop_pacman_config.replace }}'
   with_items:
     - { regexp: '^#Color$', replace: 'Color' }
     - { regexp: '^#VerbosePkgLists$', replace: 'VerbosePkgLists' }
