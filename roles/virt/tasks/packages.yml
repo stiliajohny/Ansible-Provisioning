@@ -32,3 +32,13 @@
     append: no
     groups: libvirt
   become: true
+
+- name: Install kubectl
+  pacman:
+    name: kubectl
+    state: present
+
+- name: Install minikube
+  pacman:
+    name: minikube
+    state: present

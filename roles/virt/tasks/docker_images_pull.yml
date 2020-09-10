@@ -1,0 +1,8 @@
+---
+- name: pull an image
+  docker_image:
+    name: "{{ loop_docker_image_pull }}"
+    source: pull
+  with_items: "{{ docker_images }}"
+  loop_control:
+    loop_var: loop_docker_image_pull

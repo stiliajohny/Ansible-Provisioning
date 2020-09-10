@@ -1,0 +1,16 @@
+docker_images:
+  - elasticsearch:7.9.1
+  - kibana:7.9.1
+  - ansible/awx
+  - python:3.9.0rc1-buster
+  - goland:1.15.2-buster
+  - bash:5.0.18
+  - kalilinux/kali-rolling
+  - kalilinux/kali
+  - ubunt:18.04
+  - centos:centos7
+  - centos:centos8
+  - amazonlinux:2.0.20200722.0
+  - fedora:31
+  - aquasec/trivy
+  - aquasec/kube-hunter
