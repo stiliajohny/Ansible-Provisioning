@@ -14,3 +14,7 @@ docker_images:
   - fedora:31
   - aquasec/trivy
   - aquasec/kube-hunter
+  - mariadb
+  - mysql
+  - busybox
+  - alpine
