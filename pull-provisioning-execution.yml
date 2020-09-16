@@ -9,6 +9,7 @@
     - {role: locale, tags: ['locale']}
     - {role: time, tags: ['time']}
     - {role: ssh, tags: ['ssh']}
+    - {role: dell_acpi, tags: ['dell_acpi']}
     - {role: yay_install, tags: ['yay_install']}
     - {role: reflector, tags: ['reflector']}
     - {role: pacman, tags: ['pacman']}
