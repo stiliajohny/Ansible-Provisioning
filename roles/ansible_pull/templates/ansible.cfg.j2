@@ -14,7 +14,7 @@ fact_caching = jsonfile
 fact_caching_connection = /tmp/.ansible_fact_cache
 inject_facts_as_vars = True
 log_path = /var/log/ansible.log
-ansible_managed = Ansible managed: {file} modified on %Y-%m-%d %H:%M:%S by {uid} on {host}
+ansible_managed = "Ansible managed: {file} modified on %Y-%m-%d %H:%M:%S by {uid} on {host}"
 nocows = 1
 
 
@@ -23,7 +23,7 @@ ssh_args = -o ControlMaster=auto -o ControlPersist=60s
 pipelining = true
 
 
-[callback_slack]
+[callback_slack_failure]
 SLACK_CHANNEL = #ansible
 username = Ansible
 SLACK_WEBHOOK_UR = "https://hooks.slack.com/services/{{ slack.token }}"
