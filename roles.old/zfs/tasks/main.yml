@@ -1,0 +1,40 @@
+- name: Add ZFS repository key
+  command: '{{ item }} --keyserver hkp://pgp.mit.edu 5E1ABF240EE7A126'
+  with_items:
+    - pacman-key --recv-keys
+    - pacman-key --lsign-key
+
+- name: Add ZFS repository
+  blockinfile:
+    path: /etc/pacman.conf
+    marker: '# {mark} Ansible-managed block: Add ZFS repository'
+    block: |
+      [archzfs]
+      Server = http://archzfs.com/$repo/x86_64
+  notify: Update pacman cache
+
+- meta: flush_handlers
+
+- name: Install zfs-linux
+  import_tasks: zfs_linux.yml
+  when: zfs.zfs_linux_git is sameas False
+
+- name: Install zfs-linux-git
+  import_tasks: zfs_linux_git.yml
+  when: zfs.zfs_linux_git is sameas True
+
+- meta: flush_handlers
+
+- name: Enable and start ZFS services
+  systemd:
+    name: '{{ item }}'
+    enabled: True
+    state: started
+  with_items:
+    - zfs-import-cache.service
+    - zfs-import.target
+    - zfs-mount.service
+    - zfs-share.service
+    - zfs-zed.service
+    - zfs.target
+

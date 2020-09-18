@@ -1,0 +1,6 @@
+---
+- name: Install media core packages
+  pacman: name={{ media_core }} state=present
+
+- name: Install media gui packages
+  pacman: name={{ media_gui }} state=present

@@ -1,0 +1,10 @@
+---
+- name: Install pim packages
+  pacman: name={{ pim }} state=present
+
+- name: Install pim aur packages
+  shell: yay --noconfirm -S {{ item }}
+  with_items: "{{ pim_aur }}"
+  when: core_aur is defined
+  become: yes
+  become_user: "{{ user.name }}"

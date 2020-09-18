@@ -1,0 +1,14 @@
+---
+- name: Remove vim to install gvim
+  pacman: name=vim state=absent
+  tags:
+    - packages
+    - tools
+    - gui
+
+- name: Install tools packages
+  pacman: name={{ tools }} state=present
+  tags:
+    - packages
+    - tools
+    - gui

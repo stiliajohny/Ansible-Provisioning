@@ -1,0 +1,9 @@
+- name: Install kitty
+  pacman:
+    name: kitty-git
+
+- name: Install ImageMagick (optional dependency for image rendering)
+  pacman:
+    name: imagemagick
+    state: present
+

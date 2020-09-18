@@ -1,0 +1,51 @@
+---
+- name: Install gui core packages
+  pacman: name={{ gui_core }} state=present force=yes
+  become: yes
+  tags:
+    - packages
+    - gui
+    - gui_core
+
+- name: Install gui video drivers
+  pacman: name={{ gui_video_drivers }} state=present force=yes
+  tags:
+    - packages
+    - gui
+    - gui_video_drivers
+
+- name: Install gui de/wm packages
+  pacman: name={{ gui_ui }} state=present force=yes
+  tags:
+    - packages
+    - gui
+    - gui_ui
+
+- name: Install gui utility packages
+  pacman: name={{ gui_utility }} state=present force=yes
+  tags:
+    - packages
+    - gui
+    - gui_utility
+
+- name: Install gui themes packages
+  pacman: name={{ gui_themes }} state=present force=yes
+  tags:
+    - packages
+    - gui
+    - gui_themes
+
+
+- name: Install gui aur packages
+  aur-adv:
+    name: "{{ item }}"
+    use: makepkg
+  with_items: "{{ gui_aur }}"
+  become: yes
+  become_user: aur_builder
+  when: gui_aur is defined
+  tags:
+    - packages
+    - gui
+    - gui_aur
+    - aur

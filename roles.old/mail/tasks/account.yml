@@ -1,0 +1,9 @@
+---
+- name: Offlineimap configuration
+  template: src=offlineimaprc.j2 dest=/home/{{ user.name }}/.offlineimaprc owner={{ user.name }} group={{ user.name }} mode=0600
+
+- name: Notmuch configuration
+  template: src=notmuch_config.j2 dest=/home/{{ user.name }}/.notmuch-config owner={{ user.name }} group={{ user.name }} mode=0600
+
+- name: Msmtprc configuration
+  template: src=msmtprc.j2 dest=/home/{{ user.name }}/.msmtprc owner={{ user.name }} group={{ user.name }} mode=0600

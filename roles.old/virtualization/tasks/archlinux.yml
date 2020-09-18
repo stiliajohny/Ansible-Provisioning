@@ -1,0 +1,73 @@
+---
+- name: Install virtualisation packages
+  aur-adv:
+    name: "{{ item }}"
+    use: yay
+  with_items:
+      - libvirt
+      - bridge-utils
+      - dmidecode
+      - dnsmasq
+      - qemu
+      - virt-install
+      - ovmf
+      - dmg2img
+      - libguestfs
+  ignore_errors: True
+  become: True
+  become_user: ansible
+  tags: makepkgs-test
+
+
+- name: Configure libvirt and QEMU/KVM
+  import_tasks: configure.yml
+
+- meta: flush_handlers
+
+- name: Enable and start libvirt services
+  systemd:
+    name: '{{ item }}'
+    enabled: True
+    state: started
+  with_items:
+    - libvirtd.service
+    - libvirt-guests.service
+
+- name: Install VirtualBox and dependencies
+  pacman:
+    name:
+      - net-tools
+      - virtualbox
+      - virtualbox-guest-iso
+      - virtualbox-host-dkms
+    state: present
+  tags:
+    - vbox
+
+- name: Create user group
+  group:
+    name: vboxusers
+    state: present
+  tags:
+    - user
+    - vbox
+
+- name: Add the user to vboxusers group
+  user:
+    name: '{{ user.name }}'
+    groups: vboxusers
+    append: yes
+  tags:
+    - user
+    - vbox
+
+- name: Install Docker
+  pacman:
+    name: docker
+    state: present
+
+- name: Enable and start Docker service
+  systemd:
+    name: docker.service
+    enabled: True
+    state: started

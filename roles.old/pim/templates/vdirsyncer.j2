@@ -1,0 +1,18 @@
+[general]
+status_path = "~/.vdirsyncer/status/"
+
+[pair my_calendar]
+a = "local"
+b = "remote"
+collections = ["from a", "from b"]
+
+[storage remote]
+type = "caldav"
+url = "{{ pim_account.url }}
+username.fetch = ["command", "~/bin/account_credentials.py", "get_user", "{{ pim_account.name }}"] 
+password.fetch = ["command", "~/bin/account_credentials.py", "get_pass", "{{ pim_account.name }}"] 
+
+[storage local]
+type = "filesystem"
+path = "~/cal"
+fileext = ".ics"

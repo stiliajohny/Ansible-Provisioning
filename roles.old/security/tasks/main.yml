@@ -1,0 +1,247 @@
+---
+
+- name: Push ipv4 firewall config
+  template: src=iptables.rules.j2 dest=/etc/iptables/iptables.rules
+  notify:
+    - restart iptables
+
+- name: Enable and start iptables
+  service: name=iptables.service enabled=yes state=started
+
+- name: Push ipv6 firewall config
+  template: src=ip6tables.rules.j2 dest=/etc/iptables/ip6tables.rules
+  notify:
+    - restart ip6tables
+
+- name: Enable and start ip6tables
+  service: name=ip6tables.service enabled=yes state=started
+
+- name: Install linux-hardened
+  pacman:
+    name:
+      - linux-hardened
+      - linux-hardened-headers
+    state: present
+  notify:
+    - rebuild grub
+
+- name: Install OpenSSH and sshfs
+  pacman:
+    name:
+      - openssh
+      - sshfs
+    state: present
+
+- name: Enable and start SSH socket
+  systemd:
+    name: sshd.socket
+    enabled: True
+    state: started
+
+- name: Install sysstat
+  pacman:
+    name: sysstat
+    state: present
+
+- name: Enable unprivileged containers for non-root users
+  copy:
+    src: 99-userns.conf
+    dest: /etc/sysctl.d/99-userns.conf
+  notify:
+    - reload sysctl
+  when: hardened is defined and hardened.enable_namespaces
+
+- name: Enable sudo access for wheel group
+  replace:
+    path: /etc/sudoers
+    regexp: '^#\s*%wheel\s+ALL=\(ALL\)\s+ALL'
+    replace: '%wheel ALL=(ALL) ALL'
+
+- name: Install firejail
+  pacman:
+    name: firejail
+    state: present
+
+- name: Install firewarden
+  aur:
+    name: firewarden
+    user: "{{ user.name }}"
+  tags:
+    - aur
+
+- name: Install firejail profile update script
+  copy:
+    src: profile-activate.sh
+    dest: /usr/local/bin/profile-activate
+    mode: 0755
+
+- name: Create firejail profile directory
+  file:
+    path: /usr/local/etc/firejail
+    state: directory
+
+- name: Verify firejail globals file exists
+  file:
+    path: /etc/firejail/globals.local
+    state: touch
+
+- name: Add blacklist to globals
+  lineinfile:
+    dest: /etc/firejail/globals.local
+    state: present
+    line: "blacklist {{ item }}"
+  with_items: "{{ firejail.blacklist }}"
+
+- name: Push ipv4 firewall config
+  template: src=iptables.rules.j2 dest=/etc/iptables/iptables.rules
+  notify:
+    - restart iptables
+
+- name: Enable and start iptables
+  service: name=iptables.service enabled=yes state=started
+
+- name: Push ipv6 firewall config
+  template: src=ip6tables.rules.j2 dest=/etc/iptables/ip6tables.rules
+  notify:
+    - restart ip6tables
+
+- name: Enable and start ip6tables
+  service: name=ip6tables.service enabled=yes state=started
+
+- name: Install macchiato
+  aur: name=macchiato-git user={{ user.name }}
+  tags:
+    - aur
+
+- name: Configure interfaces for macchiato
+  copy: src=macchiato_default.sh dest=/etc/macchiato.d/{{ item }}.sh
+  with_items: "{{ ansible_interfaces }}"
+
+- name: Enable macchiato
+  service: name=macchiato.service enabled=yes
+  when: network.spoof_mac == True
+  notify:
+    - start macchiato
+
+- name: Disable and stop macchiato
+  service: name=macchiato.service enabled=no state=stopped
+  when: network.spoof_mac == False
+
+
+
+- name: Install glances
+  pacman:
+    name: glances
+    state: present
+
+- name: Install htop
+  pacman:
+    name: htop
+    state: present
+
+- name: Install lsof
+  pacman:
+    name: lsof
+    state: present
+
+- name: Install strace
+  pacman:
+    name: strace
+    state: present
+
+- name: Install smartmontools
+  pacman:
+    name: smartmontools
+    state: present
+
+- name: Install taskwarrior
+  pacman: name=task state=present
+
+- name: Install timewarrior
+  pacman: name=timew state=present
+  notify:
+    - refresh holidays
+
+- name: Install taskopen
+  aur: name=taskopen user={{ user.name }}
+  tags:
+    - aur
+- name: Install taskwarrior
+  pacman: name=task state=present
+
+- name: Install timewarrior
+  pacman: name=timew state=present
+  notify:
+    - refresh holidays
+
+- name: Install taskopen
+  aur: name=taskopen user={{ user.name }}
+  tags:
+    - aur
+
+- name: Install Tor
+  pacman:
+    name:
+      - tor
+      - torsocks
+    state: present
+
+- name: Set Tor to run as tor
+  lineinfile: dest=/etc/tor/torrc
+              regexp=^User
+              state=present
+              line="User tor"
+
+- name: Create Tor systemd unit file directory
+  file: path=/etc/systemd/system/tor.service.d state=directory
+  tags:
+    - firejail
+
+- name: Push Tor socket unit file
+  copy: src=tor-service-override.conf dest=/etc/systemd/system/tor.service.d/override.conf
+  notify:
+    - Reload systemd config
+  tags:
+    - firejail
+
+- name: Verify Tor firejail local profile exists
+  file: path=/etc/firejail/tor.local state=touch
+  tags:
+    - firejail
+
+- name: Allow Tor firejail /dev access
+  lineinfile:
+    dest: /etc/firejail/tor.local
+    line: "ignore private-dev"
+  tags:
+    - firejail
+
+- include_tasks: roles/nmtrust/tasks/unit.yml
+  vars:
+      unit: tor.service
+      run_on: "{{ tor.run_on }}"
+
+- name: Install magic-wormhole
+  aur:
+    name:
+      - python-hkdf
+      - python-spake2
+      - python-txtorcon
+      - magic-wormhole
+    user: "{{ user.name }}"
+  tags:
+    - aur
+
+- name: Jail magic-wormhole
+  file: src=/usr/bin/firejail
+        dest=/usr/local/bin/wormhole
+        state=link
+  tags:
+    - firejail
+
+- name: Push magic-wormhole firejail profile
+  copy: src=firejail/wormhole.profile dest=/usr/local/etc/firejail/wormhole.profile
+  notify:
+    - activate firejail profiles
+  tags:
+    - firejail

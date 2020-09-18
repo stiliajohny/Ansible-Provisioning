@@ -1,0 +1,15 @@
+- name: Install Postfix
+  pacman:
+    name: postfix
+    state: present
+
+- name: Configure Postfix
+  import_tasks: configure.yml
+
+- meta: flush_handlers
+
+- name: Enable and start Postfix service
+  systemd:
+    name: postfix.service
+    enabled: True
+    state: started

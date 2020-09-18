@@ -1,0 +1,13 @@
+- name: Install CUPS and associated utilities
+  pacman:
+    name:
+      - cups
+      - cups-pdf
+      - ghostscript
+      - gsfonts
+
+- name: Enable and start CUPS service
+  systemd:
+    name: org.cups.cupsd.service
+    enabled: True
+    state: started

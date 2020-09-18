@@ -1,0 +1,10 @@
+---
+- name: Install comm packages from AUR
+  aur-adv:
+    name: "{{ item }}"
+    use: yay
+  with_items: "{{ comm }}"
+  ignore_errors: True
+  become: yes
+  become_user: ansible
+  tags: x-1

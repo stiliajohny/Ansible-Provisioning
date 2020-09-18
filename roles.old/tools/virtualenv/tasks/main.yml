@@ -1,0 +1,21 @@
+---
+- name: Install virtualenv and virtualenvwrapper
+  pacman: name=python-virtualenvwrapper state=present
+
+- name: Create system environment group
+  group:
+    name: env
+    state: present
+  tags:
+    - user
+
+- name: Add user to system environment group
+  user:
+    name: '{{ user.name }}'
+    groups: env
+    append: yes
+  tags:
+    - user
+
+- name: Create system environment dir
+  file: path=/usr/local/env state=directory group=env mode=2775

@@ -1,0 +1,4 @@
+---
+- name: Install python dev packages
+  pacman: name={{ dev.python }} state=present
+  ignore_errors: True

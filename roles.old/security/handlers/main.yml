@@ -1,0 +1,20 @@
+---
+- name: activate firejail profiles
+  command: /usr/local/bin/profile-activate
+  become: yes
+  become_user: "{{ user.name }}"
+
+- name: restart iptables
+  service: name=iptables.service state=restarted
+
+- name: restart ip6tables
+  service: name=ip6tables.service state=restarted
+
+- name: start macchiato
+  service: name=macchiato.service state=started
+  when: network.spoof_mac == True
+
+- name: refresh holidays
+  command: /usr/share/doc/timew/doc/holidays/refresh
+  args:
+      chdir: /usr/share/doc/timew/doc/holidays

@@ -1,0 +1,12 @@
+---
+- name: Enable offlineimap service
+  systemd: daemon_reload=yes scope=user name=offlineimap enabled=yes
+  become: yes
+  become_method: machinectl
+  become_user: "{{ user.name }}"
+
+- name: Enable trash autoclean timer
+  systemd: daemon_reload=yes scope=user name=trash-maildir-clean.timer enabled=yes
+  become: yes
+  become_method: machinectl
+  become_user: "{{ user.name }}"

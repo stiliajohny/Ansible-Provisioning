@@ -1,0 +1,15 @@
+---
+- name: Install mail packages
+  pacman: name={{ mail }} state=present
+
+- name: Install mail aur packages
+  shell: yay --noconfirm -S {{ item }}
+  with_items: "{{ mail_aur}}"
+  when: core_aur is defined
+  environment:
+    PATH: "/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+  become: yes
+  become_user: "{{ user.name }}"
+
+- name: Install mutt_bgrun script
+  copy: src=mutt_bgrun dest=/home/{{ user.name }}/bin/mutt_bgrun
