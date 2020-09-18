@@ -3,7 +3,7 @@
 
 [defaults]
 
-callback_whitelist = slack, timer
+callback_whitelist = slack_false, timer
 # disable host key checking
 host_key_checking = False
 deprecation_warnings = False
@@ -24,6 +24,6 @@ pipelining = true
 
 
 [callback_slack]
-channel = #ansible
+SLACK_CHANNEL = #ansible
 username = Ansible
-webhook_url = "https://hooks.slack.com/services/{{ slack.token }}"
+SLACK_WEBHOOK_UR = "https://hooks.slack.com/services/{{ slack.token }}"
