@@ -6,5 +6,3 @@
     state: present
   ignore_errors: True
 
-- include: user.yml
-- include: home.yml

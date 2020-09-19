@@ -1,2 +1,6 @@
 ---
 pacman_include: "/etc/pacman.d/mirrorlist"
+pacman:
+  repos:
+    # For brother-hll2340dw printer drivers
+    - multilib

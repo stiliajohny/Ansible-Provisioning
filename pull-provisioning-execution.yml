@@ -2,7 +2,7 @@
 - hosts: pull_hosts
   become: true
   roles:
-    - {role: fail_role, tags: ['fail_role']}
+    #- {role: fail_role, tags: ['fail_role']}
     - {role: os_info, tags: ['os_info']}
     - {role: ansible_pull, tags: ['ansible_pull']}
     - {role: aur_dir, tags: ['aur_dir']}

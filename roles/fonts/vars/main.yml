@@ -1,0 +1,30 @@
+---
+
+base_fonts:
+    - adobe-source-code-pro-fonts
+    - ttf-nerd-fonts-symbols
+    - cantarell-fonts
+    - gsfonts
+    - noto-fonts
+    - terminus-font
+    - tex-gyre-fonts
+    - ttf-caladea
+    - ttf-carlito
+    - ttf-dejavu
+    - ttf-droid
+    - ttf-fira-mono
+    - ttf-ibm-plex
+    - ttf-inconsolata
+    - ttf-liberation
+    - ttf-opensans
+    - ttf-ubuntu-font-family
+
+aur_fonts:
+    - ttf-cooper-hewitt
+    - ttf-courier-prime
+    - ttf-merriweather
+    - ttf-merriweather-sans
+    - ttf-oswald
+    - ttf-quintessential
+    - ttf-signika
+    - otf-symbola

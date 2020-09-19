@@ -8,7 +8,7 @@
   pacman:
     name: consul
     state: present
-
+#TODO install terraform ( last 3 versions ) with tfenv
 #- name: Install terraform
 #  pacman:
 #    name: terraform

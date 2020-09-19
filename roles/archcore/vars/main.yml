@@ -1,0 +1,94 @@
+---
+
+core_utils:
+  - imagemagick
+  - arch-wiki-docs
+  - arch-wiki-lite
+  - base-devel
+  - base-devel
+  - bash
+  - bash-completion
+  - bat
+  - bc
+  - bind-tools
+  - nautilus
+  - binutils
+  - colordiff
+  - coreutils
+  - cpulimit
+  - dateutils
+  - dmidecode
+  - exa
+  - fwupd
+  - fzf
+  - git
+  - jq
+  - less
+  - libffi
+  - linux-api-headers
+  - linux-firmware
+  - linux-headers
+  - make
+  - man-db
+  - man-pages
+  - minicom
+  - mlocate
+  - moreutils
+  - pacman-contrib
+  - parallel
+  - pbzip2
+  - pkgfile
+  - pv
+  - pwgen
+  - ranger
+  - rsync
+  - ruby
+  - screen
+  - sshpass
+  - sudo
+  - termdown
+  - the_silver_searcher
+  - tig
+  - tmux
+  - vifm
+  - vim
+  - zsh
+
+core_debugutils:
+    - strace
+    - cmake
+    - make
+    - lsof
+    - htop
+    - glances
+    - sysstat
+    - ncdu
+    - hyperfine
+
+core_netutils:
+    - net-tools
+    - curl
+    - wget
+    - surfraw
+    - w3m
+    - nmap
+    - gnu-netcat
+    - whois
+    - mtr
+    - sslscan
+    - httpie
+    - prettyping
+    - tcpdump
+    - nethogs
+    - newsboat
+    - sshpass
+    - dnsutils
+
+core_goodies:
+    - neofetch
+    - fortune-mod
+    - cowsay
+
+core_aur:
+    - byobu
+    - diff-so-fancy

@@ -4,6 +4,7 @@
     name: cli53
     user: "{{ user.name }}"
 
+#TODO fix the one below
 #- name: Install aws-cli
 #  pacman:
 #    name: aws-cli

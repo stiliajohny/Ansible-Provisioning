@@ -1,0 +1,4 @@
+---
+dotfiles:
+    url: https://github.com/stiliajohny/dotfiles.git
+    destination: .cfg

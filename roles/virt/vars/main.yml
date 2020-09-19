@@ -1,3 +1,14 @@
+---
+
+virt_cli:
+  - docker
+
+virt_gui:
+  - virtualbox
+  - vagrant
+  - virt-manager
+
+
 docker_images:
   - elasticsearch:7.9.1
   - kibana:7.9.1
@@ -14,7 +25,4 @@ docker_images:
   - fedora:31
   - aquasec/trivy
   - aquasec/kube-hunter
-  - mariadb
-  - mysql
-  - busybox
-  - alpine
+

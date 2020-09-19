@@ -1,5 +1,4 @@
 cron_intervals: 10 # in minutes
-project_token:
 project_link: "github.com/stiliajohny/Ansible-Provisioning.git"
 inventory: "pull-provisioning-execution"
 playbook: "pull-provisioning-execution.yml"

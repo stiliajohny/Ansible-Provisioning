@@ -16,7 +16,6 @@
   lineinfile: dest=/etc/makepkg.conf regexp="^COMPRESSXZ" line="COMPRESSXZ=(xz -c -z - --threads=0)"
 
 - include: packages.yml
-#- include: systemd.yml
 
 - name: Copy nobeep configuration
   copy: src=nobeep.conf dest=/etc/modprobe.d/nobeep.conf mode=0440

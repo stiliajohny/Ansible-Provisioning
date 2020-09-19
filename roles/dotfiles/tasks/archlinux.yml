@@ -78,4 +78,4 @@
   debug:
     msg: "{{ vim_plug_output.stdout.split('\n') }}"
   ignore_errors: True
-
+#TODO split vim and ZSH and dotfiles into seperate tasks

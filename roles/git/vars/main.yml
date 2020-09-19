@@ -15,16 +15,6 @@ github_repo_name:
   - gunzy83/ansible-roles-archlinux
   - haikarainen/light
   - hak5darren/usb-rubber-ducky
-  - hak5/plunderbug-scripts
-  - hak5/shark-files
-  - hak5/packetsquirrel-payloads
-  - hak5/wifipineapple-modules
-  - hak5/lanturtle-modules
-  - hak5/pineapple-packages-community
-  - hak5/keycroc-payloads
-  - hak5/bashbunny-payloads
-  - hak5/signalowl-payloads
-  - hak5/bashbunny-wiki
   - jbreed/nessus
   - jmcvaughn/ansible-arch
   - kbeflo/evilportals
@@ -62,7 +52,6 @@ github_repo_name:
   - vikwin/pcapfex
   - vim/vim
   - xinyuan-lilygo/ttgo_twatch_library
-  - junegunn/fzf
 
 gitlab_repo_name:
   - faithfulst3ward/cloudc2docker

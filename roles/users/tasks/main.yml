@@ -10,3 +10,6 @@
     - "{{ ansible_os_family | lower }}.yml"
   loop_control:
     loop_var: loop_main_users
+
+- include: user.yml
+- include: home.yml

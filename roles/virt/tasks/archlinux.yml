@@ -1,4 +1,4 @@
 ---
 - include: packages.yml
-#- include: configure.yml
+#- include: configure.yml #TODO why this is disables
 - include: docker_images_pull.yml

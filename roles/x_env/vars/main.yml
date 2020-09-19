@@ -1,0 +1,47 @@
+---
+
+gui_core:
+    - xorg-server
+    - xorg-xinit
+    - xorg-xmodmap
+    - xorg-xev
+    - xorg-xrandr
+    - xcape
+    - xorg-xprop
+
+gui_video_drivers:
+    - xf86-video-vesa
+
+gui_ui:
+    - vicious
+    - rxvt-unicode
+    - rxvt-unicode-terminfo
+    - i3-gaps
+    - i3status
+    - lightdm
+    - lightdm-gtk-greeter
+
+gui_utility:
+    - volumeicon
+    - qt5ct
+    - lxappearance
+    - xfce4-power-manager
+    - xfce4-screenshooter
+    - redshift
+    - arandr
+    - unclutter
+    - xautolock
+    - gnome-keyring
+    - seahorse
+    - feh
+    - numlockx
+    - autorandr
+
+gui_themes:
+    - elementary-icon-theme
+    - gnome-themes-extra
+
+gui_aur:
+    - ttf-nerd-fonts-hack-complete-git
+    - rofi-greenclip
+    - i3exit

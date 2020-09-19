@@ -43,7 +43,6 @@
     name: helm
     state: present
 
-
 - name: Install minikube
   pacman:
     name: minikube

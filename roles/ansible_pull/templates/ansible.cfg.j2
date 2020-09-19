@@ -3,7 +3,7 @@
 
 [defaults]
 
-callback_whitelist = slack_false, timer
+callback_whitelist = slack, timer
 # disable host key checking
 host_key_checking = False
 deprecation_warnings = False
@@ -14,7 +14,7 @@ fact_caching = jsonfile
 fact_caching_connection = /tmp/.ansible_fact_cache
 inject_facts_as_vars = True
 log_path = /var/log/ansible.log
-ansible_managed = "Ansible managed: {file} modified on %Y-%m-%d %H:%M:%S by {uid} on {host}"
+ansible_managed = Ansible managed: {file} modified on %Y-%m-%d %H:%M:%S by {uid} on {host}
 nocows = 1
 
 
@@ -23,7 +23,7 @@ ssh_args = -o ControlMaster=auto -o ControlPersist=60s
 pipelining = true
 
 
-[callback_slack_failure]
-SLACK_CHANNEL = #ansible
+[callback_slack]
+channel = #ansible
 username = Ansible
-SLACK_WEBHOOK_UR = "https://hooks.slack.com/services/{{ slack.token }}"
+webhook_url = "https://hooks.slack.com/services/{{ slack.token }}"
