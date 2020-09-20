@@ -1,13 +1,4 @@
 ---
-#- name: Repo User
-#  debug:
-#    msg: '{{ item.split("/")[0] | lower }}'
-#  with_items: "{{ repo }}"
-#
-#- name: Repo Name
-#  debug:
-#    msg: '{{ item.split("/")[1] | lower }}'
-#  with_items: "{{ repo }}"
 
 - name: Include vars of repos
   include_vars:
@@ -20,6 +11,7 @@
     clone: yes
     update: yes
     version: master
+    key_file: "/home/{{ user.name }}/.ssh/id_ed25519"
     accept_hostkey: true
     remote: origin
   with_items: "{{ github_repo_name }}"
@@ -35,6 +27,7 @@
     clone: yes
     update: yes
     version: master
+    key_file: "/home/{{ user.name }}/.ssh/id_ed25519"
     accept_hostkey: true
     remote: origin
   with_items: "{{ gitlab_repo_name }}"
