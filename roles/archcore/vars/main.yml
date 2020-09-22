@@ -1,58 +1,59 @@
 ---
 
 core_utils:
-  - imagemagick
-  - arch-wiki-docs
-  - arch-wiki-lite
-  - base-devel
-  - base-devel
-  - bash
-  - bash-completion
-  - bat
-  - bc
-  - bind-tools
-  - nautilus
-  - binutils
-  - colordiff
-  - coreutils
-  - cpulimit
-  - dateutils
-  - dmidecode
-  - exa
-  - fwupd
-  - fzf
-  - git
-  - jq
-  - less
-  - libffi
-  - linux-api-headers
-  - linux-firmware
-  - linux-headers
-  - make
-  - man-db
-  - man-pages
-  - minicom
-  - mlocate
-  - moreutils
-  - pacman-contrib
-  - parallel
-  - pbzip2
-  - pkgfile
-  - pv
-  - pwgen
-  - ranger
-  - rsync
-  - ruby
-  - screen
-  - sshpass
-  - sudo
-  - termdown
-  - the_silver_searcher
-  - tig
-  - tmux
-  - vifm
-  - vim
-  - zsh
+    - imagemagick
+    - arch-wiki-docs
+    - arch-wiki-lite
+    - base-devel
+    - base-devel
+    - bash
+    - bash-completion
+    - bat
+    - bc
+    - bind-tools
+    - nautilus
+    - binutils
+    - colordiff
+    - coreutils
+    - cpulimit
+    - dateutils
+    - dmidecode
+    - exa
+    - fwupd
+    - fzf
+    - git
+    - jq
+    - less
+    - libffi
+    - linux-api-headers
+    - linux-firmware
+    - linux-headers
+    - make
+    - man-db
+    - man-pages
+    - minicom
+    - mlocate
+    - moreutils
+    - pacman-contrib
+    - parallel
+    - pbzip2
+    - pkgfile
+    - pv
+    - pwgen
+    - ranger
+    - rsync
+    - ruby
+    - screen
+    - sshpass
+    - sudo
+    - termdown
+    - the_silver_searcher
+    - tig
+    - tmux
+    - vifm
+    - vim
+    - zsh
+    - lolcat
 
 core_debugutils:
     - strace
@@ -92,3 +93,4 @@ core_goodies:
 core_aur:
     - byobu
     - diff-so-fancy
+    - cli-visualizer-git
