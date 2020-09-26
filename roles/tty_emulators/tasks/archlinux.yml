@@ -8,3 +8,8 @@
   pacman:
     name: alacritty
     state: present
+
+- name: Install termite
+  pacman:
+    name: termite
+    state: present
