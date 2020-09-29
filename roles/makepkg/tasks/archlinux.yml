@@ -2,8 +2,11 @@
 # This is a temp task until the pacman module is updated to support groups
 - name: Ensure base-devel is installed
   pacman:
-    name: "{{ makepkg_base_devel }}"
+    name: "{{ base-devel_loop }}"
     state: present
+  with_items: "{{ makepkg_base_devel }}"
+  loop_control:
+    loop_var: base-devel_loop
 
 - name: Install modified makepkg.conf file
   template:
