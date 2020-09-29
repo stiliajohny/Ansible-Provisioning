@@ -18,7 +18,6 @@
   become: true
   become_user: root
 
-
 - name: Install logrotate
   pacman:
     name: logrotate
@@ -46,12 +45,12 @@
   become: true
   become_user: root
 
-- name: Install ansible with pip
+- name: Install ansible with pip #BUG Move to user pip
   pip:
     name: ansible
-  become: true
+    extra_args: "--user"
 
-- name: Install prettytable with pip
+- name: Install prettytable with pip #BUG Move to user pip
   pip:
     name: prettytable
-  become: true
+    extra_args: "--user"

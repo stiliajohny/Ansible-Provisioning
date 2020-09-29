@@ -53,6 +53,7 @@ github_repo_name:
   - vim/vim
   - xinyuan-lilygo/ttgo_twatch_library
   - Yucklys/polybar-nord-theme
+  - urielzo/animated-polybar-drop-down
 
 gitlab_repo_name:
   - faithfulst3ward/cloudc2docker
