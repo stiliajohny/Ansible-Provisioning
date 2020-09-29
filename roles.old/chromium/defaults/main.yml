@@ -1,4 +1,0 @@
-chromium:
-  install: True
-  # For DRM content playback (e.g. Netflix) in Chromium and qutebrowser
-  widevine: True

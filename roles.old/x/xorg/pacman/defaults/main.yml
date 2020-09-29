@@ -1,4 +1,0 @@
-pacman: None
-  # Optional but undefined by default. Usage example to enable multilib repo:
-  #repos:
-  #  - multilib
