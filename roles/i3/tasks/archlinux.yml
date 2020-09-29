@@ -15,8 +15,6 @@
     - i3-gaps
     - picom
     - feh
-    - jsoncpp
-    - wireless_tools
   loop_control:
     loop_var: i3_loop
 
