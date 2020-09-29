@@ -8,6 +8,7 @@
   file:
     path: '{{ ansible_env.HOME }}/aur'
     state: directory
+    mode: 500
 
 - name: Reset environment variables
   setup:

@@ -7,7 +7,8 @@
 - name: Install Gem- bundler
   gem:
     name: bundler
-    state: latest
+    state: present
+    version: "2.1.4"
   become: true
 
 - name: Install Gem- jekyll

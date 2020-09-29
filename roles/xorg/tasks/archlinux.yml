@@ -21,8 +21,10 @@
   template:
     src: 00-keyboard.conf
     dest: /etc/X11/xorg.conf.d/
+    mode: 0644
 
 - name: Copy pointer configuration file
   copy:
     src: 30-mouse.conf
     dest: /etc/X11/xorg.conf.d/
+    mode: 0644

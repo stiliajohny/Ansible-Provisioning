@@ -36,11 +36,13 @@
   file:
     path: /etc/pacman.d/hooks
     state: directory
+    mode: 0644
 
 - name: Add paccache hooks
   copy:
     src: '{{ loop_pachcache_hooks }}'
     dest: /etc/pacman.d/hooks/
+    mode: 0644
   with_items:
     - 99-paccache_remove.hook
     - 99-paccache_upgrade.hook
@@ -51,11 +53,13 @@
   copy:
     src: mirrorupgrade.hook
     dest: /etc/pacman.d/hooks/mirrorupgrade.hook
+    mode: 0644
 
 - name: Add export_pkg_list hook
   copy:
     src: export_pkg_list.hook
     dest: /etc/pacman.d/hooks/export_pkg_list.hook
+    mode: 0644
 
 - name: Pacman Update-Upgrade
   pacman:

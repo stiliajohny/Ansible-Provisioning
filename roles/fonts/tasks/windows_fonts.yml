@@ -2,12 +2,14 @@
   file:
     path: /usr/local/share/fonts/
     state: directory
+    mode: 0644
 
 - name: Symlink local fonts
   file:
     src: /usr/local/share/fonts/
     dest: /usr/share/fonts/local
     state: link
+    mode: 0644
 
 - name: Copy Windows fonts
   unarchive:

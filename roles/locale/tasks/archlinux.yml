@@ -9,6 +9,7 @@
     path: /etc/locale.conf
     create: True
     line: 'LANG={{ locale }}'
+    mode: 0644
 
 - name: Set virtual console keymap
   lineinfile:
@@ -16,6 +17,7 @@
     create: True
     line: 'KEYMAP={{ keymap }}'
     state: present
+    mode: 0644
   notify: Generate initramfs
 
 - name: Configure keymap "{{ keymap }}"

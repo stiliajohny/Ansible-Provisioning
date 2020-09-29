@@ -67,6 +67,7 @@
     line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
     create: yes
     validate: 'visudo -cf %s'
+    mode: 0600
 
 - name: Create a sudoers file for the ansible
   lineinfile:
@@ -74,3 +75,5 @@
     line: 'ansible ALL=(ALL) NOPASSWD: /usr/bin/pacman'
     create: yes
     validate: 'visudo -cf %s'
+    mode: 0644
+

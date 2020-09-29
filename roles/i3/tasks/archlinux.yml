@@ -1,9 +1,6 @@
 - name: Install i3 components from Arch repositories
   pacman:
     name:
-      # - i3lock
-      #- compton
-      # polybar
       - jsoncpp
       - wireless_tools
   become: true
@@ -16,8 +13,6 @@
   become_user: ansible
   with_items:
     - i3-gaps
-    # - polybar-git
-    # Single colour backgrounds
     - picom
     - feh
     - jsoncpp
@@ -28,7 +23,6 @@
 - name: Install screenshot utilities
   pacman:
     name:
-      # slop provides selection to maim
       - maim
       - slop
     state: present
@@ -38,6 +32,7 @@
   copy:
     src: suspend@.service
     dest: /etc/systemd/system/suspend@{{ user.name }}.service
+    mode: 0644
   become: true
 
 - name: Reload Systemd daemon and enable suspend@{{ user.name }}.service

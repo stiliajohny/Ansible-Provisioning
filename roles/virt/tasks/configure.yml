@@ -18,6 +18,7 @@
     create: True
     line: 'options kvm_intel nested=1'
     state: present
+    mode: 0644
   notify:
     - Generate initramfs
     - Reload kvm_intel module

@@ -22,6 +22,7 @@
     src: /tmp/ansible-prometheus_nodeexporter-instalation/node_exporter-{{ NODE_RELEASE }}.linux-amd64.tar.gz
     dest: /tmp/ansible-prometheus_nodeexporter-instalation/node_exporter-{{ NODE_RELEASE }}.linux-amd64
     remote_src: yes
+    mode: 0644
 
 - name: Copy Binaries
   copy:

@@ -1,39 +1,39 @@
 ---
-    - name: Ensure Reflector is installed
-      pacman:
-        name: reflector
-        state: present
-      notify:
-        - "Restart reflector service"
+- name: Ensure Reflector is installed
+  pacman:
+    name: reflector
+    state: present
+  notify:
+    - "Restart reflector service"
 
-    - name: Ensure the update service is installed
-      template:
-        src: "{{ reflector_service_name }}.j2"
-        dest: "{{ reflector_service_path }}/{{ reflector_service_name }}"
-        owner: root
-        group: root
-        mode: 0644
-      notify:
-        - "Reload systemd units"
+- name: Ensure the update service is installed
+  template:
+    src: "{{ reflector_service_name }}.j2"
+    dest: "{{ reflector_service_path }}/{{ reflector_service_name }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - "Reload systemd units"
 
-    - name: Ensure the update service is enabled
-      service:
-        name: "{{ reflector_service_name }}"
-        enabled: yes
+- name: Ensure the update service is enabled
+  service:
+    name: "{{ reflector_service_name }}"
+    enabled: yes
 
-    - name: Ensure the timer is installed
-      template:
-        src: "{{ reflector_timer_name }}.j2"
-        dest: "{{ reflector_service_path }}/{{ reflector_timer_name }}"
-        owner: root
-        group: root
-    #    mode: 0644
-      when: reflector_timer
-      notify:
-        - "Reload systemd units"
+- name: Ensure the timer is installed
+  template:
+    src: "{{ reflector_timer_name }}.j2"
+    dest: "{{ reflector_service_path }}/{{ reflector_timer_name }}"
+    owner: root
+    group: root
+    mode: 0644
+  when: reflector_timer
+  notify:
+    - "Reload systemd units"
 
-    - name: Ensure the timer is enabled
-      service:
-        name: "{{ reflector_timer_name }}"
-        enabled: yes
-      when: reflector_timer
+- name: Ensure the timer is enabled
+  service:
+    name: "{{ reflector_timer_name }}"
+    enabled: yes
+  when: reflector_timer
