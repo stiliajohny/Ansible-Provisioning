@@ -1,8 +1,13 @@
 ---
-- name: Instal ACPI and libsmbios
+- name: Instal libsmbios
   pacman:
-    name: libsmbios acpi
+    name: libsmbios
     state: present
   become: true
 
+- name: Instal ACPI
+  pacman:
+    name: acpi
+    state: present
+  become: true
 #TODO install i8kutils
