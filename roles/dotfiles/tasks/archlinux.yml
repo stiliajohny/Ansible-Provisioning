@@ -51,19 +51,21 @@
   become: yes
   become_user: "{{ user.name }}"
 
-- name: Install virtualenvwrapper for zsh plugin
+- name: Install virtualenvwrapper for zsh plugin #BUG Move to user pip
   pip:
     name: virtualenvwrapper
+    extra_args: "--user"
     state: present
 
-- name: Install thefuck for zsh plugin
+- name: Install thefuck for zsh plugin #BUG Move to user pip
   pip:
     name: thefuck
+    extra_args: "--user"
     state: present
 
 - name: Install zsh-auto-suggestion
   git:
-    repo: 'https://github.com/zsh-users/zsh-autosuggestions'
+    repo: "https://github.com/zsh-users/zsh-autosuggestions"
     dest: /home/{{ user.name }}/.config/oh-my-zsh/custom/plugins/zsh-autosuggestions
     version: origin/master
 
@@ -78,4 +80,4 @@
   debug:
     msg: "{{ vim_plug_output.stdout.split('\n') }}"
   ignore_errors: True
-#TODO split vim and ZSH and dotfiles into seperate tasks
+#TODO Split Vim & ZSH to seperate YML
