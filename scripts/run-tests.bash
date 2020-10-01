@@ -79,5 +79,5 @@ echo "Running ansible lint on *.yml on git root"
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' .
 ls *.yml |xargs -P10 -I{} ansible-lint {} --force-color -p -x 204,701,301,305,401,303
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' .
-find ./ -type f -name "*.yml" | xargs -P10 -I{} yamllint {} -c ./yamllint.yml
+find ./ -type f -name "*.yml" | xargs -P10 -I{} yamllint {} -c ./scripts/yamllint.yml
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' \#
