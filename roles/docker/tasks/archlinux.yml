@@ -1,8 +1,15 @@
+---
 - name: Install Docker
-  pacman:
-    name: docker docker-compose
-    state: present
-  become: true
+  yay:
+    name: "{{ docker_loop }}"
+  with_items:
+    - docker
+    - docker-compose
+  loop_control:
+    loop_var: docker_loop
+  become: yes
+  become_user: "{{ user.name }}"
+  ignore_errors: True
 
 - name: Enable and start Docker service
   systemd:

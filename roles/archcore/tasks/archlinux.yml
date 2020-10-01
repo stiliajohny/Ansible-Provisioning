@@ -3,7 +3,7 @@
   copy:
     src: pacman.conf
     dest: /etc/pacman.conf
-    mode: 0440
+    mode: 0644
 
 - name: Refresh pacman mirrors
   pacman:
@@ -16,7 +16,6 @@
 
 - name: Sort mirror by reflector
   shell: reflector --latest 50 --age 24 --sort rate --save /etc/pacman.d/mirrorlist
-
 
 - name: Use all cores when compressing packages
   lineinfile:

@@ -1,8 +1,15 @@
 ---
-- name: Install zsh and zsh-completions
+- name: Install zsh
   pacman:
-    name: zsh-completions zsh
+    name: zsh
   become: true
+
+- name: Install zsh-completions
+  yay:
+    name: "zsh-completions"
+  become: yes
+  become_user: "{{ user.name }}"
+  ignore_errors: True
 
 - name: Install yarn for Vim Plug
   pacman:

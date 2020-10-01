@@ -5,19 +5,6 @@
       - wireless_tools
   become: true
 
-- name: Install i3-gaps and such from AUR
-  aur-adv:
-    name: "{{ i3_loop }}"
-    use: makepkg
-  become: yes
-  become_user: ansible
-  with_items:
-    - i3-gaps
-    - picom
-    - feh
-  loop_control:
-    loop_var: i3_loop
-
 - name: Install screenshot utilities
   pacman:
     name:
@@ -38,3 +25,16 @@
     daemon_reload: yes
     enabled: yes
     name: suspend@{{ user.name }}.service
+
+- name: Install i3-gaps and such from AUR
+  yay:
+    name: "{{ i3_loop }}"
+  with_items:
+    - i3-gaps
+    - picom
+    - feh
+  loop_control:
+    loop_var: i3_loop
+  become: yes
+  become_user: "{{ user.name }}"
+  ignore_errors: True
