@@ -1,6 +1,6 @@
 ---
 - hosts: pull_hosts
-  become: yes
+  become: true
   roles:
     - os_info
     - ansible_pull
