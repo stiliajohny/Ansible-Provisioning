@@ -1,3 +1,5 @@
+---
+
 - name: Run install tasks for ssh and sshfs
   include_tasks: "{{ loop_main_ssh }}"
   with_first_found:
@@ -15,7 +17,7 @@
     src: ssh_banner
     dest: /etc/ssh_banner
     mode: 0600
-
+#TODO change all the below to be from a template
 - name: Disable DNS check
   replace:
     path: /etc/ssh/sshd_config
@@ -31,5 +33,5 @@
 - name: Enable and start SSH service
   systemd:
     name: sshd.service
-    enabled: True
+    enabled: true
     state: restarted
