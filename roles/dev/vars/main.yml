@@ -1,0 +1,14 @@
+---
+dev:
+  python:
+    - subversion
+    - ipython3
+    - ipython
+    - python-pip
+    - python3-pip
+    - python3-virtualenv
+    - python-virtualenv
+    - python-virtualenvwrapper
+    - pelican
+    - flake8
+    - jekyll

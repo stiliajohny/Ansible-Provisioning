@@ -1,0 +1,10 @@
+---
+
+- name: Install python dev packages
+  yay:
+    name: "{{ python_dev_loop }}"
+  with_items: "{{ dev.python }}"
+  loop_control:
+    loop_var: python_dev_loop
+  become: yes
+  ignore_errors: True
