@@ -16,6 +16,10 @@
     name: yarn
   become: true
 
+- name: Install nodejs
+  shell: "curl -sL install-node.now.sh | sh -s -- -y"
+  become: yes
+
 - name: Ignore .cfg folder
   shell: "echo '.cfg' >> /home/{{ user.name }}/.gitignore"
   become: yes
