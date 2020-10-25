@@ -1,25 +1,41 @@
+---
+
 github_repo_name:
   - aquasecurity/trivy
   - bluearduino20/email_spoofer
   - brannondorsey/wifi-cracking
   - camptocamp/terraboard
   - coderjojo/coderjojo
+  - concourse/concourse-docker
   - cur50r/sherlock
   - d3vl/l3mon
   - davatorium/rofi-themes
   - deviantony/docker-elk
   - ernesen/infra-ansible
-  - fboender/multi-git-status
+  - fboender/multi-status
   - feffi/ansible-arch-yay
   - greymd/tmux-xpanes
   - gunzy83/ansible-roles-archlinux
   - haikarainen/light
+  - hak5/bashbunny-payloads
+  - hak5/bashbunny-wiki
+  - hak5/keycroc-payloads
+  - hak5/lanturtle-modules
+  - hak5/packetsquirrel-payloads
+  - hak5/pineapple-packages-community
+  - hak5/plunderbug-scripts
+  - hak5/shark-files
+  - hak5/signalowl-payloads
+  - hak5/wifipineapple-modules
   - hak5darren/usb-rubber-ducky
+  - jacobtomlinson/carte-noire
   - jbreed/nessus
   - jmcvaughn/ansible-arch
+  - junegunn/fzf
   - kbeflo/evilportals
   - kholia/osx-kvm
   - ma1co/sony-pmca-re
+  - mattmakai/slack-starterbot
   - maxandersen/internet-monitoring
   - mermaidjs/mermaid-live-editor
   - metalx1000/maps-and-locations
@@ -31,30 +47,45 @@ github_repo_name:
   - pigmonkey/spark
   - portainer/portainer-compose
   - qqshow/dendroid
+  - rohitjain00/dev-portfolio-blog
+  - rohitjain00/rohitjain00hub.io
   - samyk/samytools
   - scottg88/gophish-compose
   - screetsec/thefatrat
+  - shlinkio/shlink
   - skickar/deauthdetector
   - sophron/wifiphisher
   - stark/siji
+  - stiliajohny/-k8s-vbox
+  - stiliajohny/Ansible-Provisioning
   - stiliajohny/ansible-provisioning
   - stiliajohny/bbc-good-food-recipe-scraper
   - stiliajohny/dotfiles
   - stiliajohny/esp-temperature-humidity-in-grafana-
+  - stiliajohny/evilportal-templates
+  - stiliajohny-pre_commit_scripts
+  - stiliajohnybot
   - stiliajohny/ldap-user-creator
   - stiliajohny/mac-geo-streetview
+  - stiliajohny/prometheus-dynamic-config
+  - stiliajohny/sharkjack-payloads
+  - stiliajohny/stiliajhonyhub.io
   - stiliajohny/stiliajohny
   - stiliajohny/whatsapp_troller
-  - stiliajohny/Prometheus-dynamic-config
   - stiliajohny/wifi-probe-requests-geolocation
   - sullo/nikto
   - systematicat/hack-captive-portals
   - tomvanveen/proxmark3
+  - urielzo/animated-polybar-drop-down
   - vikwin/pcapfex
   - vim/vim
   - xinyuan-lilygo/ttgo_twatch_library
-  - Yucklys/polybar-nord-theme
-  - urielzo/animated-polybar-drop-down
+  - yucklys/polybar-nord-theme
+  - Blackhippy/DashMachinePlugins
+  - adi1090x/rofi
+  - dbuxy218/Global-Dark-Nordic-theme
+  - rmountjoy92/DashMachine
+  - faithfulst3ward/cloudc2docker
 
 gitlab_repo_name:
   - faithfulst3ward/cloudc2docker
