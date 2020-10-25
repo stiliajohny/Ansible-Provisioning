@@ -62,7 +62,7 @@
   become: yes
   become_user: "{{ user.name }}"
 
-- name: Install virtualenvwrapper for zsh plugin 
+- name: Install virtualenvwrapper for zsh plugin
   pip:
     name: virtualenvwrapper
     extra_args: "--user"
