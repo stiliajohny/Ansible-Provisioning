@@ -35,7 +35,7 @@
     groups: "{{ user.group }}, input, rfkill, wheel, log, network, floppy, scanner, power, rfkill, users, video, storage, optical, audio"
     uid: '{{ user.uid | default(omit) }}'
     shell: '{{ user.shell | default("/usr/bin/zsh") }}'
-    append: no
+    append: yes
     state: present
   ignore_errors: True
 
