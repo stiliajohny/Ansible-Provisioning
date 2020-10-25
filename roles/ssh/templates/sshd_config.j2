@@ -1,6 +1,6 @@
 # {{ ansible_managed }}
 
-#Port 77
+#Port 77 #TODO Add Variable
 #AddressFamily any
 #ListenAddress 0.0.0.0
 #ListenAddress ::
@@ -13,10 +13,10 @@
 #RekeyLimit default none
 
 # Logging
-SyslogFacility AUTH
-LogLevel INFO
+SyslogFacility AUTH #TODO Add Variable
+LogLevel INFO #TODO Add Variable
 
-# Authentication:
+# Authentication: 
 
 LoginGraceTime 2m
 #PermitRootLogin prohibit-password
@@ -24,7 +24,7 @@ StrictModes yes
 MaxAuthTries 6
 MaxSessions 1
 
-PubkeyAuthentication yes
+PubkeyAuthentication yes #TODO Add Variable
 
 AuthorizedKeysFile	.ssh/authorized_keys
 
@@ -39,11 +39,11 @@ AuthorizedKeysFile	.ssh/authorized_keys
 #IgnoreRhosts yes
 
 # To disable tunneled clear text passwords, change to no here!
-PasswordAuthentication no
-PermitEmptyPasswords no
+PasswordAuthentication no #TODO Add Variable
+PermitEmptyPasswords no #TODO Add Variable
 
 # Change to no to disable s/key passwords
-ChallengeResponseAuthentication no
+ChallengeResponseAuthentication no #TODO Add Variable
 
 # Kerberos options
 #KerberosAuthentication no
@@ -60,29 +60,29 @@ UsePAM yes
 #AllowAgentForwarding yes
 #AllowTcpForwarding yes
 #GatewayPorts no
-#X11Forwarding no
-#X11DisplayOffset 10
+#X11Forwarding no #TODO Add Variable
+#X11DisplayOffset 10 #TODO Add Variable
 #X11UseLocalhost yes
-#PermitTTY yes
-PrintMotd no 
-PrintLastLog yes
+#PermitTTY yes #TODO Add Variable
+PrintMotd no #TODO Add Variable
+PrintLastLog yes #TODO Add Variable
 #TCPKeepAlive yes
 #PermitUserEnvironment no
 #Compression delayed
 #ClientAliveInterval 0
 #ClientAliveCountMax 3
-UseDNS no
-#PidFile /run/sshd.pid
-#MaxStartupPrints 10:30:100
-#PermitTunnel no
+UseDNS no #TODO Add Variable
+#PidFile /run/sshd.pid #TODO Add Variable
+#MaxStartupPrints 10:30:100 #TODO Add Variable
+#PermitTunnel no #TODO Add Variable
 #ChrootDirectory none
 #VersionAddendum none
 
 # no default banner path
-Banner /etc/ssh_banner
+Banner /etc/ssh_banner #TODO Add Variable
 
 # override default of no subsystems
-Subsystem	sftp	/usr/lib/ssh/sftp-server
+Subsystem	sftp	/usr/lib/ssh/sftp-server #TODO Add Variable
 
 # Example of overriding settings on a per-user basis
 #Match User anoncvs
