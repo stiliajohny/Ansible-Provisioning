@@ -10,4 +10,8 @@
     name: acpi
     state: present
   become: true
-#TODO install i8kutils
+
+- name: Install i8kutils
+  aur:
+    name: i8kutils
+    user: "{{ user.name }}"
