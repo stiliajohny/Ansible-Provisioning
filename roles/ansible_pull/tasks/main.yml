@@ -31,7 +31,7 @@
   become: true
 
 
-- name: "Cronjob Entry from Public Repo"
+- name: Cronjob Entry from Public Repo
   cron:
     name: "Ansible-Pull from Public Repo"
     minute: "*/{{ cron_intervals }}"

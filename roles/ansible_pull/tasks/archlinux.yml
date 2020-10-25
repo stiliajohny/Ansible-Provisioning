@@ -46,12 +46,12 @@
   become: true
   become_user: root
 
-- name: Install ansible with pip #BUG Move to user pip
+- name: Install ansible with pip
   pip:
     name: ansible
     extra_args: "--user"
 
-- name: Install prettytable with pip #BUG Move to user pip
+- name: Install prettytable with pip
   pip:
     name: prettytable
     extra_args: "--user"
