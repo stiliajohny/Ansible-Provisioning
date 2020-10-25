@@ -1,5 +1,5 @@
 ---
-- name: Pull an image
+- name: Pull docker images
   docker_image:
     name: "{{ loop_docker_image_pull }}"
     source: pull

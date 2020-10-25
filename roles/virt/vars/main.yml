@@ -10,19 +10,33 @@ virt_gui:
 
 
 docker_images:
-  - elasticsearch:7.9.1
-  - kibana:7.9.1
+  - alpine
+  - amazonlinux
   - ansible/awx
-  - python:3.9.0rc1-buster
-  - goland:1.15.2-buster
+  - aquasec/kube-hunter
+  - aquasec/trivy
+  - bash
   - bash:5.0.18
-  - kalilinux/kali-rolling
-  - kalilinux/kali
-  - ubunt:18.04
+  - busybox
+  - centos
   - centos:centos7
   - centos:centos8
-  - amazonlinux:2.0.20200722.0
+  - concourse/concourse
+  - diverdane/secretless-k8s-demo
+  - elasticsearch:7.9.1
+  - fedora:29
+  - fedora:30
   - fedora:31
-  - aquasec/trivy
-  - aquasec/kube-hunter
+  - gcr.io/k8s-minikube/kicbase
+  - goland:1.15.2-buster
+  - jekyll/jekyll
+  - kalilinux/kali
+  - kalilinux/kali-rolling
+  - kibana:7.9.1
+  - mariadb
+  - mysql
+  - postgres
+  - python
+  - python:3.9.0rc1-buster
   - rmountjoy/dashmachine
+  - ubuntu:18.04
