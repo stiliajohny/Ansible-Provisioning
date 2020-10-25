@@ -12,7 +12,7 @@
     comment: "AUR Builder"
     shell: /bin/nologin
     home: /var/lib/aurbuilder
-    system: yes
+    system: true
 
 - name: Create user aurman
   user:
@@ -20,7 +20,7 @@
     comment: "AUR manager"
     shell: /bin/nologin
     home: /var/lib/aurman
-    system: yes
+    system: true
 
 
 - name: Create user group
@@ -31,41 +31,33 @@
 - name: "Create user"
   user:
     name: '{{ user.name }}'
-    #password: '{{ user.password }}'
+    # password: '{{ user.password }}'
     groups: "{{ user.group }}, input, rfkill, wheel, log, network, floppy, scanner, power, rfkill, users, video, storage, optical, audio"
     uid: '{{ user.uid | default(omit) }}'
     shell: '{{ user.shell | default("/usr/bin/zsh") }}'
-    append: yes
+    append: true
     state: present
-  ignore_errors: True
+  ignore_errors: true
 
-- name: Adding user {{ user.name }} to more groups
+- name: Adding user {{ user.name }} to root group
   user:
     name: "{{ user.name }}"
-    append: yes
+    append: true
     groups: root
   become: true
-
-- name: Adding user {{ user.name }} to more groups
-  user:
-    name: "{{ user.name }}"
-    append: yes
-    groups: root
-  become: true
-
 - name: Copy sudo configuration
   copy:
     src: sudoers
     dest: /etc/sudoers
     mode: 0440
     validate: 'visudo -cf %s'
-  ignore_errors: True
+  ignore_errors: true
 
 - name: Create a sudoers file for the aur_builder
   lineinfile:
     path: /etc/sudoers.d/11-install-aur_builder
     line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
-    create: yes
+    create: true
     validate: 'visudo -cf %s'
     mode: 0600
 
@@ -73,7 +65,6 @@
   lineinfile:
     path: /etc/sudoers.d/12-install-ansible
     line: 'ansible ALL=(ALL) NOPASSWD: /usr/bin/pacman'
-    create: yes
+    create: true
     validate: 'visudo -cf %s'
     mode: 0644
-
