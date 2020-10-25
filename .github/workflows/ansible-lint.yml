@@ -18,4 +18,4 @@ jobs:
         #   playbook_1.yml
         #   playbook_2.yml
         targets: "./*.yml"
-        args: " -x 204,403,301,305,701,401,303,208"
+        args: " -x 204,403,301,305,701,401,303,208,306"
