@@ -17,18 +17,15 @@
     src: ssh_banner
     dest: /etc/ssh_banner
     mode: 0600
-#TODO change all the below to be from a template
-- name: Disable DNS check
-  replace:
-    path: /etc/ssh/sshd_config
-    regexp: '{{ loop_dns_disable.regexp }}'
-    replace: '{{ loop_dns_disable.replace }}'
-  with_items:
-    - {regexp: '^#UseDNS no$', replace: 'UseDNS no'}
-    - {regexp: '^#PrintLastLog yes$', replace: 'PrintLastLog yes'}
-    - {regexp: '^#Banner none$', replace: 'Banner /etc/ssh_banner'}
-  loop_control:
-    loop_var: loop_dns_disable
+
+- name: Copy sshd_config template
+  template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: 0644
+  become: true
 
 - name: Enable and start SSH service
   systemd:
