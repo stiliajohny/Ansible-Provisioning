@@ -1,11 +1,4 @@
 ---
-- name: Install virt cli packages
-  pacman: name={{ virt_cli }} state=present
-  become: true
-
-- name: Install virt gui packages
-  pacman: name={{ virt_gui }} state=present
-  become: true
 
 - name: Create user group vboxusers
   group:
@@ -22,15 +15,39 @@
 - name: Adding user to group vboxusers
   user:
     name: "{{ user.name }}"
-    append: no
-    groups: vboxusers
+    append: yes
+    groups: 'vboxusers'
   become: true
+
+- name: Create user group
+  group:
+    name: "docker"
+    state: present
 
 - name: Adding user to group libvirt
   user:
     name: "{{ user.name }}"
-    append: no
-    groups: libvirt
+    append: yes
+    groups: 'libvirt'
+  become: true
+
+- name: Install virt cli packages
+  pacman:
+    name: "{{ virt_cli }}"
+    state: present
+  become: true
+
+- name: Adding docker users (for use without sudo)
+  user:
+    name: "{{ user.name }}"
+    append: yes
+    groups: 'docker'
+  become: true
+
+- name: Install virt gui packages
+  pacman:
+    name: "{{ virt_gui }}"
+    state: present
   become: true
 
 - name: Install kubectl
@@ -47,3 +64,11 @@
   pacman:
     name: minikube
     state: present
+
+
+- name: Enable and start Docker service
+  systemd:
+    name: docker.service
+    enabled: True
+    state: started
+  become: true

@@ -2,10 +2,10 @@
 
 virt_cli:
   - docker
+  - vagrant
 
 virt_gui:
   - virtualbox
-  - vagrant
   - virt-manager
 
 
