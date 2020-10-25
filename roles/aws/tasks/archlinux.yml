@@ -4,8 +4,8 @@
     name: cli53
     user: "{{ user.name }}"
 
-#FIXME install aws-cli with the role
-#- name: Install aws-cli
-#  pacman:
-#    name: aws-cli
-#    state: present
+- name: Install aws-cli
+  pacman:
+    name: aws-cli
+    state: present
+
