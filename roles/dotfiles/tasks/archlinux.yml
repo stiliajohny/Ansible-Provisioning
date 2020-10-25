@@ -62,13 +62,13 @@
   become: yes
   become_user: "{{ user.name }}"
 
-- name: Install virtualenvwrapper for zsh plugin #BUG Move to user pip
+- name: Install virtualenvwrapper for zsh plugin 
   pip:
     name: virtualenvwrapper
     extra_args: "--user"
     state: present
 
-- name: Install thefuck for zsh plugin #BUG Move to user pip
+- name: Install thefuck for zsh plugin
   pip:
     name: thefuck
     extra_args: "--user"
@@ -91,4 +91,3 @@
   debug:
     msg: "{{ vim_plug_output.stdout.split('\n') }}"
   ignore_errors: True
-#TODO Split Vim & ZSH to seperate YML
