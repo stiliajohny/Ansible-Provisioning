@@ -2,7 +2,7 @@
 - hosts: pull_hosts
   become: true
   roles:
-    #- {role: fail_role, tags: ['fail_role']}
+    # - {role: fail_role, tags: ['fail_role']}
     - {role: os_info, tags: ['os_info']}
     - {role: ansible_pull, tags: ['ansible_pull']}
     - {role: aur_dir, tags: ['aur_dir']}
@@ -32,7 +32,6 @@
     - {role: tools, tags: [tools]}
     - {role: ops, tags: [ops]}
     - {role: virt, tags: [virt]}
-    - {role: docker, tags: [docker]}
     - {role: git, tags: [git]}
     - {role: vscode, tags: [vscode]}
     - {role: firefox, tags: [firefox]}
@@ -45,4 +44,4 @@
     - {role: android, tags: [android]}
     - {role: prometheus, tags: [prometheus]}
     - {role: gimp, tags: [gimp]}
-
+    - {role: dev, tags: [dev]}
