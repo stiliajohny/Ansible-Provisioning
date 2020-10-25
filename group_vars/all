@@ -44,23 +44,6 @@ tools_aur:
     - quiterss
     - arduino-cli
 
-dev:
-  python:
-    - subversion
-    - ipython3
-    - ipython2
-    - ipython
-    - python-pip
-    - python2-pip
-    - python3-pip
-    - python3-virtualenv
-    - python2-virtualenv
-    - python-virtualenv
-    - python-virtualenvwrapper
-    - pelican
-    - flake8
-    - jekyll
-
 blackarch:
     url: https://blackarch.org/strap.sh
     destination: /tmp/blackarch.sh
