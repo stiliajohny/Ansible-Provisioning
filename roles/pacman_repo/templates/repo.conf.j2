@@ -1,3 +1,5 @@
+### {{ ansible_managed }}
+
 [{{ pacman_repo_name }}]
 SigLevel = {{pacman_repo_sig_level}}
 {% if pacman_extra_includes is defined %}{% for include in pacman_extra_includes %}Include = {{ include }}
