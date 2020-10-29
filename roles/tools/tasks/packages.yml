@@ -6,7 +6,9 @@
 #  pacman: name=gvim state=present
 
 - name: Install tools packages
-  pacman: name={{ tools }} state=present
+  pacman:
+    name: "{{ tools }}"
+    .state: present
 
 - name: Install tfenv
   aur:

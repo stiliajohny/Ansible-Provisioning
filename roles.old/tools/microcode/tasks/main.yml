@@ -1,5 +1,7 @@
 ---
 - name: Install intel microcode
-  pacman: name=intel-ucode state=present
+  pacman: 
+    name: intel-ucode
+    state: present
   notify:
     - rebuild grub

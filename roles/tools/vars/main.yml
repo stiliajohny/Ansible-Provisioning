@@ -1,0 +1,18 @@
+---
+
+tools_aur:
+    - toilet
+    - toilet-fonts
+    - quiterss
+    - arduino
+    - arduino-avr-core
+
+tools:
+    - file-roller
+    - zathura
+    - zathura-pdf-mupdf
+    - lxtask
+    - vim-spell-it
+    - python-neovim
+    - gitg
+    - leafpad
