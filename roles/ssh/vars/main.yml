@@ -1,3 +1,17 @@
 ---
 ssh:
-  - port: "22"
+  port: "22"
+  syslogfacility: "AUTHPRIV"
+  sysloglevel: "VERBOSE"
+  LoginGraceTime: "60"
+  PubkeyAuthentication: "yes"
+  PasswordAuthentication: "no"
+  PermitEmptyPasswords: "no"
+  AllowAgentForwarding: "no"
+  AllowTcpForwarding: "no"
+  X11Forwarding: "no"
+  PrintMotd: "no"
+  UseDNS: "no"
+  Banner: "/etc/ssh_banner"
+  PrintLastLog: "yes"
+  AllowUsers: "jstilia"

@@ -1,6 +1,6 @@
 ### {{ ansible_managed }}
 
-Port {{ssh.port}} #TODO Add Variable
+Port {{ ssh.port }}
 #AddressFamily any
 #ListenAddress 0.0.0.0
 #ListenAddress ::
@@ -13,21 +13,19 @@ Port {{ssh.port}} #TODO Add Variable
 #RekeyLimit default none
 
 # Logging
-SyslogFacility AUTH #TODO Add Variable
-LogLevel INFO #TODO Add Variable
+SyslogFacility {{ ssh.syslogfacility }}
+LogLevel {{ ssh.sysloglevel }}
 
-# Authentication: 
+# Authentication:
 
-LoginGraceTime 2m
+LoginGraceTime {{ ssh.LoginGraceTime }}
 #PermitRootLogin prohibit-password
 StrictModes yes
 MaxAuthTries 6
 MaxSessions 1
 
-PubkeyAuthentication yes #TODO Add Variable
-
-AuthorizedKeysFile	.ssh/authorized_keys
-
+PubkeyAuthentication {{ ssh.PubkeyAuthentication }}
+AuthorizedKeysFile .ssh/authorized_keys
 #AuthorizedPrincipalsFile none
 
 #AuthorizedKeysCommand none
@@ -39,11 +37,11 @@ AuthorizedKeysFile	.ssh/authorized_keys
 #IgnoreRhosts yes
 
 # To disable tunneled clear text passwords, change to no here!
-PasswordAuthentication no #TODO Add Variable
-PermitEmptyPasswords no #TODO Add Variable
+PasswordAuthentication {{ ssh.PasswordAuthentication }}
+PermitEmptyPasswords {{ ssh.PermitEmptyPasswords }}
 
 # Change to no to disable s/key passwords
-ChallengeResponseAuthentication no #TODO Add Variable
+ChallengeResponseAuthentication no
 
 # Kerberos options
 #KerberosAuthentication no
@@ -57,36 +55,31 @@ ChallengeResponseAuthentication no #TODO Add Variable
 
 UsePAM yes
 
-#AllowAgentForwarding yes
-#AllowTcpForwarding yes
+AllowAgentForwarding {{ ssh.AllowAgentForwarding }}
+AllowTcpForwarding {{ ssh.AllowTcpForwarding }}
 #GatewayPorts no
-#X11Forwarding no #TODO Add Variable
-#X11DisplayOffset 10 #TODO Add Variable
+#X11Forwarding {{ ssh.X11Forwarding }}
+#X11DisplayOffset 10
 #X11UseLocalhost yes
-#PermitTTY yes #TODO Add Variable
-PrintMotd no #TODO Add Variable
-PrintLastLog yes #TODO Add Variable
+#PermitTTY yes
+PrintMotd {{ ssh.PrintMotd }}
+PrintLastLog {{ ssh.PrintLastLog }}
 #TCPKeepAlive yes
 #PermitUserEnvironment no
 #Compression delayed
 #ClientAliveInterval 0
 #ClientAliveCountMax 3
-UseDNS no #TODO Add Variable
-#PidFile /run/sshd.pid #TODO Add Variable
-#MaxStartupPrints 10:30:100 #TODO Add Variable
-#PermitTunnel no #TODO Add Variable
+UseDNS {{ ssh.UseDNS }}
+#PidFile /run/sshd.pid
+#MaxStartupPrints 10:30:100
+#PermitTunnel no
 #ChrootDirectory none
 #VersionAddendum none
 
 # no default banner path
-Banner /etc/ssh_banner #TODO Add Variable
+Banner {{ ssh.Banner }}
 
 # override default of no subsystems
-Subsystem	sftp	/usr/lib/ssh/sftp-server #TODO Add Variable
+Subsystem sftp /usr/lib/ssh/sftp-server
 
-# Example of overriding settings on a per-user basis
-#Match User anoncvs
-#	X11Forwarding no
-#	AllowTcpForwarding no
-#	PermitTTY no
-#	ForceCommand cvs server
+AllowUsers {{ ssh.AllowUsers }}
