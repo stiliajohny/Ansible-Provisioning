@@ -1,6 +1,6 @@
 ### {{ ansible_managed }}
 
-Port {{ ssh.Port }}
+Port {{ Port }}
 #AddressFamily any
 #ListenAddress 0.0.0.0
 #ListenAddress ::
@@ -13,18 +13,18 @@ Port {{ ssh.Port }}
 #RekeyLimit default none
 
 # Logging
-SyslogFacility {{ ssh.syslogfacility }}
-LogLevel {{ ssh.sysloglevel }}
+SyslogFacility {{ syslogfacility }}
+LogLevel {{ sysloglevel }}
 
 # Authentication:
 
-LoginGraceTime {{ ssh.LoginGraceTime }}
+LoginGraceTime {{ LoginGraceTime }}
 #PermitRootLogin prohibit-password
 StrictModes yes
 MaxAuthTries 6
 MaxSessions 1
 
-PubkeyAuthentication {{ ssh.PubkeyAuthentication }}
+PubkeyAuthentication {{ PubkeyAuthentication }}
 AuthorizedKeysFile .ssh/authorized_keys
 #AuthorizedPrincipalsFile none
 
@@ -37,8 +37,8 @@ AuthorizedKeysFile .ssh/authorized_keys
 #IgnoreRhosts yes
 
 # To disable tunneled clear text passwords, change to no here!
-PasswordAuthentication {{ ssh.PasswordAuthentication }}
-PermitEmptyPasswords {{ ssh.PermitEmptyPasswords }}
+PasswordAuthentication {{ PasswordAuthentication }}
+PermitEmptyPasswords {{ PermitEmptyPasswords }}
 
 # Change to no to disable s/key passwords
 ChallengeResponseAuthentication no
@@ -55,21 +55,21 @@ ChallengeResponseAuthentication no
 
 UsePAM yes
 
-AllowAgentForwarding {{ ssh.AllowAgentForwarding }}
-AllowTcpForwarding {{ ssh.AllowTcpForwarding }}
+AllowAgentForwarding {{ AllowAgentForwarding }}
+AllowTcpForwarding {{ AllowTcpForwarding }}
 #GatewayPorts no
-#X11Forwarding {{ ssh.X11Forwarding }}
+#X11Forwarding {{ X11Forwarding }}
 #X11DisplayOffset 10
 #X11UseLocalhost yes
 #PermitTTY yes
-PrintMotd {{ ssh.PrintMotd }}
-PrintLastLog {{ ssh.PrintLastLog }}
+PrintMotd {{ PrintMotd }}
+PrintLastLog {{ PrintLastLog }}
 #TCPKeepAlive yes
 #PermitUserEnvironment no
 #Compression delayed
 #ClientAliveInterval 0
 #ClientAliveCountMax 3
-UseDNS {{ ssh.UseDNS }}
+UseDNS {{ UseDNS }}
 #PidFile /run/sshd.pid
 #MaxStartupPrints 10:30:100
 #PermitTunnel no
@@ -77,9 +77,9 @@ UseDNS {{ ssh.UseDNS }}
 #VersionAddendum none
 
 # no default banner path
-Banner {{ ssh.Banner }}
+Banner {{ Banner }}
 
 # override default of no subsystems
 Subsystem sftp /usr/lib/ssh/sftp-server
 
-AllowUsers {{ ssh.AllowUsers }}
+AllowUsers {{ AllowUsers }}
