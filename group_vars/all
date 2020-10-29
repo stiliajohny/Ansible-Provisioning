@@ -28,22 +28,6 @@ nettools:
     - wireguard-tools
     - wireguard-dkms
 
-tools:
-    - file-roller
-    - zathura
-    - zathura-pdf-mupdf
-    - lxtask
-    - vim-spell-it
-    - python-neovim
-    - gitg
-    - leafpad
-
-tools_aur:
-    - toilet
-    - toilet-fonts
-    - quiterss
-    - arduino-cli
-
 blackarch:
     url: https://blackarch.org/strap.sh
     destination: /tmp/blackarch.sh
