@@ -44,4 +44,4 @@
     - {role: android, tags: [android]}
     - {role: prometheus, tags: [prometheus]}
     - {role: gimp, tags: [gimp]}
-    - {role: dev, tags: [dev]}
+    #- {role: dev, tags: [dev]}
