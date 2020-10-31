@@ -8,7 +8,7 @@
 - name: Install tools packages
   pacman:
     name: "{{ tools }}"
-    .state: present
+    state: present
 
 - name: Install tfenv
   aur:
