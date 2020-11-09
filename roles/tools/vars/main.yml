@@ -4,8 +4,6 @@ tools_aur:
     - toilet
     - toilet-fonts
     - quiterss
-    - arduino
-    - arduino-avr-core
 
 tools:
     - file-roller
