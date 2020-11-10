@@ -1,5 +1,6 @@
 ---
+
 - name: Install vscode
-  pacman:
+  aur:
     name: visual-studio-code-bin
-  become: true
+    user: "{{ user.name }}"
