@@ -1,4 +1,7 @@
 ---
 
-- name: Include Python Pacages
+- name: Include Python Packages
   include: python.yml
+
+- name: Include Other Packages
+  include: packages.yml

@@ -12,3 +12,5 @@ dev:
     - pelican
     - flake8
     - jekyll
+  others:
+    - bfg
