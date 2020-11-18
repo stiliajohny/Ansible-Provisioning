@@ -1,15 +1,5 @@
 ---
 
-user:
-    name: jstilia
-    fullname: John Stilia
-    uid: 1001
-    group: jstilia
-    shell: /usr/bin/zsh
-    email: stilia.johny@gmail.com
-    ssh_key_bits: 2048
-    ssh_key_type: rsa
-
 home_skel:
     - Desktop
     - Documents

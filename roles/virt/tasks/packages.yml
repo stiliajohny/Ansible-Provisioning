@@ -16,7 +16,7 @@
   user:
     name: "{{ user.name }}"
     append: yes
-    groups: 'vboxusers'
+    groups: ["vboxusers"]
   become: true
 
 - name: Create user group
@@ -28,7 +28,7 @@
   user:
     name: "{{ user.name }}"
     append: yes
-    groups: 'libvirt'
+    groups: ["libvirt"]
   become: true
 
 - name: Install virt cli packages
@@ -41,7 +41,7 @@
   user:
     name: "{{ user.name }}"
     append: yes
-    groups: 'docker'
+    groups: ["docker"]
   become: true
 
 - name: Install virt gui packages
@@ -64,6 +64,11 @@
   pacman:
     name: minikube
     state: present
+
+- name: Install lazydocker
+  aur:
+    name: lazydocker
+    user: "{{ user.name }}"
 
 
 - name: Enable and start Docker service

@@ -1,0 +1,8 @@
+---
+filesystem_packages:
+  - btrfs-progs
+  - dosfstools
+  - exfat-utils
+  - gptfdisk
+  - ntfs-3g
+  - cdrtools

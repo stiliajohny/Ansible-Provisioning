@@ -1,0 +1,22 @@
+---
+
+- name: Install media gui
+  aur:
+    name: "{{ media_gui_aur_loop }}"
+    user: "{{ user.name }}"
+  with_items: "{{ media_gui }}"
+  loop_control:
+    loop_var: media_gui_aur_loop
+  when: media_gui is defined
+  ignore_errors: True
+
+
+- name: Install media cli
+  aur:
+    name: "{{ media_cli_aur_loop }}"
+    user: "{{ user.name }}"
+  with_items: "{{ media_cli }}"
+  loop_control:
+    loop_var: media_cli_aur_loop
+  when: media_cli is defined
+  ignore_errors: True

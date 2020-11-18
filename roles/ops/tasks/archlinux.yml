@@ -1,2 +1,10 @@
 ---
 - include: packages.yml
+
+- name: Include hashicorp
+  import_role:
+    name: hashicorp
+
+- name: Include aws tools
+  import_role:
+    name: aws

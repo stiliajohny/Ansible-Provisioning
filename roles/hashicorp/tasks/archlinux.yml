@@ -19,13 +19,15 @@
     name:
       - nomad
     user: "{{ user.name }}"
-  tags:
-    - aur
+
+- name: Install packer
+  pacman:
+    name: packer
+    state: present
+  become: true
 
 - name: Install tfenv
   aur:
     name:
       - tfenv
     user: "{{ user.name }}"
-  tags:
-    - aur

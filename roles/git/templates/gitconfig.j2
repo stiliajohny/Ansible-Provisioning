@@ -1,0 +1,18 @@
+### {{ ansible_managed }}
+
+[user]
+        email = {{ user.email }}
+        name = {{ user.fullname }}
+[http]
+        sslVerify = false
+[pull]
+        recurseSubmodules = true
+        initSubmodules = true
+[checkout]
+        recurseSubmodules = true
+        initSubmodules = true
+[alias]
+        up = pull --recurse-submodules
+        co = checkout --recurse-submodules
+[merge]
+        tool = vimdiff

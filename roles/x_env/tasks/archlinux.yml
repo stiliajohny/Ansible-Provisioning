@@ -1,3 +1,6 @@
 ---
+- name: Ensure xorg
+  include_role:
+    name: xorg
 - include: packages.yml
 - include: systemd.yml
