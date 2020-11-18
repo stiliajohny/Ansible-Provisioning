@@ -9,6 +9,16 @@ slack:
           64303366336131653633613061613034313332343664346638623061333238383237663739656237
           3833353139613238366333656661313035633862303939623533
 
+user:
+    name: jstilia
+    fullname: John Stilia
+    uid: 1001
+    group: jstilia
+    shell: /usr/bin/zsh
+    email: stilia.johny@gmail.com
+    ssh_key_bits: 2048
+    ssh_key_type: rsa
+
 # TODO Vars to be moved to the actual role
 
 
