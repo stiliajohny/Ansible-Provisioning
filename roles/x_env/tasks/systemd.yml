@@ -15,10 +15,3 @@
     state: started
     enabled: true
   become: yes
-
-#- name: Reboot the {{ hostname }} to apply kernel and other updates
-#  reboot:
-#    reboot_timeout: 3600
-#    test_command: whoami
-#    msg: "Reboot initiated by Ansible to apply updates"
-#  become: true

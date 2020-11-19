@@ -23,7 +23,51 @@
     regexp: "^COMPRESSXZ"
     line: "COMPRESSXZ=(xz -c -z - --threads=0)"
 
-- include: packages.yml
+- name: Install core utils packages
+  pacman:
+    name: "{{ core_utils }}"
+    state: present
+    force: yes
+  when: core_utils is defined
+  become: true
+
+- name: Install tmux splitted pages script
+  copy:
+    src: "tmux_splitted_pager.sh"
+    dest: "/home/{{ user.name }}/.local/bin/tmux_splitted_pager"
+    mode: 0765
+  become: true
+  become_user: "{{ user.name }}"
+
+- name: Install core debug utils packages
+  pacman:
+    name: "{{ core_debugutils }}"
+    state: present
+  when: core_debugutils is defined
+  become: true
+
+- name: Install core net utils packages
+  pacman:
+    name: "{{ core_netutils }}"
+    state: present
+  when: core_netutils is defined
+  become: true
+
+- name: Install core goodies packages
+  pacman:
+    name: "{{ core_goodies }}"
+    state: present
+  when: core_goodies is defined
+  become: true
+
+- name: Install {{ core_aur_loop }}
+  aur:
+    name: "{{ core_aur_loop }}"
+    user: "{{ user.name }}"
+  with_items: "{{ core_aur }}"
+  loop_control:
+    loop_var: core_aur_loop
+  when: core_aur is defined
 
 - name: Copy nobeep configuration
   copy:

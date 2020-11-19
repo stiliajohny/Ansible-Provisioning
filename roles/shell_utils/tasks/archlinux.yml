@@ -13,5 +13,14 @@
       - tmux
     state: present
 
-- name: Install and configure pkgfile
-  import_tasks: pkgfile.yml
+- name: Install pkgfile
+  pacman:
+    name: pkgfile
+    state: present
+
+- name: Enable pkgfile timer
+  systemd:
+    name: pkgfile-update.timer
+    enabled: True
+  notify: Synchronise pkgfile database
+

@@ -1,4 +1,5 @@
 ---
+# TODO add user to groups as part of the configure 
 - name: Enable libvirt hostname resolution
   replace:
     path: /etc/nsswitch.conf

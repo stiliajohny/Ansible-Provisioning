@@ -22,7 +22,6 @@
     home: /var/lib/aurman
     system: true
 
-
 - name: Create user group
   group:
     name: "{{ user.group }}"

@@ -1,5 +1,20 @@
 ---
-- include: packages.yml
+#- name: Install ops packages
+#  pacman: name={{ ops_cli }} state=present
+
+- name: Install ops packages
+  pacman:
+    name: "{{ ops_gui }}"
+    state: present
+
+- name: Install ops_aur
+  aur:
+    name: "{{ ops_aur_loop }}"
+    user: "{{ user.name }}"
+  with_items: "{{ ops_aur }}"
+  loop_control:
+    loop_var: ops_aur_loop
+  when: core_aur is defined
 
 - name: Include hashicorp
   import_role:
