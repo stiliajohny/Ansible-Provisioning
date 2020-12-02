@@ -31,14 +31,6 @@
   when: core_utils is defined
   become: true
 
-- name: Install tmux splitted pages script
-  copy:
-    src: "tmux_splitted_pager.sh"
-    dest: "/home/{{ user.name }}/.local/bin/tmux_splitted_pager"
-    mode: 0765
-  become: true
-  become_user: "{{ user.name }}"
-
 - name: Install core debug utils packages
   pacman:
     name: "{{ core_debugutils }}"
