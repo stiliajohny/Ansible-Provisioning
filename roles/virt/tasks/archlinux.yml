@@ -1,9 +1,20 @@
 ---
-
 - name: Create user group vboxusers
   group:
     name: vboxusers
     state: present
+  become: true
+
+- name: Create user group
+  group:
+    name: "docker"
+    state: present
+
+- name: Adding docker users (for use without sudo)
+  user:
+    name: "{{ user.name }}"
+    append: yes
+    groups: ["docker"]
   become: true
 
 - name: Create group libvirt
@@ -19,11 +30,6 @@
     groups: ["vboxusers"]
   become: true
 
-- name: Create user group
-  group:
-    name: "docker"
-    state: present
-
 - name: Adding user to group libvirt
   user:
     name: "{{ user.name }}"
@@ -35,13 +41,6 @@
   pacman:
     name: "{{ virt_cli }}"
     state: present
-  become: true
-
-- name: Adding docker users (for use without sudo)
-  user:
-    name: "{{ user.name }}"
-    append: yes
-    groups: ["docker"]
   become: true
 
 - name: Install virt gui packages
@@ -70,7 +69,6 @@
     name: lazydocker
     user: "{{ user.name }}"
 
-
 - name: Enable and start Docker service
   systemd:
     name: docker.service
@@ -78,6 +76,6 @@
     state: started
   become: true
 
-
 - include: configure.yml
 - include: docker_images_pull.yml
+#- include: vagrant_box_pull.yml

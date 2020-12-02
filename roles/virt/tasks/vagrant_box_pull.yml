@@ -1,0 +1,24 @@
+---
+# TODO: Develop async operation
+- name: Pull Vagrant Boxes
+  ansible.builtin.command: "vagrant box add {{ item }} --provider virtualbox --force"
+  with_items:
+    - "qiujiahong/busybox"
+    - "mattglass/metasploitable2-PS"
+    - "ubuntu/bionic64"
+    - "centos/7"
+    - "centos/8"
+    - "kalilinux/rolling"
+  #  async: 60
+  poll: 0
+  register: async_results
+
+- name: Check sync status
+  async_status:
+    jid: "{{ async_result_item.ansible_job_id }}"
+  loop: "{{ async_results.results }}"
+  loop_control:
+    loop_var: "async_result_item"
+  register: async_poll_results
+  until: async_poll_results.finished
+  retries: 30
