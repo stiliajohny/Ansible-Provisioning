@@ -1,6 +1,6 @@
 ---
-
 media_gui:
   - vlc
 
 media_cli:
+  - cava
