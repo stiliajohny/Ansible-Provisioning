@@ -1,5 +1,4 @@
 ---
-
 - name: Create aur_builder Group
   group:
     name: aur_builder
@@ -29,41 +28,53 @@
 
 - name: "Create user"
   user:
-    name: '{{ user.name }}'
+    name: "{{ user.name }}"
     # password: '{{ user.password }}'
-    groups: "{{ user.group }}, input, rfkill, wheel, log, network, floppy, scanner, power, rfkill, users, video, storage, optical, audio"
-    uid: '{{ user.uid | default(omit) }}'
+    groups:
+      [
+        "{{ user.group }}",
+        input,
+        rfkill,
+        wheel,
+        log,
+        network,
+        floppy,
+        scanner,
+        power,
+        rfkill,
+        users,
+        video,
+        storage,
+        optical,
+        audio,
+        root,
+      ]
+    #uid: "{{ user.uid | default(omit) }}"
     shell: '{{ user.shell | default("/usr/bin/zsh") }}'
     append: true
     state: present
   ignore_errors: true
 
-- name: Adding user {{ user.name }} to root group
-  user:
-    name: "{{ user.name }}"
-    append: true
-    groups: root
-  become: true
 - name: Copy sudo configuration
   copy:
     src: sudoers
     dest: /etc/sudoers
     mode: 0440
-    validate: 'visudo -cf %s'
+    validate: "visudo -cf %s"
   ignore_errors: true
 
 - name: Create a sudoers file for the aur_builder
   lineinfile:
     path: /etc/sudoers.d/11-install-aur_builder
-    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
     create: true
-    validate: 'visudo -cf %s'
+    validate: "visudo -cf %s"
     mode: 0600
 
 - name: Create a sudoers file for the ansible
   lineinfile:
     path: /etc/sudoers.d/12-install-ansible
-    line: 'ansible ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    line: "ansible ALL=(ALL) NOPASSWD: /usr/bin/pacman"
     create: true
-    validate: 'visudo -cf %s'
+    validate: "visudo -cf %s"
     mode: 0644
