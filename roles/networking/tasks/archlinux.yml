@@ -35,8 +35,3 @@
     state: present
   ignore_errors: true
   when: "'wireshark-cli' in ansible_facts.packages"
-
-- name: Example using fail and when together
-  fail:
-    msg: The system may not be provisioned according to the CMDB status.
-  tags: fail
