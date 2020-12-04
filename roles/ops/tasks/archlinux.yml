@@ -6,6 +6,7 @@
   pacman:
     name: "{{ ops_gui }}"
     state: present
+  when: ops_gui is defined
 
 - name: Install ops_aur
   aur:
@@ -14,7 +15,7 @@
   with_items: "{{ ops_aur }}"
   loop_control:
     loop_var: ops_aur_loop
-  when: core_aur is defined
+  when: ops_aur is defined
 
 - name: Include hashicorp
   import_role:
@@ -23,3 +24,7 @@
 - name: Include aws tools
   import_role:
     name: aws
+
+- name: Include networking tools
+  import_role:
+    name: networking

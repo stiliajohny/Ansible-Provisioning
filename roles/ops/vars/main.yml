@@ -1,9 +1,7 @@
 ---
-
 ops_cli:
   - ansible
   - ansible-lint
-  - wireshark-cli
 
 ops_aur:
   - puppet-lint
@@ -11,4 +9,3 @@ ops_aur:
   - ctags
 
 ops_gui:
-  - wireshark-qt

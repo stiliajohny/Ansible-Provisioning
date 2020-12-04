@@ -1,0 +1,42 @@
+---
+#- name: Install ops packages
+#  pacman: name={{ ops_cli }} state=present
+
+- name: Install networking cli packages
+  yay:
+    name: "{{ networking_cli_loop }}"
+  with_items: "{{ networking_cli }}"
+  loop_control:
+    loop_var: networking_cli_loop
+  become: yes
+  become_user: "{{ user.name }}"
+  when: networking_cli is defined
+  ignore_errors: true
+
+- name: Install networking cli packages
+  aur:
+    name: "{{ networking_gui_loop }}"
+    user: "{{ user.name }}"
+  with_items: "{{ networking_gui }}"
+  loop_control:
+    loop_var: networking_gui_loop
+  when: networking_gui is defined
+  ignore_errors: true
+
+- name: "Generate Packages Facts"
+  package_facts:
+    manager: "auto"
+
+- name: "Add {{ user.name }} to wireshark group"
+  user:
+    name: "{{ user.name }}"
+    groups: ["wireshark"]
+    append: true
+    state: present
+  ignore_errors: true
+  when: "'wireshark-cli' in ansible_facts.packages"
+
+- name: Example using fail and when together
+  fail:
+    msg: The system may not be provisioned according to the CMDB status.
+  tags: fail

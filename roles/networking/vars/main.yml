@@ -1,0 +1,11 @@
+---
+networking_cli:
+  - wireshark-cli
+  - iftop
+  - vnstat
+  - dstat
+  - bmon
+
+networking_gui:
+  - wireshark-qt
+  - zenmap
