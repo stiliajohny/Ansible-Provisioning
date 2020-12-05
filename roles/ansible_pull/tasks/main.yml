@@ -30,6 +30,43 @@
     mode: 0644
   become: true
 
+- name: Copy ansible-pull service
+  template:
+    src: ansible-pull.service.j2
+    dest: /etc/systemd/system/ansible-pull.service
+    group: root
+    owner: root
+    mode: 0755
+  become: true
+
+- name: Copy ansible-pull service timer
+  template:
+    src: ansible-pull.timer.j2
+    dest: /etc/systemd/system/ansible-pull.timer
+    group: root
+    owner: root
+    mode: 0755
+  become: true
+
+- name: Just force systemd to reread configs
+  systemd:
+    daemon_reload: yes
+
+- name: Just force systemd to re-execute itself
+  systemd:
+    daemon_reexec: yes
+
+- name: Enable service ansible-pull service
+  systemd:
+    name: ansible-pull
+    enabled: yes
+    state: started
+
+- name: Enable service ansible-pull timer
+  systemd:
+    name: ansible-pull.timer
+    enabled: yes
+    state: started
 
 - name: Cronjob Entry from Public Repo
   cron:
@@ -42,9 +79,10 @@
     job: "ansible-pull --only-if-changed --sleep 15 -U https://{{ project_link }} -i {{ inventory }} {{ playbook }} --limit 127.0.0.1 --vault-password-file=/home/{{ user.name }}/.random"
     user: root
     cron_file: ansible_pull # creates a file under /etc/cron.d
+    state: absent 
 
 - name: Enable cronie Service
   systemd:
     name: cronie.service
-    state: started
+    state: stopped 
     enabled: yes
