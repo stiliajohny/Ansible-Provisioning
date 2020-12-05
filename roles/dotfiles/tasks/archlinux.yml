@@ -40,15 +40,15 @@
 
 - name: Stash current files
   shell:
-    cmd: "/usr/bin/git --git-dir=/home/jstilia/.cfg/ --work-tree=/home/jstilia stash "
-    chdir: /home/jstilia
+    cmd: "/usr/bin/git --git-dir=/home/{{ user.name }}/.cfg/ --work-tree=/home/{{ user.name }} stash "
+    chdir: "/home/{{ user.name }}"
   become: yes
   become_user: "{{ user.name }}"
 
 - name: Re-checkout after cleanup
   shell:
-    cmd: "/usr/bin/git --git-dir=/home/jstilia/.cfg/ --work-tree=/home/jstilia checkout "
-    chdir: /home/jstilia
+    cmd: "/usr/bin/git --git-dir=/home/{{ user.name }}/.cfg/ --work-tree=/home/{{ user.name }} checkout "
+    chdir: "/home/{{ user.name }}"
   become: yes
   become_user: "{{ user.name }}"
 
