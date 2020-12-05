@@ -1,3 +1,4 @@
 .vagrant/
 *.log
 callback_plugins/__*
+**/*.pyc
