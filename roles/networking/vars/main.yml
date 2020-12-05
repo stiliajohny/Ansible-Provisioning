@@ -1,10 +1,23 @@
 ---
 networking_cli:
-  - wireshark-cli
-  - iftop
-  - vnstat
-  - dstat
+  - bind-tools
   - bmon
+  - dstat
+  - iftop
+  - lftp
+  - mtr
+  - net-tools
+  - netcat
+  - nmap
+  - openvpn
+  - socat
+  - sshuttle
+  - tcpdump
+  - vnstat
+  - whois
+  - wireguard-dkms
+  - wireguard-tools
+  - wireshark-cli
 
 networking_gui:
   - wireshark-qt
