@@ -1,0 +1,13 @@
+
+### {{ ansible_managed }}
+
+[Unit]
+Description=Cron systemd to run ansible-pull.service
+Requires=ansible-pull.service
+
+[Timer]
+Unit=ansible-pull.service
+OnCalendar={{ systemd_timer_OnCalendar }}
+
+[Install]
+WantedBy=timers.target
