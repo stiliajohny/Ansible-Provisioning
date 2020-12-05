@@ -1,4 +1,5 @@
 cron_intervals: 10 # in minutes
+systemd_timer_OnCalendar: "*:0/30"
 project_link: "github.com/stiliajohny/Ansible-Provisioning.git"
 inventory: "pull-provisioning-execution"
 playbook: "pull-provisioning-execution.yml"
