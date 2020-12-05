@@ -2,7 +2,6 @@
 dev:
   python:
     - subversion
-    - ipython3
     - ipython
     - python-pip
     - python3-pip
@@ -11,6 +10,5 @@ dev:
     - python-virtualenvwrapper
     - pelican
     - flake8
-    - jekyll
   others:
     - bfg
