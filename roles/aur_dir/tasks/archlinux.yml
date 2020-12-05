@@ -6,7 +6,7 @@
 - name: Create AUR directory
   become: True
   file:
-    path: '{{ ansible_env.HOME }}/aur'
+    path: '/home/{{ user.name }}/aur'
     state: directory
     mode: 500
 

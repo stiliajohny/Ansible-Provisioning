@@ -8,5 +8,5 @@ ansible_arch_yay: {
     group: "jstilia"
   },
   # Destination to clone yay to
-  dest: "/home/jstilia/yay"
+  dest: "/home/{{ user.name }}/yay"
 }
