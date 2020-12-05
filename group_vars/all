@@ -11,23 +11,6 @@ user:
 
 # TODO Vars to be moved to the actual role
 
-
-nettools:
-    - openvpn
-    - mtr
-    - net-tools
-    - bind-tools
-    - whois
-    - netcat
-    - lftp
-    - nmap
-    - tcpdump
-    - sshuttle
-    - socat
-    - bmon
-    - wireguard-tools
-    - wireguard-dkms
-
 blackarch:
     url: https://blackarch.org/strap.sh
     destination: /tmp/blackarch.sh
