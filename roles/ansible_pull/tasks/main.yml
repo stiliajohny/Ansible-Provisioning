@@ -1,5 +1,4 @@
 ---
-
 - name: Run install tasks
   include_tasks: "{{ loop_main_ansible_pull }}"
   with_first_found:
@@ -12,9 +11,18 @@
   loop_control:
     loop_var: loop_main_ansible_pull
 
-- name: Create a directory if it does not exist
+- name: Create /etc/ansible
   file:
     path: /etc/ansible
+    state: directory
+    group: root
+    owner: root
+    mode: 0644
+  become: true
+
+- name: Create ansible log directory
+  file:
+    path: /var/log/ansible
     state: directory
     group: root
     owner: root
@@ -79,10 +87,10 @@
     job: "ansible-pull --only-if-changed --sleep 15 -U https://{{ project_link }} -i {{ inventory }} {{ playbook }} --limit 127.0.0.1 --vault-password-file=/home/{{ user.name }}/.random"
     user: root
     cron_file: ansible_pull # creates a file under /etc/cron.d
-    state: absent 
+    state: absent
 
 - name: Enable cronie Service
   systemd:
     name: cronie.service
-    state: stopped 
+    state: stopped
     enabled: yes
