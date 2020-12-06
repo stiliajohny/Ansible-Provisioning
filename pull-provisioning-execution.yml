@@ -41,7 +41,7 @@
     - { role: powertop, tags: [powertop] }
     - { role: ruby_gems, tags: [ruby_gems] }
     - { role: android, tags: [android] }
-    - { role: prometheus, tags: [prometheus] }
+    - { role: system_monitoring, tags: [system_monitoring] }
     - { role: gimp, tags: [gimp] }
     - { role: dev, tags: [dev] }
     - { role: media, tags: [media] }
