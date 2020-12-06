@@ -1,0 +1,27 @@
+---
+- name: Include Prometheus Instalation
+  include_tasks: prometheus.yml
+  tags:
+    - prometheus
+
+- name: Include Node_Exporter Instalation
+  include_tasks: node_exporter.yml
+  tags:
+    - node_exporter
+
+- name: Include Loki Instalation
+  include_tasks: loki.yml
+  tags:
+    - loki
+
+- name: Run install tasks
+  include_tasks: "{{ loop_main_prometheus }}"
+  with_first_found:
+    - "{{ ansible_distribution_release | lower }}.yml"
+    - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
+    - "{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
+    - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
+    - "{{ ansible_distribution | lower }}.yml"
+    - "{{ ansible_os_family | lower }}.yml"
+  loop_control:
+    loop_var: loop_main_prometheus

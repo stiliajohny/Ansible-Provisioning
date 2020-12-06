@@ -1,0 +1,84 @@
+---
+- name: Create tmp for system monitoring Instalation
+  file:
+    path: /tmp/ansible-system_monitoring-instalation/
+    state: directory
+    mode: 0755
+
+- name: Download Loki {{ LOKI_RELEASE }}
+  get_url:
+    url: "https://github.com/grafana/loki/releases/download/v{{ LOKI_RELEASE }}/loki-linux-amd64.zip"
+    dest: "/tmp/ansible-system_monitoring-instalation/loki-linux-amd64_v{{ LOKI_RELEASE }}.zip"
+    mode: 0655
+
+- name: Create export directory loki-linux-amd64_v{{ LOKI_RELEASE }}
+  file:
+    path: "/tmp/ansible-system_monitoring-instalation/loki-linux-amd64_v{{ LOKI_RELEASE }}"
+    state: directory
+    mode: 0755
+
+- name: Extract {{ LOKI_RELEASE }}/loki-linux-amd64.zip
+  unarchive:
+    src: "/tmp/ansible-system_monitoring-instalation/loki-linux-amd64_v{{ LOKI_RELEASE }}.zip"
+    dest: "/tmp/ansible-system_monitoring-instalation/loki-linux-amd64_v{{ LOKI_RELEASE }}"
+    remote_src: yes
+    mode: 0644
+
+- name: Copy loki binary to bin location
+  copy:
+    src: "/tmp/ansible-system_monitoring-instalation/loki-linux-amd64_v{{ LOKI_RELEASE }}/loki-linux-amd64"
+    dest: /usr/local/bin/loki
+    mode: 0755
+    remote_src: yes
+  become: true
+
+- name: Create config folder for loki
+  file:
+    path: /etc/loki/
+    state: directory
+    mode: 0755
+
+- name: Place the Loki config
+  template:
+    src: loki_config.yml.j2
+    dest: /etc/loki/loki_config.yml
+    group: root
+    owner: root
+    mode: 0644
+  become: true
+
+- name: Place loki service
+  template:
+    src: loki.service.j2
+    dest: /etc/systemd/system/loki.service
+    group: root
+    owner: root
+    mode: 0644
+  become: true
+
+- name: Ensure group "loki" exists
+  group:
+    name: loki
+    state: present
+    system: yes
+
+- name: Add the user loki
+  user:
+    name: loki
+    comment: loki
+    system: yes
+    group: loki
+    shell: /sbin/nologin
+
+- name: Systemd Reload
+  systemd:
+    state: started
+    enabled: true
+    daemon_reload: yes
+    name: loki
+#
+#- name: Create tmp for Prometheus and Node exporter Instalation
+#  file:
+#    path: /tmp/ansible-system_monitoring-instalation/
+#    state: absent
+#

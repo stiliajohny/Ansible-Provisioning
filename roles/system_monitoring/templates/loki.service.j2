@@ -1,0 +1,13 @@
+### {{ ansible_managed }}
+
+[Unit]
+Description=Loki service
+After=network.target
+
+[Service]
+Type=simple
+User=loki
+ExecStart=/usr/local/bin/loki -config.file /etc/loki/loki_config.yml
+
+[Install]
+WantedBy=multi-user.target

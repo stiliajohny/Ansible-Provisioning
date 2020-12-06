@@ -1,0 +1,11 @@
+PROM_RELEASE: 2.20.1
+prom_listening_ip: 0.0.0.0
+prom_listening_port: 9090
+prom_retention_time: 7d
+
+NODE_RELEASE: 1.0.1
+node_listening_ip: 0.0.0.0
+node_listening_port: 9100
+
+LOKI_RELEASE: 2.0.0
+loki_listening_port: 3100

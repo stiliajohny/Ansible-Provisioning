@@ -1,0 +1,137 @@
+---
+- name: Create tmp for system monitoring Instalation
+  file:
+    path: /tmp/ansible-system_monitoring-instalation/
+    state: directory
+    mode: 0755
+
+- name: Download Prometheus {{ PROM_RELEASE }}
+  get_url:
+    url: https://github.com/prometheus/prometheus/releases/download/v{{ PROM_RELEASE }}/prometheus-{{ PROM_RELEASE }}.linux-amd64.tar.gz
+    dest: /tmp/ansible-system_monitoring-instalation/
+    mode: 6550
+
+- name: Create export directory prometheus-{{ PROM_RELEASE }}.linux-amd64
+  file:
+    path: /tmp/ansible-system_monitoring-instalation/prometheus-{{ PROM_RELEASE }}.linux-amd64
+    state: directory
+    mode: 0755
+
+- name: Extract prometheus-{{ PROM_RELEASE }}.linux-amd64.tar.gz
+  unarchive:
+    src: /tmp/ansible-system_monitoring-instalation/prometheus-{{ PROM_RELEASE }}.linux-amd64.tar.gz
+    dest: /tmp/ansible-system_monitoring-instalation/prometheus-{{ PROM_RELEASE }}.linux-amd64
+    remote_src: yes
+    mode: 0644
+
+- name: Ensure group "prometheus" exists
+  group:
+    name: prometheus
+    state: present
+    system: yes
+
+- name: Add the user prometheus
+  user:
+    name: prometheus
+    comment: prometheus
+    system: yes
+    group: prometheus
+    shell: /sbin/nologin
+
+- name: Create Prometheus Config Dirs
+  file:
+    path: /etc/prometheus/{{ prom_conf_dir }}
+    state: directory
+    mode: 0775
+    owner: prometheus
+    group: prometheus
+    recurse: yes
+  with_items:
+    - rules
+    - rules.d
+    - files_sd
+  loop_control:
+    loop_var: prom_conf_dir
+  become: true
+
+- name: Create Prometheus Config Dirs
+  file:
+    path: /var/lib/prometheus
+    state: directory
+    mode: 0755
+    recurse: yes
+  become: true
+
+- name: Copy prometheus binary to bin location
+  copy:
+    src: /tmp/ansible-system_monitoring-instalation/prometheus-{{ PROM_RELEASE }}.linux-amd64/prometheus-{{ PROM_RELEASE }}.linux-amd64/{{ prom_bin }}
+    dest: /usr/local/bin/{{ prom_bin }}
+    mode: 0755
+    remote_src: yes
+  with_items:
+    - prometheus
+    - promtool
+  loop_control:
+    loop_var: prom_bin
+  become: true
+
+- name: Copy Libraries
+  copy:
+    src: /tmp/ansible-system_monitoring-instalation/prometheus-{{ PROM_RELEASE }}.linux-amd64/prometheus-{{ PROM_RELEASE }}.linux-amd64/{{ prom_lib }}
+    dest: /etc/prometheus/{{ prom_lib }}
+    mode: 0755
+    owner: prometheus
+    group: prometheus
+    remote_src: yes
+  with_items:
+    - consoles
+    - console_libraries
+  loop_control:
+    loop_var: prom_lib
+  become: true
+
+- name: Copy the service
+  template:
+    src: prometheus.service.j2
+    dest: /etc/systemd/system/prometheus.service
+    group: root
+    owner: root
+    mode: 0644
+  become: true
+
+- name: Copy the Config
+  template:
+    src: prometheus.yml.j2
+    dest: /etc/prometheus/prometheus.yml
+    group: root
+    owner: root
+    mode: 0644
+  become: true
+
+- name: Fix permisions
+  file:
+    dest: /etc/prometheus/
+    owner: prometheus
+    group: prometheus
+    mode: 0775
+    recurse: yes
+
+- name: Fix permisions
+  file:
+    dest: /var/lib/prometheus/
+    owner: prometheus
+    group: prometheus
+    mode: 0775
+    recurse: yes
+
+- name: Systemd Reload
+  systemd:
+    state: restarted
+    enabled: true
+    daemon_reload: yes
+    name: prometheus
+
+- name: Create tmp for Prometheus and Node exporter Instalation
+  file:
+    path: /tmp/ansible-system_monitoring-instalation/
+    state: absent
