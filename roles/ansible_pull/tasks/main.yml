@@ -11,6 +11,29 @@
   loop_control:
     loop_var: loop_main_ansible_pull
 
+- name: Creates ansible shared directory
+  file:
+    path: /usr/share/ansible/plugins/modules/
+    state: directory
+    group: root
+    owner: root
+    mode: 0775
+    recurse: yes
+  become: true
+
+- name: Copy file with owner and permissions
+  copy:
+    src: "../../library/{{ item }}"
+    dest: /usr/share/ansible/plugins/modules/
+    owner: root
+    group: root
+    mode: "0755"
+  with_items:
+    - aur
+    - aur-adv
+    - makepkg
+    - yay
+
 - name: Create /etc/ansible
   file:
     path: /etc/ansible
