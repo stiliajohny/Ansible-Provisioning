@@ -53,8 +53,14 @@
     name: yarn
   become: true
 
-- name: Install nodejs
-  shell: "curl -sL install-node.now.sh | sh -s -- -y"
+- name: Download NodeJS instalation script
+  get_url:
+    url: https://install-node.now.sh/
+    dest: /tmp/install_node.sh
+    mode: "0755"
+
+- name: Install Nodejs
+  shell: "sh -s /tmp/install_node.sh -y"
   become: yes
 
 - name: Install TMP for TMUX
