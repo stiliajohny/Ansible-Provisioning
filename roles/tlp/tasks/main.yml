@@ -27,4 +27,3 @@
   systemd:
     name: tlp.service
     enabled: True
-

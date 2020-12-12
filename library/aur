@@ -109,14 +109,14 @@ def install_packages(module, pkgs, dir, user, virtual):
         # If the package is already installed, skip the install.
         if package_installed(module, pkg):
             continue
-        
+
         # Change into the package directory.
         # Check if the package is a virtual package
         if virtual:
             os.chdir(os.path.join(dir, virtual))
         else:
             os.chdir(os.path.join(dir, pkg))
-        
+
         # Attempt to build the directory.
         rc, stdout, stderr = module.run_command(cmd, check_rc=False)
         if rc != 0:

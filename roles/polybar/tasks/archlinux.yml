@@ -40,4 +40,3 @@
   file:
     path: "{{ ansible_arch_polybar.dest }}"
     state: absent
-

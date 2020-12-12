@@ -23,4 +23,3 @@
     name: pkgfile-update.timer
     enabled: True
   notify: Synchronise pkgfile database
-

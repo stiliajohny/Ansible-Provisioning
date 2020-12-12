@@ -9,5 +9,3 @@
     *Task*: {{ ansible_failed_task.name }} \n
     *Action*: {{ ansible_failed_task.action }} \n
     *Error Message*: \n ```{{ ansible_failed_result | to_nice_json }}``` "
-
-

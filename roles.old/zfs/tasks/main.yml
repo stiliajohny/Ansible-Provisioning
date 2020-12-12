@@ -37,4 +37,3 @@
     - zfs-share.service
     - zfs-zed.service
     - zfs.target
-

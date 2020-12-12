@@ -2,4 +2,3 @@
   systemd:
     name: bluetooth.service
     state: restarted
-

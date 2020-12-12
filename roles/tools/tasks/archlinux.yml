@@ -18,4 +18,3 @@
   loop_control:
     loop_var: tools_aur_loop
   when: tools_aur is defined
-

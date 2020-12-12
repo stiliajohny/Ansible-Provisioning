@@ -9,8 +9,8 @@ collections = ["from a", "from b"]
 [storage remote]
 type = "caldav"
 url = "{{ pim_account.url }}
-username.fetch = ["command", "~/bin/account_credentials.py", "get_user", "{{ pim_account.name }}"] 
-password.fetch = ["command", "~/bin/account_credentials.py", "get_pass", "{{ pim_account.name }}"] 
+username.fetch = ["command", "~/bin/account_credentials.py", "get_user", "{{ pim_account.name }}"]
+password.fetch = ["command", "~/bin/account_credentials.py", "get_pass", "{{ pim_account.name }}"]
 
 [storage local]
 type = "filesystem"
