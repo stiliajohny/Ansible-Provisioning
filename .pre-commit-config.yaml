@@ -34,9 +34,9 @@ repos:
       - id: ansible-lint
         name: Ansible-lint
         description: This hook runs ansible-lint.
-        entry: ansible-lint --force-color -x 204
-        files: pull-provisioning-configuration.yml
-        #types: [file, yaml]
+        entry: ansible-lint --force-color -x 204,701,301,305,401,303
+        files: ./*.yml
+        types: [file, yaml]
         language: python
         pass_filenames: true
         always_run: true
