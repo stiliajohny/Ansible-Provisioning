@@ -1,5 +1,6 @@
 ---
 - name: Install android-sdk-platform-tools
-  aur:
-    name: android-sdk-platform-tools
-    user: "{{ user.name }}"
+  yay:
+    name: "android-sdk-platform-tools"
+  become: yes
+  ignore_errors: True
