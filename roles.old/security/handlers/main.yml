@@ -12,7 +12,7 @@
 
 - name: start macchiato
   service: name=macchiato.service state=started
-  when: network.spoof_mac == True
+  when: network.spoof_mac
 
 - name: refresh holidays
   command: /usr/share/doc/timew/doc/holidays/refresh

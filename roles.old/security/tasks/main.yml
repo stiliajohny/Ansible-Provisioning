@@ -119,13 +119,13 @@
 
 - name: Enable macchiato
   service: name=macchiato.service enabled=yes
-  when: network.spoof_mac == True
+  when: network.spoof_mac
   notify:
     - start macchiato
 
 - name: Disable and stop macchiato
   service: name=macchiato.service enabled=no state=stopped
-  when: network.spoof_mac == False
+  when: network.spoof_mac
 
 
 
