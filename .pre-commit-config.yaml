@@ -8,6 +8,11 @@ repos:
       - id: check-docstring-first
       - id: check-json
       - id: check-yaml
+      - id: mixed-line-ending
+      - id: check-byte-order-marker
+      - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+      - id: debug-statements
   - repo: https://github.com/antonbabenko/pre-commit-terraform
     rev: v1.45.0
     hooks:
@@ -18,24 +23,20 @@ repos:
     hooks:
       - id: terraform-fmt
       - id: tflint
-  #      - id: shellcheck
-  #  - repo: https://github.com/adrienverge/yamllint.git
-  #    rev: v1.25.0
-  #    hooks:
-  #      - id: yamllint
-  #        files: \.(yaml|yml)$
-  #        types: [file, yaml]
-  #        entry: yamllint --strict
-  #        args: ["-c", ".yamllint"]
   - repo: https://github.com/pre-commit/mirrors-isort
     rev: v5.6.4
     hooks:
       - id: isort
         args:
           - --filter-files
-  - repo: https://github.com/ansible/ansible-lint.git
-    rev: v4.3.7
+  - repo: local
     hooks:
       - id: ansible-lint
+        name: Ansible-lint
+        description: This hook runs ansible-lint.
+        entry: ansible-lint --force-color -x 204,701,301,305,401
         files: \.(yaml|yml)$
-        #args: ["--force-color" "-x", "204,701,301,305,401"]
+        types: [file, yaml]
+        language: python
+        pass_filenames: false
+        always_run: true
