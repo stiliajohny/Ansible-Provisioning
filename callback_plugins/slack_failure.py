@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: iso-8859-15 -*-
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 from ansible.plugins.callback import CallbackBase
 
 __metaclass__ = type
 
 import json
-import urllib3
+import os
 import sys
-import os
+
 import requests
-import os
+import urllib3
 
 myhost = os.uname()[1]
 http = urllib3.PoolManager()
