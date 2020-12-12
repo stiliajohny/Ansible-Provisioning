@@ -1,25 +1,4 @@
 ---
-- name: Install zsh
-  pacman:
-    name: zsh
-  become: true
-
-- name: Install zsh-completions
-  yay:
-    name: "zsh-completions"
-  become: yes
-  become_user: "{{ user.name }}"
-  ignore_errors: True
-
-- name: Install yarn for Vim Plug
-  pacman:
-    name: yarn
-  become: true
-
-- name: Install nodejs
-  shell: "curl -sL install-node.now.sh | sh -s -- -y"
-  become: yes
-
 - name: Ignore .cfg folder
   shell: "echo '.cfg' >> /home/{{ user.name }}/.gitignore"
   become: yes
@@ -52,6 +31,32 @@
   become: yes
   become_user: "{{ user.name }}"
 
+- name: Install zsh
+  pacman:
+    name: zsh
+  become: true
+
+- name: Install tmux
+  pacman:
+    name: tmux
+  become: true
+
+- name: Install zsh-completions
+  yay:
+    name: "zsh-completions"
+  become: yes
+  become_user: "{{ user.name }}"
+  ignore_errors: True
+
+- name: Install yarn for Vim Plug
+  pacman:
+    name: yarn
+  become: true
+
+- name: Install nodejs
+  shell: "curl -sL install-node.now.sh | sh -s -- -y"
+  become: yes
+
 - name: Install TMP for TMUX
   git:
     repo: https://github.com/tmux-plugins/tpm
@@ -80,14 +85,14 @@
     dest: /home/{{ user.name }}/.config/oh-my-zsh/custom/plugins/zsh-autosuggestions
     version: origin/master
 
-- name: Vim plugins installation
-  shell: vim -E -s -u /home/{{ user.name }}/.config/vim/vimrc +PlugInstall +qall
-  args:
-    chdir: /home/{{ user.name }}
-  register: vim_plug_output
-  ignore_errors: True
+- name: Install zsh-completions
+  git:
+    repo: "https://github.com/zsh-users/zsh-completions"
+    dest: /home/{{ user.name }}/.config/oh-my-zsh/custom/plugins/zsh-completions
+    version: origin/master
 
-- name: Vim Plug output
-  debug:
-    msg: "{{ vim_plug_output.stdout.split('\n') }}"
-  ignore_errors: True
+- name: Install fzf
+  git:
+    repo: "https://github.com/junegunn/fzf.git"
+    dest: /home/{{ user.name }}/.config/oh-my-zsh/fzf/
+    version: origin/master
