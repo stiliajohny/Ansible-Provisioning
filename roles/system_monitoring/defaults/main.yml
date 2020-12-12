@@ -9,3 +9,5 @@ node_listening_port: 9100
 
 LOKI_RELEASE: 2.0.0
 loki_listening_port: 3100
+
+PROMTAIL_RELEASE: 2.0.0

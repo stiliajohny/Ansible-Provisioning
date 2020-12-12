@@ -1,18 +1,15 @@
 ---
-- name: Include Prometheus Instalation
-  include_tasks: prometheus.yml
-  tags:
-    - prometheus
+#- name: Include Prometheus Instalation
+#  include_tasks: prometheus.yml
+#
+#- name: Include Node_Exporter Instalation
+#  include_tasks: node_exporter.yml
+#
+#- name: Include Loki Instalation
+#  include_tasks: loki.yml
 
-- name: Include Node_Exporter Instalation
-  include_tasks: node_exporter.yml
-  tags:
-    - node_exporter
-
-- name: Include Loki Instalation
-  include_tasks: loki.yml
-  tags:
-    - loki
+- name: Include P romtailInstalation
+  include_tasks: promtail.yml
 
 - name: Run install tasks
   include_tasks: "{{ loop_main_prometheus }}"

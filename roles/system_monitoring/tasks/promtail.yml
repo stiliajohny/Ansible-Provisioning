@@ -1,0 +1,84 @@
+---
+- name: Create tmp for system monitoring Instalation
+  file:
+    path: /tmp/ansible-system_monitoring-instalation/
+    state: directory
+    mode: 0755
+
+- name: Download promtail {{ PROMTAIL_RELEASE }}
+  get_url:
+    url: "https://github.com/grafana/loki/releases/download/v{{ PROMTAIL_RELEASE }}/promtail-linux-amd64.zip"
+    dest: "/tmp/ansible-system_monitoring-instalation/promtail-linux-amd64_v{{ PROMTAIL_RELEASE }}.zip"
+    mode: 0655
+
+- name: Create export directory promtail-linux-amd64_v{{ PROMTAIL_RELEASE }}
+  file:
+    path: "/tmp/ansible-system_monitoring-instalation/promtail-linux-amd64_v{{ PROMTAIL_RELEASE }}"
+    state: directory
+    mode: 0755
+
+- name: Extract {{ PROMTAIL_RELEASE }}/promtail-linux-amd64.zip
+  unarchive:
+    src: "/tmp/ansible-system_monitoring-instalation/promtail-linux-amd64_v{{ PROMTAIL_RELEASE }}.zip"
+    dest: "/tmp/ansible-system_monitoring-instalation/promtail-linux-amd64_v{{ PROMTAIL_RELEASE }}"
+    remote_src: yes
+    mode: 0644
+
+- name: Copy promtail binary to bin location
+  copy:
+    src: "/tmp/ansible-system_monitoring-instalation/promtail-linux-amd64_v{{ PROMTAIL_RELEASE }}/promtail-linux-amd64"
+    dest: /usr/local/bin/promtail
+    mode: 0755
+    remote_src: yes
+  become: true
+
+- name: Create config folder for promtail
+  file:
+    path: /etc/promtail/
+    state: directory
+    mode: 0755
+
+- name: Place the promtail config
+  template:
+    src: promtail.yml.j2
+    dest: /etc/promtail/promtail.yml
+    group: root
+    owner: root
+    mode: 0644
+  become: true
+
+- name: Place promtail service
+  template:
+    src: promtail.service.j2
+    dest: /etc/systemd/system/promtail.service
+    group: root
+    owner: root
+    mode: 0644
+  become: true
+
+- name: Ensure group "promtail" exists
+  group:
+    name: promtail
+    state: present
+    system: yes
+
+- name: Add the user "promtail" in the "promtail" group
+  user:
+    name: promtail
+    comment: promtail
+    system: yes
+    append: true
+    groups: ["promtail", "systemd-journal"]
+    shell: /sbin/nologin
+
+- name: Systemd Reload
+  systemd:
+    state: started
+    enabled: true
+    daemon_reload: yes
+    name: promtail
+
+- name: Create tmp for Prometheus and Node exporter Instalation
+  file:
+    path: /tmp/ansible-system_monitoring-instalation/
+    state: absent

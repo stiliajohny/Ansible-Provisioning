@@ -76,9 +76,8 @@
     enabled: true
     daemon_reload: yes
     name: loki
-#
-#- name: Create tmp for Prometheus and Node exporter Instalation
-#  file:
-#    path: /tmp/ansible-system_monitoring-instalation/
-#    state: absent
-#
+
+- name: Create tmp for Prometheus and Node exporter Instalation
+  file:
+    path: /tmp/ansible-system_monitoring-instalation/
+    state: absent
