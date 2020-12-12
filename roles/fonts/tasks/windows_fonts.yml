@@ -17,4 +17,3 @@
     dest: /usr/local/share/fonts/
     mode: 0755
   notify: Refresh fontconfig cache
-
