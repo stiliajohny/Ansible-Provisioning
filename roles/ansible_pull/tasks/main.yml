@@ -11,9 +11,9 @@
   loop_control:
     loop_var: loop_main_ansible_pull
 
-- name: Creates ansible shared directory
+- name: Creates ansible shared callback directory
   file:
-    path: /usr/share/ansible/plugins/modules/
+    path: /usr/share/ansible/plugins/callback
     state: directory
     group: root
     owner: root
@@ -21,7 +21,18 @@
     recurse: yes
   become: true
 
-- name: Copy file with owner and permissions
+- name: Copy callback plugins files
+  copy:
+    src: "../../callback_plugins/{{ item }}"
+    dest: /usr/share/ansible/plugins/callback/
+    owner: root
+    group: root
+    mode: "0755"
+  with_items:
+    - profile_tasks.py
+    - slack_failure.py
+
+- name: Copy library files
   copy:
     src: "../../library/{{ item }}"
     dest: /usr/share/ansible/plugins/modules/
@@ -33,6 +44,16 @@
     - aur-adv
     - makepkg
     - yay
+
+- name: Creates ansible shared modules directory
+  file:
+    path: /usr/share/ansible/plugins/modules/
+    state: directory
+    group: root
+    owner: root
+    mode: 0775
+    recurse: yes
+  become: true
 
 - name: Create /etc/ansible
   file:
