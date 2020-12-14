@@ -1,4 +1,0 @@
----
-- name: Fail task
-  fail:
-    msg: "I've gone and failed the play!"
