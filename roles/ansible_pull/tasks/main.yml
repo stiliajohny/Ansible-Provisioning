@@ -32,6 +32,16 @@
     - profile_tasks.py
     - slack_failure.py
 
+- name: Creates ansible shared modules directory
+  file:
+    path: /usr/share/ansible/plugins/modules/
+    state: directory
+    group: root
+    owner: root
+    mode: 0775
+    recurse: yes
+  become: true
+
 - name: Copy library files
   copy:
     src: "../../library/{{ item }}"
@@ -44,16 +54,6 @@
     - aur-adv
     - makepkg
     - yay
-
-- name: Creates ansible shared modules directory
-  file:
-    path: /usr/share/ansible/plugins/modules/
-    state: directory
-    group: root
-    owner: root
-    mode: 0775
-    recurse: yes
-  become: true
 
 - name: Create /etc/ansible
   file:
