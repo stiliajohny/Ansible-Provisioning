@@ -8,8 +8,8 @@
 #- name: Include Loki Instalation
 #  include_tasks: loki.yml
 
-- name: Include P romtailInstalation
-  include_tasks: promtail.yml
+#- name: Include P romtailInstalation
+#  include_tasks: promtail.yml
 
 - name: Run install tasks
   include_tasks: "{{ loop_main_prometheus }}"
