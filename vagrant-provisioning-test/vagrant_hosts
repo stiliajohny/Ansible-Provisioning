@@ -1,3 +1,0 @@
-[vagrant]
-192.168.56.111 ansible_user=vagrant ansible_password=vagrant ansible_become_password=vagrant ssh_common-args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=.vagrant/machines/ubuntu-bionic64-Vagrant/virtualbox/private_key
-192.168.56.121 ansible_user=vagrant ansible_password=vagrant ansible_become_password=vagrant ssh_common-args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=.vagrant/machines/Centos-7-Vagrant/virtualbox/private_key
