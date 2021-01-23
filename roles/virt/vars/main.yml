@@ -40,3 +40,4 @@ docker_images:
   - python:3.9.0rc1-buster
   - rmountjoy/dashmachine
   - ubuntu:18.04
+  - chentex/random-logger:latest
