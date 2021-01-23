@@ -1,3 +1,41 @@
+
+[all]
+127.0.0.1
+
 [pull_hosts]
 127.0.0.1
-192.168.1.123
+
+[vagrant]
+192.168.56.111 =vagrant ansible_password=vagrant ansible_become_password=vagrant ssh_common-args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=.vagrant/machines/Ubuntu-1804-Vagrant/virtualbox/private_key
+192.168.56.121 ansible_user=vagrant ansible_password=vagrant ansible_become_password=vagrant ssh_common-args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=.vagrant/machines/Centos-7-Vagrant/virtualbox/private_key
+192.168.56.131 ansible_user=vagrant ansible_password=vagrant ansible_become_password=vagrant ssh_common-args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=.vagrant/machines/Kali-Vagrant/virtualbox/private_key
+192.168.56.141 ansible_user=vagrant ansible_password=vagrant ansible_become_password=vagrant ansible_connection=winrm ansible_port=5986 ansible_winrm_server_cert_validation=ignore
+192.168.56.151 ansible_user=vagrant ansible_password=vagrant ansible_become_password=vagrant ssh_common-args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=.vagrant/machines/ArchLinux-Vagrant/virtualbox/private_key
+192.168.56.161 ansible_user=vagrant ansible_password=vagrant ansible_become_password=vagrant ssh_common-args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=.vagrant/machines/MacOS_Catalina-Vagrant/virtualbox/private_key
+
+
+[ubuntu_vagrant]
+192.168.56.111 =vagrant ansible_password=vagrant ansible_become_password=vagrant ssh_common-args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=.vagrant/machines/Ubuntu-1804-Vagrant/virtualbox/private_key
+
+[centos_vagrant]
+192.168.56.121 ansible_user=vagrant ansible_password=vagrant ansible_become_password=vagrant ssh_common-args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=.vagrant/machines/Centos-7-Vagrant/virtualbox/private_key
+
+[kali_vagrant]
+192.168.56.131 ansible_user=vagrant ansible_password=vagrant ansible_become_password=vagrant ssh_common-args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=.vagrant/machines/Kali-Vagrant/virtualbox/private_key
+
+[windows_vagrant]
+192.168.56.141
+
+[arch_vagrant]
+192.168.56.151 ansible_user=vagrant ansible_password=vagrant ansible_become_password=vagrant ssh_common-args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=.vagrant/machines/ArchLinux-Vagrant/virtualbox/private_key
+
+[macos_vagrant]
+192.168.56.161 ansible_user=vagrant ansible_password=vagrant ansible_become_password=vagrant ssh_common-args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=.vagrant/machines/ArchLinux-Vagrant/virtualbox/private_key
+
+
+[windows_vagrant:vars]
+ansible_user=vagrant
+ansible_password=vagrant
+ansible_connection=winrm
+ansible_port=5986
+ansible_winrm_server_cert_validation=ignore
