@@ -11,7 +11,9 @@
     state: present
   become: true
 
+
 - name: Install i8kutils
-  aur:
-    name: i8kutils
-    user: "{{ user.name }}"
+  yay:
+    name: "i8kutils"
+  become: yes
+  ignore_errors: True
