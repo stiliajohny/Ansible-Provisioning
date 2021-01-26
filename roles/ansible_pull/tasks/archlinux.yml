@@ -1,8 +1,19 @@
 ---
-- name: Update the system {{ ansible_distribution | lower }}
+- name: Run the equivalent of "pacman -Sy" as a separate step
   pacman:
-    update_cache: true
-    upgrade: true
+    update_cache: yes
+  become: true
+
+- name: Run the equivalent of "pacman -Su" as a separate step
+  pacman:
+    upgrade: yes
+  become: true
+
+- name: Run the equivalent of "pacman -Syu" as a separate step
+  pacman:
+    update_cache: yes
+    upgrade: yes
+  become: true
 
 - name: Install python-pip
   pacman:
@@ -49,9 +60,11 @@
 - name: Install ansible with pip
   pip:
     name: ansible
-    extra_args: "--user"
+#    extra_args: "--user"
+  become: true
 
 - name: Install prettytable with pip
   pip:
     name: prettytable
     extra_args: "--user"
+  become: true
