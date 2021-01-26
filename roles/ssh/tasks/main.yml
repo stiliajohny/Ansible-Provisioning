@@ -17,6 +17,7 @@
     src: ssh_banner
     dest: /etc/ssh_banner
     mode: 0600
+  become: true
 
 - name: Copy sshd_config template
   template:
@@ -32,3 +33,4 @@
     name: sshd.service
     enabled: true
     state: restarted
+  become: true

@@ -5,3 +5,4 @@
       - openssh
       - sshfs
     state: present
+  become: true
