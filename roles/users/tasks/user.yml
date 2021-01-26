@@ -3,6 +3,7 @@
   group:
     name: aur_builder
     state: present
+  become: true
 
 - name: Create aur_builder User
   user:
@@ -12,6 +13,7 @@
     shell: /bin/nologin
     home: /var/lib/aurbuilder
     system: true
+  become: true
 
 - name: Create user aurman
   user:
@@ -20,11 +22,13 @@
     shell: /bin/nologin
     home: /var/lib/aurman
     system: true
+  become: true
 
 - name: Create user group
   group:
     name: "{{ user.group }}"
     state: present
+  become: true
 
 - name: "Create user"
   user:
@@ -53,14 +57,16 @@
     shell: '{{ user.shell | default("/usr/bin/zsh") }}'
     append: true
     state: present
+  become: true
   ignore_errors: true
 
 - name: Copy sudo configuration
-  copy:
-    src: sudoers
+  template:
+    src: sudoers.j2
     dest: /etc/sudoers
     mode: 0440
     validate: "visudo -cf %s"
+  become: true
   ignore_errors: true
 
 - name: Create a sudoers file for the aur_builder
@@ -70,6 +76,7 @@
     create: true
     validate: "visudo -cf %s"
     mode: 0600
+  become: true
 
 - name: Create a sudoers file for the ansible
   lineinfile:
@@ -78,3 +85,4 @@
     create: true
     validate: "visudo -cf %s"
     mode: 0644
+  become: true

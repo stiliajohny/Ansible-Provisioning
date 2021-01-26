@@ -4,7 +4,7 @@
     path: /home/{{ user.name }}/{{ loop_home_creation }}
     state: directory
     mode: 0755
-  become: yes
+  become: true
   become_user: "{{ user.name }}"
   with_items: "{{ home_skel }}"
   loop_control:

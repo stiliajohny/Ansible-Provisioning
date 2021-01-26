@@ -3,6 +3,7 @@
   locale_gen:
     name: "{{ locale }}"
     state: present
+  become: true
 
 - name: Set locale
   lineinfile:
@@ -10,6 +11,7 @@
     create: True
     line: 'LANG={{ locale }}'
     mode: 0644
+  become: true
 
 - name: Set virtual console keymap
   lineinfile:
@@ -19,6 +21,8 @@
     state: present
     mode: 0644
   notify: Generate initramfs
+  become: true
 
 - name: Configure keymap "{{ keymap }}"
   command: localectl set-keymap "{{ keymap }}"
+  become: true
