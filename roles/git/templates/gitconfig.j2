@@ -1,8 +1,6 @@
 ### {{ ansible_managed }}
 
-[user]
-        email = {{ user.email }}
-        name = {{ user.fullname }}
+
 [http]
         sslVerify = false
 [pull]
@@ -16,3 +14,33 @@
         co = checkout --recurse-submodules
 [merge]
         tool = vimdiff
+
+
+[user]
+        email = {{ user.email }}
+        name = {{ user.fullname }}
+[http]
+        sslVerify = true
+[pull]
+        recurseSubmodules = true
+        initSubmodules = true
+[checkout]
+        recurseSubmodules = true
+        initSubmodules = true
+[alias]
+        up = pull --recurse-submodules
+        co = checkout --recurse-submodules
+        hooks = !\"/home/{{ user.name }}/.githooks/bin/githooks\"
+[merge]
+        tool = vimdiff
+[githooks]
+        installDir = /home/{{ user.name }}/.githooks
+        runner = /home/{{ user.name }}/.githooks/release/base-template.sh
+        cloneUrl = https://github.com/stiliajohny/githooks.git
+        cloneBranch = master
+        useCoreHooksPath = false
+[init]
+        templateDir = /home/{{ user.name }}/.githooks/templates
+[githooks "autoupdate"]
+        enabled = true
+        lastrun = 1610211875
