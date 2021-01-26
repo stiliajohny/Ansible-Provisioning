@@ -2,107 +2,14 @@
 - name: Ensure group "snort" exists
   group:
     name: snort
-    state: present
+    state: absent
     system: yes
 
 - name: Add the user snort
   user:
     name: snort
     comment: snort
+    state: absent
     system: yes
     group: snort
     shell: /sbin/nologin
-
-- name: Install snort dependencies
-  yay:
-    name: "{{ snort_dep_loop }}"
-  with_items:
-    - dbus
-    - libdaq
-    - libdnet
-    - libgcrypt
-    - libgpg-error
-    - libnghttp2
-    - libnl
-    - libpcap
-    - luajit
-    - lz4
-    - openssl
-    - pcre
-    - xz
-    - zlib
-  loop_control:
-    loop_var: snort_dep_loop
-  become: yes
-  ignore_errors: True
-
-- name: Install snort
-  yay:
-    name: "snort"
-  become: yes
-  ignore_errors: True
-- name: Creates snort etc directory
-  file:
-    path: /etc/snort/rules
-    state: directory
-    group: root
-    owner: root
-    mode: 0775
-    recurse: yes
-  become: true
-
-- name: Creates snort log directory
-  file:
-    path: /var/log/snort
-    state: directory
-    group: snort
-    owner: snort
-    mode: 0775
-    recurse: yes
-  become: true
-
-- name: Copy Snort config from template
-  template:
-    src: snort.conf.j2
-    dest: /etc/snort/snort.conf
-    owner: root
-    group: root
-    mode: 0644
-    backup: yes
-
-- name: Copy Snort rule from template
-  template:
-    src: snort.icmp.rules.j2
-    dest: /etc/snort/rules/icmp.rules
-    owner: root
-    group: root
-    mode: 0755
-    backup: yes
-
-- name: Copy Snort sysconfig from template
-  template:
-    src: snort.sysconfig.j2
-    dest: /etc/snort/snort.sysconfig
-    owner: root
-    group: root
-    mode: 0644
-    backup: yes
-
-- name: Copy Snort service from template
-  template:
-    src: snort.service.j2
-    dest: /etc/systemd/system/snort.service
-    owner: root
-    group: root
-    mode: 0755
-    backup: yes
-
-- name: Just force systemd to reread configs
-  systemd:
-    daemon_reload: yes
-
-- name: Enable service snort service
-  systemd:
-    name: snort
-    enabled: yes
-    state: started
