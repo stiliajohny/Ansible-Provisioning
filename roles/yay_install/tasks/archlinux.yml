@@ -1,5 +1,4 @@
 ---
-
 - name: Define if yay is installed
   stat: path=/usr/bin/yay
   register: yay_state
@@ -9,6 +8,7 @@
     repo: "{{ ansible_arch_yay.git }}"
     dest: "{{ ansible_arch_yay.dest }}"
     force: true
+  become: yes
   when: not yay_state.stat.exists
 
 - name: "Set access rights to {{ ansible_arch_yay.owner.name }}:{{ ansible_arch_yay.owner.group }}"
@@ -19,12 +19,14 @@
     owner: "{{ ansible_arch_yay.owner.name }}"
     group: "{{ ansible_arch_yay.owner.group }}"
     recurse: true
+  become: yes
   when: not yay_state.stat.exists
 
 - name: Install required dependecies
   pacman:
     name: "binutils go base-devel"
     state: present
+  become: yes
   when: not yay_state.stat.exists
 
 - name: "MAKEPKG yay AUR helper as {{ ansible_arch_yay.owner }}"
@@ -40,3 +42,4 @@
   file:
     path: "{{ ansible_arch_yay.dest }}"
     state: absent
+  become: yes
