@@ -1,6 +1,7 @@
 ---
 - name: Define if yay is installed
-  stat: path=/usr/bin/yay
+  stat:
+    path: /usr/bin/yay
   register: yay_state
 
 - name: Install git
@@ -10,7 +11,6 @@
   become: true
   become_user: root
   when: not yay_state.stat.exists
-
 
 - name: "Clone yay AUR helper source git repository to {{ ansible_arch_yay.dest }}"
   git:
@@ -33,7 +33,7 @@
 
 - name: Install required dependecies
   pacman:
-    name: "binutils go base-devel"
+    name: "binutils go autoconf automake  bison fakeroot file findutils flex gawk gcc gettext grep groff gzip libtool m4 make pacman patch pkgconf sed sudo texinfo which "
     state: present
   become: yes
   when: not yay_state.stat.exists
@@ -45,7 +45,6 @@
   when: not yay_state.stat.exists
   args:
     chdir: "{{ ansible_arch_yay.dest }}"
-
 
 - name: Recursively remove {{ ansible_arch_yay.dest }}
   file:

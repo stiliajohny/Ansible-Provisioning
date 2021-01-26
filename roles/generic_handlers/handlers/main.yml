@@ -1,6 +1,19 @@
-- name: Update pacman cache
+---
+- name: Pacman -Sy
   pacman:
-    update_cache: True
+    update_cache: yes
+  become: true
+
+- name: Pacman -Su
+  pacman:
+    upgrade: yes
+  become: true
+
+- name: Pacman -Syu
+  pacman:
+    update_cache: yes
+    upgrade: yes
+  become: true
 
 - name: Reload systemd daemon with systemd module
   systemd:

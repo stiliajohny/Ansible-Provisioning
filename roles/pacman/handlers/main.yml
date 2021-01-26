@@ -1,3 +1,16 @@
-- name: Update pacman cache
+---
+- name: Run the equivalent of "pacman -Sy" as a separate step
   pacman:
-    update_cache: True
+    update_cache: yes
+  become: true
+
+- name: Run the equivalent of "pacman -Su" as a separate step
+  pacman:
+    upgrade: yes
+  become: true
+
+- name: Run the equivalent of "pacman -Syu" as a separate step
+  pacman:
+    update_cache: yes
+    upgrade: yes
+  become: true

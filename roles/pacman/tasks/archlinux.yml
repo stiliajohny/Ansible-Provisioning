@@ -8,6 +8,7 @@
     - { regexp: '^#VerbosePkgLists$', replace: 'VerbosePkgLists' }
   loop_control:
     loop_var: loop_pacman_config
+  become: true
 
 - name: Enable repositories
   replace:
@@ -17,26 +18,33 @@
   with_items: '{{ pacman.repos }}'
   loop_control:
     loop_var: loop_pacman_repos
-  notify: Update pacman cache
+  notify:
+    - "Pacman -Sy"
+    - "Pacman -Su"
+    - "Pacman -Syu"
   when: pacman.repos is defined
+  become: true
 
 - name: Ignore 'modified' group
   replace:
     path: /etc/pacman.conf
     regexp: '^#IgnoreGroup =$'
     replace: 'IgnoreGroup = modified'
+  become: true
 
 - name: Install pacman-contrib (for paccache hooks)
   pacman:
     name: pacman-contrib
     state: present
     update_cache: True
+  become: true
 
 - name: Create pacman hook directory
   file:
     path: /etc/pacman.d/hooks
     state: directory
     mode: 0644
+  become: true
 
 - name: Add paccache hooks
   copy:
@@ -48,20 +56,24 @@
     - 99-paccache_upgrade.hook
   loop_control:
     loop_var: loop_pachcache_hooks
+  become: true
 
 - name: Add mirrorupgrade hook
   copy:
     src: mirrorupgrade.hook
     dest: /etc/pacman.d/hooks/mirrorupgrade.hook
     mode: 0644
+  become: true
 
 - name: Add export_pkg_list hook
   copy:
     src: export_pkg_list.hook
     dest: /etc/pacman.d/hooks/export_pkg_list.hook
     mode: 0644
+  become: true
 
 - name: Pacman Update-Upgrade
   pacman:
     update_cache: yes
     upgrade: yes
+  become: true

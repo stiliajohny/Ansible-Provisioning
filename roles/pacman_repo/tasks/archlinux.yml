@@ -14,7 +14,10 @@
     group: root
     mode: 0644
   notify:
-    - "Update pacman cache"
+    - "Pacman -Sy"
+    - "Pacman -Su"
+    - "Pacman -Syu"
+  become: true
 
 - name: Force refresh pacman cache if required
   meta: flush_handlers

@@ -5,6 +5,7 @@
     state: present
   notify:
     - "Restart reflector service"
+  become: true
 
 - name: Ensure the update service is installed
   template:
@@ -15,11 +16,13 @@
     mode: 0644
   notify:
     - "Reload systemd units"
+  become: true
 
 - name: Ensure the update service is enabled
   service:
     name: "{{ reflector_service_name }}"
     enabled: yes
+  become: true
 
 - name: Ensure the timer is installed
   template:
@@ -31,9 +34,11 @@
   when: reflector_timer
   notify:
     - "Reload systemd units"
+  become: true
 
 - name: Ensure the timer is enabled
   service:
     name: "{{ reflector_timer_name }}"
     enabled: yes
   when: reflector_timer
+  become: true

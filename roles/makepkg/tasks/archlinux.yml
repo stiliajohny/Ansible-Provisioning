@@ -6,6 +6,7 @@
   with_items: "{{ makepkg_base_devel }}"
   loop_control:
     loop_var: base_devel_loop
+  become: true
 
 - name: Install modified makepkg.conf file
   template:
@@ -14,3 +15,4 @@
     owner: root
     group: root
     mode: 0644
+  become: true

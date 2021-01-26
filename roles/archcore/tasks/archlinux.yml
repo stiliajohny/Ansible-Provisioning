@@ -4,24 +4,28 @@
     src: pacman.conf
     dest: /etc/pacman.conf
     mode: 0644
-
-- name: Refresh pacman mirrors
-  pacman:
-    update_cache: yes
+  become: true
+  notify:
+    - "Pacman -Sy"
+    - "Pacman -Su"
+    - "Pacman -Syu"
 
 - name: Install reflector
   pacman:
     name: reflector
     state: present
+  become: true
 
 - name: Sort mirror by reflector
   shell: reflector --latest 50 --age 24 --sort rate --save /etc/pacman.d/mirrorlist
+  become: true
 
 - name: Use all cores when compressing packages
   lineinfile:
     dest: /etc/makepkg.conf
     regexp: "^COMPRESSXZ"
     line: "COMPRESSXZ=(xz -c -z - --threads=0)"
+  become: true
 
 - name: Install core utils packages
   pacman:
@@ -66,3 +70,4 @@
     src: nobeep.conf
     dest: /etc/modprobe.d/nobeep.conf
     mode: 0440
+  become: true
