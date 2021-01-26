@@ -1,73 +1,141 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
 Vagrant.configure("2") do |config|
 
-  config.vm.define "ubuntu-bionic64-Vagrant" do |ubuntu|
-    ubuntu.vm.box = "ubuntu/bionic64"
+  config.vm.provision :ansible do |ansible|
+    ansible.playbook = "./vagrant-playbook.yml"
+    ansible.verbose = ""
+    ansible.compatibility_mode = "auto"
+  end
+
+
+  config.vm.define "Ubuntu-2010-Vagrant" do |ubuntu|
+    ubuntu.vm.box_check_update = true
+    ubuntu.vm.provision "shell", path: "./vagrant-provisioning-scripts/provisioner.sh"
+    ubuntu.vm.provision "shell",    inline: "sudo apt install -y python3"
+    ubuntu.vm.box = "ubuntu/groovy64"
     ubuntu.vm.network :private_network, ip: "192.168.56.111"
-    ubuntu.vm.provider :virtualbox do |y|
-      y.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-      y.customize ["modifyvm", :id, "--memory", 1500]
-      y.customize ["modifyvm", :id, "--cpus", 3]
-      y.customize ["modifyvm", :id, "--name", "Ubuntu-Vagrant"]
-      y.customize ["modifyvm", :id, "--hwvirtex", "off"]
-      y.name = 'Ubuntu-bionic64-Vagrant'
-      y.gui = false
+    ubuntu.vm.hostname = "vagrant-ubuntu2010"
+    ubuntu.vm.synced_folder "./sync_folder/", "/vagrant", :mount_options => ["ro"], create: true, disabled: false
+    ubuntu.vm.provider :virtualbox do |ubuntu|
+      ubuntu.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      ubuntu.customize ["modifyvm", :id, "--memory", 1536]
+      ubuntu.customize ["modifyvm", :id, "--cpus", 3]
+      ubuntu.customize ["modifyvm", :id, "--name", "Ubuntu-Vagrant"]
+      ubuntu.customize ["modifyvm", :id, "--hwvirtex", "off"]
+      ubuntu.name = 'Ubuntu-2010-Vagrant'
+      ubuntu.gui = false
     end
   end
 
-  config.vm.define "Centos-7-Vagrant" do |centos7|
-    centos7.vm.box = "centos/7"
-    centos7.vm.network :private_network, ip: "192.168.56.121"
-    centos7.vm.provider :virtualbox do |x|
-      x.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-      x.customize ["modifyvm", :id, "--memory", 1500]
-      x.customize ["modifyvm", :id, "--cpus", 3]
-      x.customize ["modifyvm", :id, "--name", "Centos-7-Vagrant"]
-      x.customize ["modifyvm", :id, "--hwvirtex", "off"]
-      x.name = 'Centos-7-Vagrant'
-      x.gui = false
+  config.vm.define "Centos-7-Vagrant" do |centos|
+    centos.vm.box_check_update = true
+    centos.vm.provision "shell", path: "./vagrant-provisioning-scripts/provisioner.sh"
+    centos.vm.provision "shell",    inline: "sudo yum install -y python3"
+    centos.vm.box = "centos/7"
+    centos.vm.synced_folder "./sync_folder/", "/vagrant", :mount_options => ["ro"], create: true, disabled: false
+    centos.vm.network :private_network, ip: "192.168.56.121"
+    centos.vm.hostname = "vagrant-centos"
+    centos.vm.provider :virtualbox do |centos|
+      centos.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      centos.customize ["modifyvm", :id, "--memory", 1536]
+      centos.customize ["modifyvm", :id, "--cpus", 3]
+      centos.customize ["modifyvm", :id, "--name", "Centos-7-Vagrant"]
+      centos.customize ["modifyvm", :id, "--hwvirtex", "off"]
+      centos.name = 'Centos-7-Vagrant'
+      centos.gui = false
     end
   end
 
   config.vm.define "Kali-Vagrant" do |kali|
+    kali.vm.box_check_update = true
+    kali.vm.provision "shell", path: "./vagrant-provisioning-scripts/provisioner.sh"
+    kali.vm.provision "shell",    inline: "sudo apt install -y python3"
     kali.vm.box = "kalilinux/rolling"
+    kali.vm.synced_folder "./sync_folder/", "/vagrant", :mount_options => ["ro"], create: true, disabled: false
     kali.vm.network :private_network, ip: "192.168.56.131"
-    kali.vm.provider :virtualbox do |z|
-      z.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-      z.customize ["modifyvm", :id, "--memory", 1500]
-      z.customize ["modifyvm", :id, "--cpus", 3]
-      z.customize ["modifyvm", :id, "--name", "Kali-Vagrant"]
-      z.customize ["modifyvm", :id, "--hwvirtex", "off"]
-      z.name = 'Kali-Vagrant'
-      z.gui = false
+    kali.vm.hostname = "vagrant-kali"
+    kali.vm.provider :virtualbox do |kali|
+      kali.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      kali.customize ["modifyvm", :id, "--memory", 1536]
+      kali.customize ["modifyvm", :id, "--cpus", 3]
+      kali.customize ["modifyvm", :id, "--name", "Kali-Vagrant"]
+      kali.customize ["modifyvm", :id, "--hwvirtex", "off"]
+      kali.name = 'Kali-Vagrant'
+      kali.gui = false
     end
   end
 
   config.vm.define "Windows-Vagrant" do |windows|
-    windows.vm.box = "gusztavvargadr/windows-10"
+    windows.vm.box_check_update = true
+    #windows.vm.provision "shell", path: "./vagrant-provisioning-scripts/windows-provisioning.ps1", privileged: true # enable WinRM
+    windows.vm.box = "peru/windows-10-enterprise-x64-eval"
+    #windows.vm.synced_folder "./sync_folder/", "/vagrant", type: "nfs"
     windows.vm.network :private_network, ip: "192.168.56.141"
-    windows.vm.provider :virtualbox do |q|
-      q.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-      q.customize ["modifyvm", :id, "--memory", 1500]
-      q.customize ["modifyvm", :id, "--cpus", 3]
-      q.customize ["modifyvm", :id, "--name", "Windows-Vagrant"]
-      q.customize ["modifyvm", :id, "--hwvirtex", "off"]
-      q.name = 'Windows-Vagrant'
-      q.gui = false
+    windows.vm.hostname = "vagrant-windows"
+    windows.vm.provider :virtualbox do |windows|
+      windows.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      windows.customize ["modifyvm", :id, "--memory", 8192]
+      windows.customize ["modifyvm", :id, "--cpus", 4]
+      windows.customize ["modifyvm", :id, "--name", "Windows-Vagrant"]
+      windows.customize ["modifyvm", :id, "--hwvirtex", "off"]
+      windows.name = 'Windows-Vagrant'
+      windows.gui = false
     end
+    windowspost_up_message = "Your VM is ready for use."
   end
 
   config.vm.define "ArchLinux-Vagrant" do |archlinux|
+    archlinux.vm.box_check_update = true
+    archlinux.vm.provision "shell", path: "./vagrant-provisioning-scripts/provisioner.sh"
     archlinux.vm.box = "archlinux/archlinux"
+    archlinux.vm.synced_folder "./sync_folder/", "/vagrant", :mount_options => ["ro"], create: true, disabled: false
     archlinux.vm.network :private_network, ip: "192.168.56.151"
-    archlinux.vm.provider :virtualbox do |j|
-      j.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-      j.customize ["modifyvm", :id, "--memory", 1500]
-      j.customize ["modifyvm", :id, "--cpus", 3]
-      j.customize ["modifyvm", :id, "--name", "ArchLinux-Vagrant"]
-      j.customize ["modifyvm", :id, "--hwvirtex", "off"]
-      j.name = 'ArchLinu-Vagrant'
-      j.gui = false
+    archlinux.vm.hostname = "vagrant-archlinux"
+    archlinux.vm.provider :virtualbox do |archlinux|
+      archlinux.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      archlinux.customize ["modifyvm", :id, "--memory", 1536]
+      archlinux.customize ["modifyvm", :id, "--cpus", 3]
+      archlinux.customize ["modifyvm", :id, "--name", "ArchLinux-Vagrant"]
+      archlinux.customize ["modifyvm", :id, "--hwvirtex", "off"]
+      archlinux.name = 'ArchLinu-Vagrant'
+      archlinux.gui = false
     end
   end
 
+  config.vm.define "MacOS_Catalina-Vagrant" do |macoscatalina|
+    macoscatalina.vm.box_check_update = true
+    macoscatalina.vm.provision "shell", path: "./vagrant-provisioning-scripts/provisioner.sh"
+    macoscatalina.vm.box = "GAEV/MacOS_Catalina"
+    macoscatalina.vm.synced_folder "./sync_folder/", "/vagrant", :mount_options => ["ro"], create: true, disabled: false
+    macoscatalina.vm.network :private_network, ip: "192.168.56.161"
+    macoscatalina.vm.hostname = "vagrant-macoscatalina"
+    macoscatalina.vm.provider :virtualbox do |macos|
+      macos.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      macos.customize ["modifyvm", :id, "--memory", 1536]
+      macos.customize ["modifyvm", :id, "--cpus", 3]
+      macos.customize ["modifyvm", :id, "--name", "MacOS_Catalina-Vagrant"]
+      macos.customize ["modifyvm", :id, "--hwvirtex", "off"]
+      macos.name = 'MacOS_Catalina-Vagrant'
+      macos.gui = false
+    end
+  end
+  config.vm.define "Metasploitable3-Vagrant" do |metasploitable3|
+    metasploitable3.vm.box_check_update = true
+    metasploitable3.vm.provision "shell", path: "./vagrant-provisioning-scripts/provisioner.sh"
+    metasploitable3.vm.box = "rapid7/metasploitable3-win2k8"
+    metasploitable3.vm.synced_folder "./sync_folder/", "/vagrant", :mount_options => ["ro"], create: true, disabled: false
+    metasploitable3.vm.network :private_network, ip: "192.168.56.171"
+    metasploitable3.vm.hostname = "vagrant-metasploitable3"
+    metasploitable3.vm.provider :virtualbox do |metasploitable3|
+      metasploitable3.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      metasploitable3.customize ["modifyvm", :id, "--memory", 1536]
+      metasploitable3.customize ["modifyvm", :id, "--cpus", 3]
+      metasploitable3.customize ["modifyvm", :id, "--name", "Metasploitable3-Vagrant"]
+      metasploitable3.customize ["modifyvm", :id, "--hwvirtex", "off"]
+      metasploitable3.name = 'Metasploitable3-Vagrant'
+      metasploitable3.gui = false
+    end
+  end
 end
