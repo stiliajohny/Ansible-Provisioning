@@ -14,6 +14,6 @@ fi
 
 if  command -v pacman &> /dev/null
 then
-    sudo pacman -Syyuu
+    sudo pacman -Syyuu --no-confirm
 fi
 
