@@ -6,9 +6,14 @@
     mode: 0644
   become: true
   notify:
-    - "Pacman -Sy"
     - "Pacman -Su"
     - "Pacman -Syu"
+    - "Pacman -Sy"
+    - "Pacman -Sy cmd"
+
+- name: Run Pacman -Sy
+  shell: pacman -Sy
+  become: true
 
 - name: Install reflector
   pacman:
@@ -27,25 +32,34 @@
     line: "COMPRESSXZ=(xz -c -z - --threads=0)"
   become: true
 
-- name: Install core utils packages
+- name: Install core utils packages 
   pacman:
-    name: "{{ core_utils }}"
+    name: "{{ core_utils_loop }}"
     state: present
     force: yes
+  with_items: "{{ core_utils }}"
+  loop_control:
+    loop_var: core_utils_loop
   when: core_utils is defined
   become: true
 
 - name: Install core debug utils packages
   pacman:
-    name: "{{ core_debugutils }}"
+    name: "{{ core_debugutils_loop }}"
     state: present
+  with_items: "{{ core_debugutils }}"
+  loop_control:
+    loop_var: core_debugutils_loop
   when: core_debugutils is defined
   become: true
 
 - name: Install core net utils packages
   pacman:
-    name: "{{ core_netutils }}"
+    name: "{{ core_netutils_loop }}"
     state: present
+  with_items: "{{ core_netutils }}"
+  loop_control:
+    loop_var: core_netutils_loop
   when: core_netutils is defined
   become: true
 
@@ -56,14 +70,15 @@
   when: core_goodies is defined
   become: true
 
-- name: Install {{ core_aur_loop }}
-  aur:
+- name: Install core aur packages
+  yay:
     name: "{{ core_aur_loop }}"
-    user: "{{ user.name }}"
   with_items: "{{ core_aur }}"
   loop_control:
     loop_var: core_aur_loop
   when: core_aur is defined
+  become: yes
+  ignore_errors: True
 
 - name: Copy nobeep configuration
   copy:
