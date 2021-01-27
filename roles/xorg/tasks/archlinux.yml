@@ -22,9 +22,11 @@
     src: 00-keyboard.conf.j2
     dest: /etc/X11/xorg.conf.d/
     mode: 0644
+  become: true
 
 - name: Copy pointer configuration file
   copy:
     src: 30-mouse.conf
     dest: /etc/X11/xorg.conf.d/
     mode: 0644
+  become: true

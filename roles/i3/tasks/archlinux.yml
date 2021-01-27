@@ -25,6 +25,7 @@
     daemon_reload: yes
     enabled: yes
     name: suspend@{{ user.name }}.service
+  become: true
 
 - name: Install i3-gaps and such from AUR
   yay:
@@ -35,6 +36,6 @@
     - feh
   loop_control:
     loop_var: i3_loop
-  become: yes
+  become: true
   become_user: "{{ user.name }}"
   ignore_errors: True

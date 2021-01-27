@@ -12,14 +12,17 @@
       - tree
       - tmux
     state: present
+  become: true
 
 - name: Install pkgfile
   pacman:
     name: pkgfile
     state: present
+  become: true
 
 - name: Enable pkgfile timer
   systemd:
     name: pkgfile-update.timer
     enabled: True
+  become: true
   notify: Synchronise pkgfile database
