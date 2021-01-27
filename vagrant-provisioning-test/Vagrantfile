@@ -7,6 +7,11 @@ Vagrant.configure("2") do |config|
     ansible.playbook = "./vagrant-playbook.yml"
     ansible.verbose = ""
     ansible.compatibility_mode = "auto"
+    #ansible.inventory_path = 
+    #ansible.host_key_checking = false
+    #ansible.tags="archcore"
+    #http://www.inanzzz.com/index.php/post/wfj9/running-ansible-provisioning-by-passing-arguments-in-vagrant
+    #ansible.raw_arguments = Shellwords.shellsplit(ENV["ANSIBLE_ARGS"]) if ENV["ANSIBLE_ARGS"]
   end
 
 
@@ -95,10 +100,10 @@ Vagrant.configure("2") do |config|
     archlinux.vm.hostname = "vagrant-archlinux"
     archlinux.vm.provider :virtualbox do |archlinux|
       archlinux.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-      archlinux.customize ["modifyvm", :id, "--memory", 1536]
-      archlinux.customize ["modifyvm", :id, "--cpus", 3]
+      archlinux.customize ["modifyvm", :id, "--memory", 8192]
+      archlinux.customize ["modifyvm", :id, "--cpus", 8]
       archlinux.customize ["modifyvm", :id, "--name", "ArchLinux-Vagrant"]
-      archlinux.customize ["modifyvm", :id, "--hwvirtex", "off"]
+      archlinux.customize ["modifyvm", :id, "--hwvirtex", "on"]
       archlinux.name = 'ArchLinu-Vagrant'
       archlinux.gui = false
     end
