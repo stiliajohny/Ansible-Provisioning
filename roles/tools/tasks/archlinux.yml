@@ -9,12 +9,14 @@
   pacman:
     name: "{{ tools }}"
     state: present
+  become: true
 
-- name: Install tfenv
-  aur:
+- name: Install tools aur
+  yay:
     name: "{{ tools_aur_loop }}"
-    user: "{{ user.name }}"
   with_items: "{{ tools_aur }}"
   loop_control:
     loop_var: tools_aur_loop
   when: tools_aur is defined
+  become: true
+  ignore_errors: true

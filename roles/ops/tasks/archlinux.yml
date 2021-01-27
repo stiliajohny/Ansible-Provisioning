@@ -2,20 +2,32 @@
 #- name: Install ops packages
 #  pacman: name={{ ops_cli }} state=present
 
+- name: Install  ops_aur
+  yay:
+    name: "{{ ops_cli_loop }}"
+  with_items: "{{ ops_cli }}"
+  loop_control:
+    loop_var: ops_cli_loop
+  when: ops_cli is defined
+  become: true
+  ignore_errors: true
+
 - name: Install ops packages
   pacman:
     name: "{{ ops_gui }}"
     state: present
   when: ops_gui is defined
+  become: true
 
-- name: Install ops_aur
-  aur:
+- name: Install  ops_aur
+  yay:
     name: "{{ ops_aur_loop }}"
-    user: "{{ user.name }}"
   with_items: "{{ ops_aur }}"
   loop_control:
     loop_var: ops_aur_loop
   when: ops_aur is defined
+  become: true
+  ignore_errors: true
 
 - name: Include hashicorp
   import_role:

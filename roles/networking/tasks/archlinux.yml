@@ -8,19 +8,20 @@
   with_items: "{{ networking_cli }}"
   loop_control:
     loop_var: networking_cli_loop
-  become: yes
   become_user: "{{ user.name }}"
   when: networking_cli is defined
+  become: true
   ignore_errors: true
 
-- name: Install networking cli packages
-  aur:
+- name: Install networking gui packages
+  yay:
     name: "{{ networking_gui_loop }}"
-    user: "{{ user.name }}"
   with_items: "{{ networking_gui }}"
   loop_control:
     loop_var: networking_gui_loop
+  become_user: "{{ user.name }}"
   when: networking_gui is defined
+  become: true
   ignore_errors: true
 
 - name: "Generate Packages Facts"
@@ -33,5 +34,6 @@
     groups: ["wireshark"]
     append: true
     state: present
-  ignore_errors: true
   when: "'wireshark-cli' in ansible_facts.packages"
+  ignore_errors: true
+  become: true
