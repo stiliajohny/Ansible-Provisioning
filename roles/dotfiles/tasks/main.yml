@@ -2,6 +2,7 @@
 - name: Define if dotfiles are installed
   stat: path=/home/{{ user.name }}/.cfg
   register: dotfiles_state
+  become: true
 
 - name: Run install tasks
   include_tasks: "{{ loop_main_dotfiles }}"

@@ -90,15 +90,19 @@
     repo: "https://github.com/zsh-users/zsh-autosuggestions"
     dest: /home/{{ user.name }}/.config/oh-my-zsh/custom/plugins/zsh-autosuggestions
     version: origin/master
+  become: true
+  become_user: "{{ user.name }}"
 
 - name: Install zsh-completions
   git:
     repo: "https://github.com/zsh-users/zsh-completions"
     dest: /home/{{ user.name }}/.config/oh-my-zsh/custom/plugins/zsh-completions
     version: origin/master
+  become: true
 
 - name: Install fzf
   git:
     repo: "https://github.com/junegunn/fzf.git"
     dest: /home/{{ user.name }}/.config/oh-my-zsh/fzf/
     version: origin/master
+  become: true

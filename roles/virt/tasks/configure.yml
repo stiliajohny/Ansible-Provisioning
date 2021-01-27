@@ -5,6 +5,7 @@
     path: /etc/nsswitch.conf
     regexp: '^hosts:\s+files\s+(?!libvirt)'
     replace: 'hosts: files libvirt '
+  become: true
 
 - name: Enable nested KVM
   lineinfile:
@@ -13,6 +14,7 @@
     line: 'options kvm_intel nested=1'
     state: present
     mode: 0644
+  become: true
   notify:
     - Generate initramfs
     - Reload kvm_intel module
@@ -25,4 +27,5 @@
       nvram = [
           "/usr/share/ovmf/x64/OVMF_CODE.fd:/usr/share/ovmf/x64/OVMF_VARS.fd"
       ]
+  become: true
   notify: Restart libvirtd service

@@ -9,6 +9,7 @@
   group:
     name: "docker"
     state: present
+  become: true
 
 - name: Adding docker users (for use without sudo)
   user:
@@ -53,21 +54,32 @@
   pacman:
     name: kubectl
     state: present
+  become: true
 
 - name: Install helm
   pacman:
     name: helm
     state: present
+  become: true
 
 - name: Install minikube
   pacman:
     name: minikube
     state: present
+  become: true
 
 - name: Install lazydocker
-  aur:
-    name: lazydocker
-    user: "{{ user.name }}"
+  yay:
+    name: "lazydocker"
+  become: true
+
+
+- name: Reboot to allow docker systemd service to start
+  reboot:
+    reboot_timeout: 120
+    test_command : "whoami"
+    post_reboot_delay: 3
+    pre_reboot_delay: 3
 
 - name: Enable and start Docker service
   systemd:
