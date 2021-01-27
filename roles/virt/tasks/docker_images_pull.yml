@@ -1,9 +1,11 @@
 ---
 - name: Pull docker images
   docker_image:
-    name: "{{ loop_docker_image_pull }}"
+    name: "{{ docker_image_pull_loop }}"
     source: pull
   with_items: "{{ docker_images }}"
   loop_control:
-    loop_var: loop_docker_image_pull
+    loop_var: docker_image_pull_loop
   ignore_errors: true
+  become: true
+  become_user: "root"
