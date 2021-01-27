@@ -1,10 +1,11 @@
 ---
 - name: Install cli53
-  aur:
-    name: cli53
-    user: "{{ user.name }}"
+  yay:
+    name: "cli53"
+  become: true
 
 - name: Install aws-cli
   pacman:
     name: aws-cli
     state: present
+  become: true
