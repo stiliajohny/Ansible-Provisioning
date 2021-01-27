@@ -57,11 +57,12 @@
   become: true
   become_user: root
 
-- name: Install ansible with pip
-  pip:
+- name: Install ansible
+  pacman:
     name: ansible
-#    extra_args: "--user"
+    state: present
   become: true
+  become_user: root
 
 - name: Install prettytable with pip
   pip:
