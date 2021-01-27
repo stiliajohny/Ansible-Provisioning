@@ -1,14 +1,17 @@
 ---
 
 - name: Define if polybar is installed
-  stat: path=/usr/local/bin/polybar
+  stat:
+    path: "/usr/local/bin/polybar"
   register: polybar_state
+  become: true
 
 - name: Clone polybar AUR helper source git repository to {{ ansible_arch_polybar.dest }}
   git:
     repo: "{{ ansible_arch_polybar.git }}"
     dest: "{{ ansible_arch_polybar.dest }}"
     force: true
+  become: true
   when: not polybar_state.stat.exists
 
 - name: Set access rights to {{ ansible_arch_polybar.owner.name }}:{{ ansible_arch_polybar.owner.group }}
@@ -19,17 +22,43 @@
     owner: "{{ ansible_arch_polybar.owner.name }}"
     group: "{{ ansible_arch_polybar.owner.group }}"
     recurse: true
+  become: true
   when: not polybar_state.stat.exists
 
-- name: Install required dependecies
-  pacman:
-    name: "binutils go base-devel pkg-config cairo libxcb python3 xcb-proto xcb-util-image xcb-util-wm python-sphinx  gcc clang cmake libmpdclient "
-    state: present
+#- name: Install polybar required dependecies
+#  pacman:
+#    name: "binutils go base-devel pkg-config cairo libxcb python3 xcb-proto xcb-util-image xcb-util-wm python-sphinx  gcc clang cmake libmpdclient "
+#    state: present
+#  become: true
+
+- name: Install polybar required dependecies
+  yay:
+    name: "{{ polybar_dep_loop }}"
+  with_items:
+    - binutils
+    - go
+    - base-devel
+    - pkg-config
+    - cairo
+    - libxcb
+    - python3
+    - xcb-proto
+    - xcb-util-image
+    - xcb-util-wm
+    - python-sphinx
+    - gcc
+    - clang
+    - cmake
+    - libmpdclient
+  loop_control:
+    loop_var: polybar_dep_loop
+  become: yes
+  ignore_errors: True
   when: not polybar_state.stat.exists
 
 - name: AUR helper as {{ ansible_arch_polybar.owner }}
   shell: "./build.sh -A --all-features > ./makepkg-polybar.log"
-  become: yes
+  become: true
   become_user: "{{ ansible_arch_polybar.owner.name }}"
   when: not polybar_state.stat.exists
   args:
@@ -40,3 +69,4 @@
   file:
     path: "{{ ansible_arch_polybar.dest }}"
     state: absent
+  become: true
