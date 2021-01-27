@@ -10,6 +10,7 @@ After=network-online.target
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/reflector --connection-timeout {{ reflector_connection_timeout }} -p {{ reflector_protocol }} -l {{ reflector_latest }} -n {{ reflector_number }} {% if reflector_countries and (reflector_countries is defined) %}{% for country in reflector_countries %}-c "{{ country }}" {% endfor %}{% endif %}--sort {{ reflector_sort }} --save {{ reflector_file_output }}
+TimeoutSec=60
 
 {% if reflector_on_boot %}
 [Install]

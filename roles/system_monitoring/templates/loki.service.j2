@@ -8,6 +8,7 @@ After=network.target
 Type=simple
 User=loki
 ExecStart=/usr/local/bin/loki -config.file /etc/loki/loki_config.yml
+TimeoutSec=60
 
 [Install]
 WantedBy=multi-user.target

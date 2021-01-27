@@ -9,6 +9,7 @@ User=node_exporter
 Group=node_exporter
 Type=simple
 ExecStart=/usr/local/bin/node_exporter
+TimeoutSec=60
 
 [Install]
 WantedBy=multi-user.target

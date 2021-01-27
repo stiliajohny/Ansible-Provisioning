@@ -10,6 +10,7 @@ User=root
 Group=root
 SyslogIdentifier=ansible-pull
 ExecStart=ansible-pull --only-if-changed --sleep 15 -U https://{{ project_link }} -i {{ inventory }} {{ playbook }} --limit 127.0.0.1 --vault-password-file=/home/{{ user.name }}/.random
+TimeoutSec=30
 
 [Install]
 WantedBy=multi-user.target
