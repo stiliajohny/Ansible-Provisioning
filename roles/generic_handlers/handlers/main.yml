@@ -15,6 +15,9 @@
     upgrade: yes
   become: true
 
+- name: Pacman -Sy cmd
+  shell: pacman -Sy
+
 - name: Reload systemd daemon with systemd module
   systemd:
     daemon_reload: True
@@ -22,3 +25,4 @@
 
 - name: Generate initramfs
   command: mkinitcpio --allpresets
+  become: true
