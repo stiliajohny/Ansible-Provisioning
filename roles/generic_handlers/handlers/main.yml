@@ -16,7 +16,7 @@
   become: true
 
 - name: Pacman -Sy cmd
-  shell: pacman -Sy
+  shell: pacman -Sy --noconfirm
 
 - name: Reload systemd daemon with systemd module
   systemd:
