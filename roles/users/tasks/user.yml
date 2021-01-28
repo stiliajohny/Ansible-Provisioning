@@ -58,7 +58,6 @@
     append: true
     state: present
   become: true
-  ignore_errors: true
 
 - name: Copy sudo configuration
   template:
@@ -67,7 +66,6 @@
     mode: 0440
     validate: "visudo -cf %s"
   become: true
-  ignore_errors: true
 
 - name: Create a sudoers file for the aur_builder
   lineinfile:
