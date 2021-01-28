@@ -27,7 +27,7 @@
   command: localectl set-keymap "{{ keymap }}"
   become: true
 
-- name: Ensure a locale exists 
+- name: Ensure a locale exists
   locale_gen:
     name: "{{ locale }}"
     state: present
