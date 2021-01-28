@@ -11,7 +11,7 @@
     accept_hostkey: yes
     update: yes
     bare: yes
-    version: origin/master
+    version: master
     force: yes
   when: dotfiles is defined
   become: yes
@@ -68,7 +68,7 @@
     repo: https://github.com/tmux-plugins/tpm
     dest: ~/.tmux/plugins/tpm
     force: yes
-    version: origin/master
+    version: master
   when: dotfiles is defined
   become: yes
   become_user: "{{ user.name }}"
@@ -89,7 +89,7 @@
   git:
     repo: "https://github.com/zsh-users/zsh-autosuggestions"
     dest: /home/{{ user.name }}/.config/oh-my-zsh/custom/plugins/zsh-autosuggestions
-    version: origin/master
+    version: master
   become: true
   become_user: "{{ user.name }}"
 
@@ -97,12 +97,12 @@
   git:
     repo: "https://github.com/zsh-users/zsh-completions"
     dest: /home/{{ user.name }}/.config/oh-my-zsh/custom/plugins/zsh-completions
-    version: origin/master
+    version: master
   become: true
 
 - name: Install fzf
   git:
     repo: "https://github.com/junegunn/fzf.git"
     dest: /home/{{ user.name }}/.config/oh-my-zsh/fzf/
-    version: origin/master
+    version: master
   become: true
