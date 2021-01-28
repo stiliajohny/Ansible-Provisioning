@@ -74,12 +74,12 @@
   become: true
 
 
-- name: Reboot to allow docker systemd service to start
-  reboot:
-    reboot_timeout: 120
-    test_command : "whoami"
-    post_reboot_delay: 3
-    pre_reboot_delay: 3
+#- name: Reboot to allow docker systemd service to start
+#  reboot:
+#    reboot_timeout: 120
+#    test_command : "whoami"
+#    post_reboot_delay: 3
+#    pre_reboot_delay: 3
 
 - name: Enable and start Docker service
   systemd:
