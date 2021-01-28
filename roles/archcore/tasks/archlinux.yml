@@ -32,7 +32,7 @@
     line: "COMPRESSXZ=(xz -c -z - --threads=0)"
   become: true
 
-- name: Install core utils packages 
+- name: Install core utils packages
   pacman:
     name: "{{ core_utils_loop }}"
     state: present
