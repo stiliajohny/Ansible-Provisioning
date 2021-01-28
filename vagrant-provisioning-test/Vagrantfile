@@ -7,9 +7,9 @@ Vagrant.configure("2") do |config|
     ansible.playbook = "./vagrant-playbook.yml"
     ansible.verbose = ""
     ansible.compatibility_mode = "auto"
-    #ansible.inventory_path = 
+    #ansible.inventory_path = ./vagrant_hosts
     #ansible.host_key_checking = false
-    #ansible.tags="archcore"
+    #ansible.tags="user"
     #http://www.inanzzz.com/index.php/post/wfj9/running-ansible-provisioning-by-passing-arguments-in-vagrant
     #ansible.raw_arguments = Shellwords.shellsplit(ENV["ANSIBLE_ARGS"]) if ENV["ANSIBLE_ARGS"]
   end
