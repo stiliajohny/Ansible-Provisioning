@@ -1,10 +1,9 @@
 ---
-- name: Install comm packages from AUR
-  aur-adv:
-    name: "{{ item }}"
-    use: yay
+- name: Install comms packages
+  yay:
+    name: "{{ comm_loop }}"
   with_items: "{{ comm }}"
-  ignore_errors: True
-  become: yes
-  become_user: ansible
-  tags: x-1
+  loop_control:
+    loop_var: comm_loop
+  when: comm is defined
+  become: true
