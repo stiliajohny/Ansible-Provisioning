@@ -11,7 +11,6 @@
   become_user: "{{ user.name }}"
   when: networking_cli is defined
   become: true
-  ignore_errors: true
 
 - name: Install networking gui packages
   yay:
@@ -22,7 +21,6 @@
   become_user: "{{ user.name }}"
   when: networking_gui is defined
   become: true
-  ignore_errors: true
 
 - name: "Generate Packages Facts"
   package_facts:
@@ -35,5 +33,4 @@
     append: true
     state: present
   when: "'wireshark-cli' in ansible_facts.packages"
-  ignore_errors: true
   become: true

@@ -3,5 +3,4 @@
   yum:
     name: sudo
     state: present
-  ignore_errors: True
   become: true

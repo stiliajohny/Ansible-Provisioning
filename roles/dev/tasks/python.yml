@@ -7,4 +7,3 @@
   loop_control:
     loop_var: python_dev_loop
   become: yes
-  ignore_errors: True

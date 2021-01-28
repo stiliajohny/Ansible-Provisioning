@@ -24,7 +24,7 @@
   with_items: "{{ github_repo_name }}"
   loop_control:
     loop_var: github_repo_item
-  ignore_errors: true
+  ignore_errors: true # ignore erros as some of th erepos might contain files altered, this task wont force a clean git pull , it will fail due to a dirty local copy
   become: false
 
 - name: Clone the Gitlab repos - Number {{ gitlab_repo_name|length }}
@@ -40,5 +40,5 @@
   with_items: "{{ gitlab_repo_name }}"
   loop_control:
     loop_var: gitlab_repo_item
-  ignore_errors: true
+  ignore_errors: true # ignore erros as some of th erepos might contain files altered, this task wont force a clean git pull , it will fail due to a dirty local copy
   become: false

@@ -3,4 +3,3 @@
   yay:
     name: "android-sdk-platform-tools"
   become: yes
-  ignore_errors: True

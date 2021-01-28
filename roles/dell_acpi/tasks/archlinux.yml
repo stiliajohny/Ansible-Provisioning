@@ -16,4 +16,3 @@
   yay:
     name: "i8kutils"
   become: yes
-  ignore_errors: True

@@ -7,4 +7,3 @@
   loop_control:
     loop_var: other_dev_loop
   become: yes
-  ignore_errors: True

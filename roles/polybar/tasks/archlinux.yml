@@ -1,5 +1,4 @@
 ---
-
 - name: Define if polybar is installed
   stat:
     path: "/usr/local/bin/polybar"
@@ -25,12 +24,6 @@
   become: true
   when: not polybar_state.stat.exists
 
-#- name: Install polybar required dependecies
-#  pacman:
-#    name: "binutils go base-devel pkg-config cairo libxcb python3 xcb-proto xcb-util-image xcb-util-wm python-sphinx  gcc clang cmake libmpdclient "
-#    state: present
-#  become: true
-
 - name: Install polybar required dependecies
   yay:
     name: "{{ polybar_dep_loop }}"
@@ -53,7 +46,6 @@
   loop_control:
     loop_var: polybar_dep_loop
   become: yes
-  ignore_errors: True
   when: not polybar_state.stat.exists
 
 - name: AUR helper as {{ ansible_arch_polybar.owner }}

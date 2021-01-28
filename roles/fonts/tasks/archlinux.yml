@@ -10,23 +10,21 @@
   aur-adv:
     name: ttf-font-awesome
     use: yay
-  ignore_errors: True
 
 #- name: Install Windows fonts
 #  import_tasks: windows_fonts.yml
 #  when: fonts.windows is same asTrue
 
 - name: Install base_fonts package list
-  aur-adv:
+  yay:
     name: "{{ base_fonts_loop }}"
-    use: yay
   with_items: "{{ base_fonts }}"
   loop_control:
     loop_var: base_fonts_loop
   when: base_fonts is defined
   become: yes
   become_user: "{{ user.name }}"
-  ignore_errors: True
+
 
 - name: Install aur_fonts package list
   yay:
@@ -37,4 +35,3 @@
   when: aur_fonts is defined
   become: yes
   become_user: "{{ user.name }}"
-  ignore_errors: True

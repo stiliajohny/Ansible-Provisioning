@@ -46,7 +46,6 @@
     name: "zsh-completions"
   become: yes
   become_user: "{{ user.name }}"
-  ignore_errors: True
 
 - name: Install yarn for Vim Plug
   pacman:

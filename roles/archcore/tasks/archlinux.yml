@@ -78,7 +78,6 @@
     loop_var: core_aur_loop
   when: core_aur is defined
   become: yes
-  ignore_errors: True
 
 - name: Copy nobeep configuration
   copy:

@@ -10,7 +10,6 @@
     loop_var: ops_cli_loop
   when: ops_cli is defined
   become: true
-  ignore_errors: true
 
 - name: Install ops packages
   pacman:
@@ -27,7 +26,6 @@
     loop_var: ops_aur_loop
   when: ops_aur is defined
   become: true
-  ignore_errors: true
 
 - name: Include hashicorp
   import_role:
@@ -40,3 +38,5 @@
 - name: Include networking tools
   import_role:
     name: networking
+
+---

@@ -1,9 +1,4 @@
 ---
-#- name: Remove vim to install gvim
-#  pacman: name=vim state=absent
-#
-#- name: Remove vim to install gvim
-#  pacman: name=gvim state=present
 
 - name: Install tools packages
   pacman:
@@ -19,4 +14,3 @@
     loop_var: tools_aur_loop
   when: tools_aur is defined
   become: true
-  ignore_errors: true
