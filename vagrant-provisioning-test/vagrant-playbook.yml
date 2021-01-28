@@ -1,4 +1,4 @@
---- 
+---
 - name: Vagrant Playbook
   gather_facts: true
   hosts: all
