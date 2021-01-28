@@ -3,13 +3,16 @@
   pacman:
     name: terminator
     state: present
+  become: true
 
 - name: Install alacritty
   pacman:
     name: alacritty
     state: present
+  become: true
 
 - name: Install termite
   pacman:
     name: termite
     state: present
+  become: true

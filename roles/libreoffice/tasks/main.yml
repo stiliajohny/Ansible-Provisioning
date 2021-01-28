@@ -1,8 +1,9 @@
 - name: Install LibreOffice Fresh
   pacman:
     name:
-      - libreoffice-fresh
-      - 'libreoffice-fresh-en-gb'
-      - 'hyphen-en'
-      - libmythes
+      - "libreoffice-fresh"
+      - "libreoffice-fresh-en-gb"
+      - "hyphen-en"
+      - "libmythes"
     state: present
+  become: true

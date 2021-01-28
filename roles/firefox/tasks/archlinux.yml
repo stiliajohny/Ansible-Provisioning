@@ -1,5 +1,5 @@
 - name: Install Firefox
   pacman:
-    name:
-      - firefox
+    name: "firefox"
     state: present
+  become: true

@@ -4,3 +4,4 @@
   pacman:
     name: gimp
     state: present
+  become: true
