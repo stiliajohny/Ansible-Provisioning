@@ -1,12 +1,12 @@
 ---
 - name: Install ansi2html
-  aur:
-    name: ruby
-    user: "{{ user.name }}"
+  yay:
+    name: "ruby"
+  become: true
 
-- name: Install Gem- bundler
+- name: Install Gem bundler
   gem:
-    name: bundler
+    name: "bundler"
     state: present
     version: "2.1.4"
   become: true
@@ -16,3 +16,4 @@
     name: jekyll
     version: "4.1"
     state: present
+
