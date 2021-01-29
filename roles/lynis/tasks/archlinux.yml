@@ -1,11 +1,10 @@
 ---
 - name: Install ansi2html
-  aur:
-    name: ansi2html
-    user: "{{ user.name }}"
-
+  yay:
+    name: "ansi2html"
+  become: yes
 
 - name: Install lynis
-  aur:
-    name: lynis-git
-    user: "{{ user.name }}"
+  yay:
+    name: "lynis-git"
+  become: yes
