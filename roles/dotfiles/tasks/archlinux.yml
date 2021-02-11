@@ -59,7 +59,7 @@
     mode: "0755"
 
 - name: Install Nodejs
-  shell: "sh -s /tmp/install_node.sh -y"
+  shell: "/tmp/install_node.sh -y"
   become: yes
 
 - name: Install TMP for TMUX
