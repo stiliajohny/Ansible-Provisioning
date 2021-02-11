@@ -8,4 +8,3 @@
     loop_var: docker_image_pull_loop
   ignore_errors: true # ignore as some images might not be available  #TODO review the image availabiliy validation
   become: true
-  become_user: "root"

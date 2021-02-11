@@ -1,7 +1,18 @@
 ---
+- name: Install docker
+  pip:
+    name: docker
+  become: true
+
 - name: Create user group vboxusers
   group:
     name: vboxusers
+    state: present
+  become: true
+
+- name: Create group libvirt
+  group:
+    name: libvirt
     state: present
   become: true
 
@@ -11,32 +22,29 @@
     state: present
   become: true
 
-- name: Adding docker users (for use without sudo)
+- name: Adding {{ user.name }} to docker group
   user:
     name: "{{ user.name }}"
     append: yes
     groups: ["docker"]
   become: true
 
-- name: Create group libvirt
-  group:
-    name: libvirt
-    state: present
-  become: true
-
-- name: Adding user to group vboxusers
+- name:  Adding {{ user.name }} to vboxusers group
   user:
     name: "{{ user.name }}"
     append: yes
     groups: ["vboxusers"]
   become: true
 
-- name: Adding user to group libvirt
+- name: Adding {{ user.name }} to libvirt group
   user:
     name: "{{ user.name }}"
     append: yes
     groups: ["libvirt"]
   become: true
+
+- name: reset ssh connection to allow user changes to affect 'current login user'
+  meta: reset_connection
 
 - name: Install virt cli packages
   pacman:
@@ -87,6 +95,7 @@
     enabled: True
     state: started
   become: true
+  become_user: root
 
 - include: configure.yml
 - include: docker_images_pull.yml
