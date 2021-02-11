@@ -38,5 +38,3 @@
 - name: Include networking tools
   import_role:
     name: networking
-
----
