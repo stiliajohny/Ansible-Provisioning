@@ -22,15 +22,10 @@
   when: networking_gui is defined
   become: true
 
-- name: "Generate Packages Facts"
-  package_facts:
-    manager: "auto"
-
 - name: "Add {{ user.name }} to wireshark group"
   user:
     name: "{{ user.name }}"
     groups: ["wireshark"]
     append: true
     state: present
-  when: "'wireshark-cli' in ansible_facts.packages"
   become: true
