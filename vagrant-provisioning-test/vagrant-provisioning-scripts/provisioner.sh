@@ -9,7 +9,7 @@ fi
 
 if  command -v yum &> /dev/null
 then
-    echo "COMMAND could not be found"
+    sudo yum -y update
 fi
 
 if  command -v pacman &> /dev/null
