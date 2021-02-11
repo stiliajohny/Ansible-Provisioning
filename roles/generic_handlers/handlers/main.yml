@@ -17,10 +17,12 @@
 
 - name: Pacman -Sy cmd
   shell: pacman -Sy --noconfirm
+  become: true
 
 - name: Reload systemd daemon with systemd module
   systemd:
     daemon_reload: True
+  become: true
   listen: Reload systemd daemon
 
 - name: Generate initramfs
