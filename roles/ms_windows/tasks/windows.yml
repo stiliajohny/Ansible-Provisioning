@@ -1,0 +1,110 @@
+---
+
+- name: Test playbook
+  gather_facts: true
+  hosts: all
+  tasks:
+
+    - name: Warn logged in users of impending upgrade (note use of async to stop the module from waiting until notification expires).
+      win_toast:
+        expire: 60
+        title: Ansible Provisioning
+        msg: "Automated Ansible Provisioning started.\n Save you work. "
+      async: 60
+      poll: 0
+
+    - name: Display the config
+      debug:
+        msg: "The hostname is {{ ansible_hostname }} "
+
+    - name: Install multiple packages
+      win_chocolatey:
+        name: '{{ item }}'
+        state: present
+      with_items:
+      - icue
+      - msiafterburner
+      - qbittorrent
+      - discord
+      - 7zip
+      - adobereader
+      - alacritty.install
+      - amd-ryzen-chipset
+      - awscli
+      - chocolateygui
+      - cpu-z
+      - curl
+      - darktable
+      - dotnet4.5
+      - firefox
+      - googlechrome
+      - gpu-z
+      - k-litecodecpackfull
+      - malwarebytes
+      - notepadplusplus
+      - powershell
+      - procexp
+      - putty
+      - python3
+      - teamviewer
+      - treesizefree
+      - vim
+      - virtualbox
+      - vlc
+      - vscode
+      - winlogbeat
+      - winrar
+      - wireshark
+      - youtube-dl
+      - tor-browser
+
+    - name: Download  COD MW setup
+      win_get_url:
+        url: "https://eu.battle.net/download/getInstaller?os=win&installer=Modern-Warfare-Setup.exe"
+        dest: "{{ ansible_user_dir}}/Downloads/ANSIBLE-Modern-Warfare-Setup.exe"
+        force: yes
+        validate_certs : no
+
+    - name: Download  CHITUBOX setup
+      win_get_url:
+        url: "https://download.chitubox.com/17839/v1.7.0/CHITUBOX64Install_V1.7.0.exe?auth_key=1611345319-f46es3drn61vrs6ileojmzthwrg91esw-0-0974605bbce12b944c467305b4932216"
+        dest: "{{ ansible_user_dir}}/Downloads/ANSIBLE-CHITUBOX64Install_V1.7.0.exe"
+        force: yes
+        validate_certs : no
+
+    - name: Download  Fusion360 client setup
+      win_get_url:
+        url: "https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Client%20Downloader.exe"
+        dest: "{{ ansible_user_dir}}/Downloads/ANSIBLE-fusion360.exe"
+        force: yes
+        validate_certs : no
+
+    - name: Download  GOG client setup
+      win_get_url:
+        url: "https://cdn.gog.com/open/galaxy/client/setup_galaxy_2.0.18.56.exe"
+        dest: "{{ ansible_user_dir}}/Downloads/ANSIBLE-setup_galaxy_2.0.18.56.exe"
+        force: yes
+        validate_certs : no
+
+    - name: Download  AMD GPU setup
+      win_get_url:
+        url: "https://drivers.amd.com/drivers/installer/20.45/beta/radeon-software-adrenalin-2020-21.1.1-minimalsetup-210120_web.exe"
+        dest: "{{ ansible_user_dir}}/Downloads/ANSIBLE-radeon-software-adrenalin-2020-21.1.1-minimalsetup-210120_web.exe"
+        force: yes
+        validate_certs : no
+
+    - name: Install all security, critical, and rollup updates without a scheduled task
+      win_updates:
+        category_names:
+          - SecurityUpdates
+          - CriticalUpdates
+          - UpdateRollups
+
+    - name: Warn logged in users of impending upgrade (note use of async to stop the module from waiting until notification expires).
+      win_toast:
+        expire: 60
+        title: Ansible Provisioning
+        msg: "Automated  Ansible Provisioning ended. "
+      async: 60
+      poll: 0
+

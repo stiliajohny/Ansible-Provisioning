@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include ms_windows"
+      include_role:
+        name: "ms_windows"

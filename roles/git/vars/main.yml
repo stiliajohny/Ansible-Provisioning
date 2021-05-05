@@ -1,17 +1,24 @@
 ---
 
 github_repo_name:
+  - adi1090x/rofi
+  - afandian/pipes-and-paper
   - aquasecurity/trivy
+  - Blackhippy/DashMachinePlugins
   - bluearduino20/email_spoofer
   - brannondorsey/wifi-cracking
   - camptocamp/terraboard
   - coderjojo/coderjojo
+  - concourse/concourse-chart
   - concourse/concourse-docker
   - cur50r/sherlock
   - d3vl/l3mon
   - davatorium/rofi-themes
+  - dbuxy218/Global-Dark-Nordic-theme
+  - dbuxy218/Global-Dark-Nordic-theme/
   - deviantony/docker-elk
   - ernesen/infra-ansible
+  - faithfulst3ward/cloudc2docker
   - fboender/multi-status
   - feffi/ansible-arch-yay
   - greymd/tmux-xpanes
@@ -28,11 +35,14 @@ github_repo_name:
   - hak5/signalowl-payloads
   - hak5/wifipineapple-modules
   - hak5darren/usb-rubber-ducky
+  - hozza/tmux-hints
   - jacobtomlinson/carte-noire
   - jbreed/nessus
   - jmcvaughn/ansible-arch
   - junegunn/fzf
   - kbeflo/evilportals
+  - kevinalmansa/dockerfiles
+  - kevinalmansa/home-lab
   - kholia/osx-kvm
   - ma1co/sony-pmca-re
   - mattmakai/slack-starterbot
@@ -40,52 +50,74 @@ github_repo_name:
   - mermaidjs/mermaid-live-editor
   - metalx1000/maps-and-locations
   - mikesourcecode/grafana
+  - namvu80ap/docker-elk-filebeat
   - nezhar/wordpress-docker-compose
   - nicomazz/i3-polybar-config
   - perdu/panoptiphone
   - perdu/wombat
   - pigmonkey/spark
   - portainer/portainer-compose
+  - Pwpon500/proxmox-k3s
+  - qeeqbox/chameleon
+  - qeeqbox/social-analyzer
+  - qeeqbox/url-sandbox
   - qqshow/dendroid
+  - richeymichael/remarkable-assistant
+  - rien/reStream
+  - rkoosaar/terraform-proxmox-vm
+  - rmountjoy92/DashMachine
   - rohitjain00/dev-portfolio-blog
   - rohitjain00/rohitjain00hub.io
+  - rycus86/githooks
   - samyk/samytools
   - scottg88/gophish-compose
   - screetsec/thefatrat
+  - sdhibit/terraform-proxmox-cloud-init-vm
   - shlinkio/shlink
   - skickar/deauthdetector
   - sophron/wifiphisher
+  - SpaceVim/SpaceVim
   - stark/siji
+  - stiliajohny-pre_commit_scripts
   - stiliajohny/-k8s-vbox
-  - stiliajohny/Ansible-Provisioning
   - stiliajohny/ansible-provisioning
   - stiliajohny/bbc-good-food-recipe-scraper
+  - stiliajohny/docker-images
   - stiliajohny/dotfiles
+  - stiliajohny/esp-temperature-humidity-in-grafana
   - stiliajohny/esp-temperature-humidity-in-grafana-
   - stiliajohny/evilportal-templates
-  - stiliajohny-pre_commit_scripts
-  - stiliajohnybot
+  - stiliajohny/gitbot
+  - stiliajohny/home-lab
   - stiliajohny/ldap-user-creator
   - stiliajohny/mac-geo-streetview
+  - stiliajohny/obsidian-personal
+  - stiliajohny/pocket2rm
+  - stiliajohny/polybar-scripts
   - stiliajohny/prometheus-dynamic-config
+  - stiliajohny/Repo-Template
+  - stiliajohny/server_banners_prompts
   - stiliajohny/sharkjack-payloads
+  - stiliajohny/stiliajhony.github.io
   - stiliajohny/stiliajhonyhub.io
   - stiliajohny/stiliajohny
+  - stiliajohny/terraform-infra
+  - stiliajohny/terraform-module_proxmox-vm
+  - stiliajohny/Vagrant-Lab
   - stiliajohny/whatsapp_troller
   - stiliajohny/wifi-probe-requests-geolocation
+  - stiliajohnybot
   - sullo/nikto
   - systematicat/hack-captive-portals
+  - Telmate/terraform-provider-proxmox
   - tomvanveen/proxmark3
+  - ullbergm/helm-charts
   - urielzo/animated-polybar-drop-down
+  - Veil-Framework/Veil
   - vikwin/pcapfex
   - vim/vim
   - xinyuan-lilygo/ttgo_twatch_library
   - yucklys/polybar-nord-theme
-  - Blackhippy/DashMachinePlugins
-  - adi1090x/rofi
-  - dbuxy218/Global-Dark-Nordic-theme
-  - rmountjoy92/DashMachine
-  - faithfulst3ward/cloudc2docker
 
 gitlab_repo_name:
   - faithfulst3ward/cloudc2docker

@@ -30,17 +30,17 @@
 [alias]
         up = pull --recurse-submodules
         co = checkout --recurse-submodules
-        hooks = !\"/home/{{ user.name }}/.githooks/bin/githooks\"
+        hooks = !\"~/.githooks/bin/githooks\"
 [merge]
         tool = vimdiff
 [githooks]
-        installDir = /home/{{ user.name }}/.githooks
-        runner = /home/{{ user.name }}/.githooks/release/base-template.sh
+        installDir = ~/.githooks
+        runner = ~/.githooks/release/base-template.sh
         cloneUrl = https://github.com/stiliajohny/githooks.git
         cloneBranch = master
         useCoreHooksPath = false
 [init]
-        templateDir = /home/{{ user.name }}/.githooks/templates
+        templateDir = ~/.githooks/templates
 [githooks "autoupdate"]
         enabled = true
         lastrun = 1610211875
